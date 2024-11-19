@@ -90,7 +90,6 @@ const FeatureTab = (
           : "border-muted"
       } flex items-center p-2.5 gap-2.5 rounded-xl relative cursor-pointer hover:bg-muted/15`}
       ref={tabRef}
-      onClick={props.onClick}
     >
       {props.selected && (
         <motion.div
@@ -185,7 +184,6 @@ export function Featuress() {
             <FeatureTab
               {...tab}
               key={tab.title}
-              onClick={() => handleSelectTab(index)}
               selected={selectedTab === index}
             />
           ))}
