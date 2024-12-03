@@ -111,7 +111,7 @@ export const Discover = () => {
                     </div>
                     <div className="text-lg font-medium font-heading mb-2 relative z-10 px-10">
                       <div className="absolute left-0 -inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-700 group-hover/feature:bg-violet-600 transition-all duration-500 origin-center"></div>
-                      <span className="transition duration-500 inline-block">
+                      <span className="transition duration-500 inline-block text-violet-300">
                         {feature.title}
                       </span>
                     </div>
