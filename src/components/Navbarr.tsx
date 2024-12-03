@@ -113,7 +113,7 @@ export default function SiteHeader() {
                         }
                       >
                         <CodeXml className={"size-6"} />
-                        Developers
+                        Insights
                       </Link>
                       <Link
                         href={"#"}
