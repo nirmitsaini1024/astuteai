@@ -36,31 +36,31 @@ export const Discover = () => {
       icon: "zap",
     },
     {
-      title: "Insightful Analytics",
+      title: "User-Friendly Convenience ",
       description:
         "Gain valuable insights and analytics to enhance your social media strategy.",
       icon: "chart-spline",
     },
     {
-      title: "24/7 Support",
+      title: "Task Automation ",
       description:
         "Our team is available around the clock to assist with any issues or questions.",
       icon: "life-buoy",
     },
     {
-      title: "Customizable Solutions",
+      title: "Strategic Planning Made Easy",
       description:
         "Tailor the tools and features to fit your unique social media needs.",
       icon: "palette",
     },
     {
-      title: "Secure and Reliable",
+      title: "AI-Powered Assistance",
       description:
         "Trust our platform to keep your data safe and ensure consistent performance.",
       icon: "shield-check",
     },
     {
-      title: "Seamless Integration",
+      title: "Multilingual Capability",
       description:
         "Easily integrate with your existing social media platforms and tools.",
       icon: "waypoints",
@@ -83,7 +83,7 @@ export const Discover = () => {
             Discover the benefits
           </h2>
           <p className="text-base text-zinc-400 md:text-lg text-center text-accent-foreground/80 mt-6">
-            Explore the powerful features and advantages that Luro offers to
+            Explore the powerful features and advantages that Astute offers to
             help you grow your social media presence.
           </p>
         </div>
@@ -104,10 +104,7 @@ export const Discover = () => {
                   <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-80 from-violet-950/25 to-transparent pointer-events-none"></div>
                   <div className="group-hover/feature:-translate-y-1 transform-gpu transition-all duration-300 flex flex-col w-full">
                     <div className="mb-4 relative z-10 px-10">
-                    <IconComponent
-  className="w-10 h-10 origin-left transform-gpu text-neutral-500 transition-all duration-300 ease-in-out group-hover/feature:scale-75 group-hover/feature:text-white"
-/>
-
+                      <IconComponent className="w-10 h-10 origin-left transform-gpu text-neutral-500 transition-all duration-300 ease-in-out group-hover/feature:scale-75 group-hover/feature:text-white" />
                     </div>
                     <div className="text-lg font-medium font-heading mb-2 relative z-10 px-10">
                       <div className="absolute left-0 -inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-700 group-hover/feature:bg-violet-600 transition-all duration-500 origin-center"></div>

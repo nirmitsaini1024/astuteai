@@ -36,9 +36,9 @@ export const Hero = () => {
         <div className="flex justify-center mt-8">
           <div className="inline-flex relative">
             <h1 className="text-7xl sm:text-9xl font-bold tracking-tighter text-center inline-flex">
-              One task
+              Build Your
               <br />
-              at a time
+              Brand
             </h1>
             <motion.div
               className="absolute right-[476px] top-[108px] hidden sm:inline"
@@ -72,8 +72,9 @@ export const Hero = () => {
         </div>
         <div className="flex justify-center">
           <p className="text-center mt-8 text-xl max-w-md">
-            Celebrate the joy of accomplishment with an app designed to track
-            your progress, motivate your efforts, and celebrate your successes.
+            Empowering entrepreneurs with AI-driven tools for seamless website
+            creation, automated marketing, optimized content, and insightful
+            analytics across platforms.
           </p>
         </div>
         <div className="flex mt-8 justify-center">
