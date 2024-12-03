@@ -5,7 +5,7 @@ import { Timeline } from "@/components/ui/timeline";
 export function TimelineDemo() {
   const data = [
     {
-      title: "Register",
+      title: "Showcase your products",
       content: (
         <div>
           <p className="text-neutral-200 text-xs md:text-sm font-normal mb-8">
@@ -45,7 +45,7 @@ export function TimelineDemo() {
       ),
     },
     {
-      title: "Preview",
+      title: "Market: Power up your marketing",
       content: (
         <div>
           <p className="text-neutral-200 text-xs md:text-sm font-normal mb-8">
@@ -90,7 +90,7 @@ export function TimelineDemo() {
       ),
     },
     {
-      title: "Launch",
+      title: "Analyse: Unlock Actionable Insights",
       content: (
         <div>
           <p className="text-neutral-200 text-xs md:text-sm font-normal mb-4">

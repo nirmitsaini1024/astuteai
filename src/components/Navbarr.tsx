@@ -51,7 +51,7 @@ export default function SiteHeader() {
                   href={"#"}
                   className={"text-white/90 hover:text-white transition"}
                 >
-                  Developers
+                  Insights
                 </Link>
                 <Link
                   href={"#"}
