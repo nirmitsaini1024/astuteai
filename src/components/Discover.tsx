@@ -89,7 +89,7 @@ export const Discover = () => {
         </div>
       </div>
       <div
-        className="max-w-7xl  px-4 md:px-12 py-20 relative size-full"
+        className="max-w-7xl  px-4 md:px-12 py-7 relative size-full"
         style={{ opacity: 1, transform: "none", willChange: "auto" }}
       >
         <div className="mt-16 w-full">
