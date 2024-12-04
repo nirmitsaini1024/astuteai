@@ -12,7 +12,7 @@ export default function Home() {
       <SiteHeader />
       <Hero />
       <Features />
-      <TimelineDemo />
+      {/* <TimelineDemo /> */}
       <Featuress />
       <Discover />
       <CallToAction />

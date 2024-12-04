@@ -1,7 +1,5 @@
 "use client";
-
 import Link from "next/link";
-import SiteLogo from "@/assets/logo.svg";
 import Logooo from "@/assets/logooo.png";
 import { CodeXml, Feather, MenuIcon, Newspaper, Wallet2 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
