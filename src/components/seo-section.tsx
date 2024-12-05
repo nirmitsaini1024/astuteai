@@ -1,7 +1,8 @@
 "use client";
-import { PiCursorClickBold } from "react-icons/pi"; // Ensure this import is correct
+import { PiCursorClickBold } from "react-icons/pi";
 import { VscDashboard } from "react-icons/vsc";
 import { CgSmartphoneChip } from "react-icons/cg";
+import { BorderBeam } from "@/components/ui/border-beam";
 
 import ProductImage from "@/assets/images/product-image.png";
 import {
@@ -105,11 +106,10 @@ const FeatureTab = (
           "size-12 border border-muted/30 rounded-lg inline-flex items-center justify-center"
         }
       >
-        {/* Render the icon */}
         {typeof props.icon === "string" ? (
           <img src={props.icon} alt={props.title} className="size-5" />
         ) : (
-          <div className="size-5">{props.icon}</div> // If it's a React component
+          <div className="size-5">{props.icon}</div>
         )}
       </div>
       <div className={"font-medium"}>{props.title}</div>
@@ -190,9 +190,10 @@ export function Featuress() {
         </div>
         <motion.div
           className={
-            "border border-zinc-800 border-muted rounded-xl p-2.5 mt-3"
+            "border border-zinc-800 border-muted rounded-xl p-2.5 mt-3 relative"
           }
         >
+          <BorderBeam />
           <div
             className={
               "aspect-video bg-cover border border-muted border-zinc-600 rounded-lg"
