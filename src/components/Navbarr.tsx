@@ -43,26 +43,27 @@ export default function SiteHeader() {
                   href={"#"}
                   className={"text-white/90 hover:text-white transition"}
                 >
+                  
+                  Product
+                </Link>
+                <Link
+                  href={"#"}
+                  className={"text-white/90 hover:text-white transition"}
+                >
                   Features
                 </Link>
                 <Link
                   href={"#"}
                   className={"text-white/90 hover:text-white transition"}
                 >
-                  Insights
+                  Resources
                 </Link>
-                <Link
-                  href={"#"}
-                  className={"text-white/90 hover:text-white transition"}
-                >
-                  Pricing
-                </Link>
-                <Link
+                {/* <Link
                   href={"#"}
                   className={"text-white/90 hover:text-white transition"}
                 >
                   Dashboard
-                </Link>
+                </Link> */}
               </nav>
             </section>
             <section className={"flex max-md:gap-4 items-center"}>

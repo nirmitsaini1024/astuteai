@@ -5,6 +5,7 @@ import { CallToAction } from "@/components/CallToAction";
 import { TimelineDemo } from "@/components/Timeline";
 import { Featuress } from "@/components/seo-section";
 import { Discover } from "@/components/Discover";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Featuress />
       <Discover />
       <CallToAction />
+      <Footer />
     </>
   );
 }

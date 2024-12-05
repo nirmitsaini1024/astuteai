@@ -161,7 +161,7 @@ export function Featuress() {
   };
 
   return (
-    <section className={"py-20 md:py-24 bg-black"}>
+    <section className={"pt-24 pb-4 md:pt-24 md:pb-4 bg-black"}>
       <div className={"container"}>
         <h2
           className={
