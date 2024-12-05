@@ -193,7 +193,6 @@ export function Featuress() {
             "border border-zinc-800 border-muted rounded-xl p-2.5 mt-3 relative"
           }
         >
-          
           <BorderBeam />
           <div
             className={
