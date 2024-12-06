@@ -22,11 +22,11 @@ export function ServiceCard({ title, description, icon: Icon, delay }: ServiceCa
       className="h-full group relative"
     >
       {/* Gradient border container (Visible only on hover) */}
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-600/50 to-blue-600/50 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+      <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-600/50 to-blue-600/50 rounded-xl blur-sm opacity-0 group-hover:opacity-35 transition-opacity duration-500 pointer-events-none"></div>
       
       {/* Background glow (Visible only on hover) */}
-      <div className="absolute -inset-1 bg-gradient-to-r from-violet-600/50 to-blue-600/50 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-        
+      <div className="absolute -inset-1 bg-gradient-to-r from-violet-600/50 to-blue-600/50 rounded-xl blur-xl opacity-0 group-hover:opacity-35 transition-opacity duration-500 pointer-events-none"></div>
+
       {/* Card */}
       <Card
         className={cn(
