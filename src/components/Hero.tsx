@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import ArrowWIcon from "../assets/icons/arrow-w.svg";
 import cursorImage from "../assets/images/cursor.png";
 import messageImage from "../assets/images/message.png";
 import { motion } from "framer-motion";
@@ -41,7 +40,7 @@ export const Hero = () => {
               Brand
             </h1>
             <motion.div
-              className="absolute right-[476px] top-[108px] hidden sm:inline"
+              className="absolute right-[512px] top-[108px] hidden sm:inline"
               drag
               dragSnapToOrigin
             >
@@ -55,7 +54,7 @@ export const Hero = () => {
               />
             </motion.div>
             <motion.div
-              className="absolute left-[498px] top-[56px] hidden sm:inline"
+              className="absolute left-[550px] top-[100px] hidden sm:inline"
               drag
               dragSnapToOrigin
             >
