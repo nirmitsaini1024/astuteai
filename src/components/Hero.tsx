@@ -56,7 +56,7 @@ export const Hero = () => {
         </div>
         <div className="flex justify-center">
           <p className="text-center mt-8 text-xl max-w-md">
-            Empowering entrepreneurs with AI-driven tools for seamless website
+            Empowering businesses with AI-driven tools for seamless website
             creation, automated marketing, optimized content, and insightful
             analytics across platforms.
           </p>
