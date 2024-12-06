@@ -5,7 +5,7 @@ import Logooo from "@/assets/logooo.png";
 const Footer = () => {
   return (
     <div className="relative">
-      <div className="border-t border-neutral-800 px-8 pt-20 pb-32 relative bg-black z-0">
+      <div className="border-t border-neutral-800 px-8 pt-20 pb-24 relative bg-black z-0">
         <div className="absolute inset-0 z-[-1] flex items-center justify-center overflow-hidden pointer-events-none bg-transparent">
           <p className="text-center text-5xl md:text-9xl lg:text-[18rem] font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-950 via-neutral-800 to-[#FFBE98]/30 select-none">
             Astute
@@ -27,7 +27,7 @@ const Footer = () => {
             <div className="mt-2 relative z-10 ">All rights reserved</div>
           </div>
 
-          <div className="grid grid-cols-3 gap-10 items-start mt-10 md:mt-0">
+          <div className="grid grid-cols-3 gap-10 items-start mt-16 md:mt-0">
             <div className="flex justify-center space-y-4 flex-col mt-4 relative z-10">
               {" "}
               <h3 className="text-white font-bold text-sm sm:text-base">
