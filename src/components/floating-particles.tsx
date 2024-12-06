@@ -21,7 +21,7 @@ export function FloatingParticles() {
 
   return (
     <>
-      {[...Array(50)].map((_, i) => (
+      {[...Array(25)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 bg-violet-400/20 rounded-full hidden sm:block"
