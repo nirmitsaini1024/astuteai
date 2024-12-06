@@ -66,7 +66,7 @@ function ProcessItem({ step, index }: { step: typeof steps[0]; index: number }) 
           <div className="space-y-1">
             <span className="text-sm text-zinc-400 font-mono">Step {index + 1}</span>
             <h3 className="text-2xl font-bold text-white">{step.title}</h3>
-            <p className="text-lg text-violet-300">{step.subtitle}</p>
+            <p className="text-lg text-violet-400">{step.subtitle}</p>
           </div>
           <p className="text-zinc-400 leading-relaxed">{step.description}</p>
         </div>
@@ -85,7 +85,7 @@ export function ProcessSectionAlt() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-blue-400"
+            className="text-4xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-violet-500"
           >
             How It Works
           </motion.h2>
