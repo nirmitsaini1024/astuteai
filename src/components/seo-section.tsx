@@ -126,7 +126,7 @@ const FeatureTab = (
   );
 };
 
-export function Featuress() {
+export function SeoSection() {
   const [selectedTab, setSelectedTab] = useState(0);
 
   const backgroundPositionX = useMotionValue(tabs[0].backgroundPositionX);
