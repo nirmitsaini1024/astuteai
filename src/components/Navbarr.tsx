@@ -1,14 +1,36 @@
 "use client";
 import Link from "next/link";
 import Logooo from "@/assets/logooo.png";
-import { CodeXml, Feather, MenuIcon, Newspaper, Wallet2 } from "lucide-react";
+import { CodeXml, Feather, MenuIcon, Wallet2 } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ActionButton } from "@/components/Action-button";
 import Image from "next/image";
 
 export default function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to manage dropdown visibility
+  const [isMobile, setIsMobile] = useState(false); // State to track mobile viewport
+
+  const handleDropdownToggle = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
+
+  useEffect(() => {
+    // Check if the screen width is mobile size
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Run on initial mount and whenever window is resized
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <header
@@ -33,7 +55,7 @@ export default function SiteHeader() {
                 />
                 <span className="text-white font-semibold text-lg">
                   stute.ai
-                </span>{" "}
+                </span>
               </div>
             </Link>
 
@@ -43,7 +65,6 @@ export default function SiteHeader() {
                   href={"#"}
                   className={"text-white/90 hover:text-white transition"}
                 >
-                  
                   Product
                 </Link>
                 <Link
@@ -52,20 +73,38 @@ export default function SiteHeader() {
                 >
                   Features
                 </Link>
-                <Link
-                  href={"#"}
-                  className={"text-white/90 hover:text-white transition"}
+
+                {/* Resources with dropdown */}
+                <div
+                  className="relative"
+                  onMouseEnter={() => setIsDropdownOpen(true)}
+                  onMouseLeave={() => setIsDropdownOpen(false)}
                 >
-                  Resources
-                </Link>
-                {/* <Link
-                  href={"#"}
-                  className={"text-white/90 hover:text-white transition"}
-                >
-                  Dashboard
-                </Link> */}
+                  <button
+                    className={"text-white/90 hover:text-white transition"}
+                    onClick={handleDropdownToggle}
+                  >
+                    Resources
+                  </button>
+
+                  {/* Dropdown menu */}
+                  {(isDropdownOpen || isDropdownOpen) && (
+                    <div
+                      className="absolute top-full mt-2 w-28 bg-black border border-zinc-800 text-white rounded-md shadow-lg"
+                      onClick={handleDropdownToggle} // Close on click
+                    >
+                      <Link
+                        href={"#"}
+                        className={"block px-4 py-2 hover:bg-zinc-700"}
+                      >
+                        Blog
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </nav>
             </section>
+
             <section className={"flex max-md:gap-4 items-center"}>
               <ActionButton label={"Join Waitlist"} />
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -114,24 +153,35 @@ export default function SiteHeader() {
                         <CodeXml className={"size-6"} />
                         Features
                       </Link>
-                      <Link
-                        href={"#"}
-                        className={
-                          "flex items-center gap-3 text-white hover:text-white transition"
-                        }
+                      <div
+                        className="relative"
+                        onClick={handleDropdownToggle}
                       >
-                        <Wallet2 className={"size-6"} />
-                        Resources
-                      </Link>
-                      {/* <Link
-                        href={"#"}
-                        className={
-                          "flex items-center gap-3 text-white hover:text-white transition"
-                        }
-                      >
-                        <Newspaper className={"size-6"} />
-                        
-                      </Link> */}
+                        <Link
+                          href={"#"}
+                          className={
+                            "flex items-center gap-3 text-white hover:text-white transition"
+                          }
+                        >
+                          <Wallet2 className={"size-6"} />
+                          Resources
+                        </Link>
+
+                        {/* Mobile Dropdown Menu */}
+                        {isMobile && isDropdownOpen && (
+                          <div
+                            className="absolute top-full mt-2 w-28 bg-black border border-zinc-800 text-white rounded-md shadow-lg"
+                            onClick={handleDropdownToggle} // Close on click
+                          >
+                            <Link
+                              href={"#"}
+                              className={"block px-4 py-2 hover:bg-zinc-700"}
+                            >
+                              Blog
+                            </Link>
+                          </div>
+                        )}
+                      </div>
                     </nav>
                   </div>
                 </SheetContent>
