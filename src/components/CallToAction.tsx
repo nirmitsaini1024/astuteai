@@ -3,7 +3,9 @@ import helixImage from "../assets/images/helix2.png";
 import emojiStarImage from "../assets/images/emojistar.png";
 import Image from "next/image";
 import { useScroll, useTransform, motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import Particles from "@/components/ui/particles";
+
 
 export const CallToAction = () => {
   const conatainerRef = useRef<HTMLDivElement>(null);
@@ -15,7 +17,7 @@ export const CallToAction = () => {
   return (
     <div
       id="waitlist" 
-      className="bg-black text-white  py-[72px] sm:py-24 text-center"
+      className="bg-black text-white  py-[72px] sm:py-24 text-center relative"
       ref={conatainerRef}
     >
       <div className="container max-w-xl relative">
@@ -51,7 +53,15 @@ export const CallToAction = () => {
             Join Waitlist{" "}
           </button>
         </form>
+        
       </div>
+      <Particles
+        className="absolute inset-0"
+        quantity={100}
+        ease={80}
+        color="#ffffff"
+        refresh
+      />
     </div>
   );
 };
