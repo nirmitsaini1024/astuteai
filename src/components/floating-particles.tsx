@@ -7,7 +7,6 @@ export function FloatingParticles() {
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
-    // Set the dimensions when the component is mounted
     const handleResize = () => {
       setDimensions({
         width: window.innerWidth,
@@ -22,7 +21,7 @@ export function FloatingParticles() {
 
   return (
     <>
-      {[...Array(150)].map((_, i) => (
+      {[...Array(50)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute w-1 h-1 bg-violet-400/20 rounded-full hidden sm:block"
