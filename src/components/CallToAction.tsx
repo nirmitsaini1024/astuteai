@@ -11,7 +11,7 @@ export const CallToAction = () => {
     target: conatainerRef,
     offset: ["start end", "end end"],
   });
-  const translateY = useTransform(scrollYProgress, [0, 1], [40, -40]);
+  const translateY = useTransform(scrollYProgress, [0, 1], [50, -50]);
   return (
     <div
       className="bg-black text-white  py-[72px] sm:py-24 text-center"
