@@ -57,13 +57,13 @@ export const Hero = () => {
         <div className="flex justify-center">
           <p className="text-center mt-8 text-xl max-w-md">
             Empowering businesses with AI-driven tools for seamless website
-            creation, automated marketing, optimized content, and insightful
+            creation, automa  ted marketing, optimized content, and insightful
             analytics across platforms.
           </p>
         </div>
         <div className="flex mt-8 justify-center">
           <button className="bg-white text-black rounded-lg font-medium px-5 py-3">
-            Get for free
+            Dive In
           </button>
         </div>
       </div>
