@@ -9,8 +9,8 @@ import Image from "next/image";
 
 export default function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
-  const [isMobile, setIsMobile] = useState(false); 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen((prev) => !prev); // Toggle dropdown visibility on click
@@ -28,6 +28,14 @@ export default function SiteHeader() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    const targetElement = document.getElementById("waitlist");
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <>
@@ -75,7 +83,7 @@ export default function SiteHeader() {
                 <div className="relative">
                   <button
                     className={"text-white/90 hover:text-white transition"}
-                    onClick={handleDropdownToggle} // Toggle dropdown on click
+                    onClick={handleDropdownToggle} 
                   >
                     Resources
                   </button>
@@ -83,7 +91,7 @@ export default function SiteHeader() {
                   {(isDropdownOpen || isDropdownOpen) && (
                     <div
                       className="absolute top-full mt-2 w-28 bg-black border border-zinc-800 text-white rounded-md shadow-lg"
-                      onClick={handleDropdownToggle} 
+                      onClick={handleDropdownToggle}
                     >
                       <Link
                         href={"#"}
@@ -98,7 +106,9 @@ export default function SiteHeader() {
             </section>
 
             <section className={"flex max-md:gap-4 items-center"}>
-              <ActionButton label={"Join Waitlist"} />
+              <Link href="#waitlist" onClick={handleSmoothScroll}>
+                <ActionButton label="Join Waitlist" />
+              </Link>{" "}
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger>
                   <MenuIcon
@@ -145,10 +155,7 @@ export default function SiteHeader() {
                         <CodeXml className={"size-6"} />
                         Features
                       </Link>
-                      <div
-                        className="relative"
-                        onClick={handleDropdownToggle}
-                      >
+                      <div className="relative" onClick={handleDropdownToggle}>
                         <Link
                           href={"#"}
                           className={

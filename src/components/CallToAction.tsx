@@ -14,6 +14,7 @@ export const CallToAction = () => {
   const translateY = useTransform(scrollYProgress, [0, 1], [50, -50]);
   return (
     <div
+      id="waitlist" 
       className="bg-black text-white  py-[72px] sm:py-24 text-center"
       ref={conatainerRef}
     >
