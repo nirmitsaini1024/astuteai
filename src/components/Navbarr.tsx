@@ -9,20 +9,18 @@ import Image from "next/image";
 
 export default function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); // State to manage dropdown visibility
-  const [isMobile, setIsMobile] = useState(false); // State to track mobile viewport
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+  const [isMobile, setIsMobile] = useState(false); 
 
   const handleDropdownToggle = () => {
-    setIsDropdownOpen((prev) => !prev);
+    setIsDropdownOpen((prev) => !prev); // Toggle dropdown visibility on click
   };
 
   useEffect(() => {
-    // Check if the screen width is mobile size
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    // Run on initial mount and whenever window is resized
     handleResize();
     window.addEventListener("resize", handleResize);
 
@@ -74,24 +72,18 @@ export default function SiteHeader() {
                   Features
                 </Link>
 
-                {/* Resources with dropdown */}
-                <div
-                  className="relative"
-                  onMouseEnter={() => setIsDropdownOpen(true)}
-                  onMouseLeave={() => setIsDropdownOpen(false)}
-                >
+                <div className="relative">
                   <button
                     className={"text-white/90 hover:text-white transition"}
-                    onClick={handleDropdownToggle}
+                    onClick={handleDropdownToggle} // Toggle dropdown on click
                   >
                     Resources
                   </button>
 
-                  {/* Dropdown menu */}
                   {(isDropdownOpen || isDropdownOpen) && (
                     <div
                       className="absolute top-full mt-2 w-28 bg-black border border-zinc-800 text-white rounded-md shadow-lg"
-                      onClick={handleDropdownToggle} // Close on click
+                      onClick={handleDropdownToggle} 
                     >
                       <Link
                         href={"#"}
@@ -167,11 +159,10 @@ export default function SiteHeader() {
                           Resources
                         </Link>
 
-                        {/* Mobile Dropdown Menu */}
                         {isMobile && isDropdownOpen && (
                           <div
                             className="absolute top-full mt-2 w-28 bg-black border border-zinc-800 text-white rounded-md shadow-lg"
-                            onClick={handleDropdownToggle} // Close on click
+                            onClick={handleDropdownToggle}
                           >
                             <Link
                               href={"#"}

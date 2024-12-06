@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import { SVGProps } from "react";
 
-// Define a union type for valid icons
 type IconKey =
   | "zap"
   | "chart-spline"
@@ -17,7 +16,6 @@ type IconKey =
   | "shield-check"
   | "waypoints";
 
-// Ensure the icons are compatible with SVGProps<SVGSVGElement>
 const iconMap: Record<IconKey, React.FC<SVGProps<SVGSVGElement>>> = {
   zap: Zap,
   "chart-spline": ChartLine,
@@ -86,7 +84,7 @@ export const Discover = () => {
             height="315"
             fill="url(#paint0_linear_50_493)"
           />
-          <g clip-path="url(#clip0_50_493)">
+          <g clipPath="url(#clip0_50_493)">
             <rect
               x="131"
               y="341"
@@ -116,7 +114,8 @@ export const Discover = () => {
             <rect
               x="123.5"
               y="384.5"
-              width="24"
+              width="24"// Ensure the icons are compatible with SVGProps<SVGSVGElement>
+
               height="24"
               rx="4.5"
               fill="#9d00ff"
@@ -134,12 +133,12 @@ export const Discover = () => {
             <path
               d="M162.606 369.088C162.29 368.778 162.29 368.284 162.29 367.297V367.039C162.29 364.302 162.29 362.933 161.521 362.698C160.751 362.462 159.926 363.578 158.277 365.809L155.725 369.262C154.655 370.71 154.119 371.435 154.414 372.004C154.419 372.014 154.424 372.023 154.429 372.032C154.742 372.593 155.666 372.593 157.515 372.593C158.543 372.593 159.057 372.593 159.379 372.896"
               stroke="white"
-              stroke-width="1.5"
+              strokeWidth="1.5"
             />
             <path
               d="M162.605 369.088L162.622 369.104C162.944 369.407 163.458 369.407 164.486 369.407C166.335 369.407 167.259 369.407 167.572 369.968C167.577 369.977 167.582 369.986 167.587 369.996C167.882 370.565 167.346 371.29 166.276 372.738L163.724 376.191C162.075 378.422 161.25 379.538 160.48 379.302C159.711 379.067 159.711 377.698 159.711 374.961V374.703C159.711 373.715 159.711 373.222 159.396 372.912L159.379 372.896"
               stroke="white"
-              stroke-width="1.5"
+              strokeWidth="1.5"
             />
             <rect
               x="174.5"
@@ -158,7 +157,7 @@ export const Discover = () => {
             height="59"
             rx="9.5"
             stroke="url(#paint1_linear_50_493)"
-            stroke-opacity="0.95"
+            strokeOpacity="0.95"
           />
           <rect
             x="250"
@@ -167,7 +166,7 @@ export const Discover = () => {
             height="315"
             fill="url(#paint2_linear_50_493)"
           />
-          <g clip-path="url(#clip1_50_493)">
+          <g clipPath="url(#clip1_50_493)">
             <rect
               x="250"
               y="299"
@@ -224,12 +223,12 @@ export const Discover = () => {
             <path
               d="M272.36 317.896C272.634 317.201 273.616 317.201 273.89 317.896L274.739 320.048C274.822 320.26 274.99 320.427 275.202 320.511L277.354 321.36C278.049 321.634 278.049 322.616 277.354 322.89L275.202 323.739C274.99 323.822 274.822 323.99 274.739 324.202L273.89 326.354C273.616 327.049 272.634 327.049 272.36 326.354L271.511 324.202C271.427 323.99 271.26 323.822 271.048 323.739L268.896 322.89C268.201 322.616 268.201 321.634 268.896 321.36L271.048 320.511C271.26 320.427 271.427 320.26 271.511 320.048L272.36 317.896Z"
               stroke="white"
-              stroke-width="1.5"
+              strokeWidth="1.5"
             />
             <path
               d="M279.053 325.567C279.198 325.2 279.718 325.2 279.863 325.567L280.496 327.174C280.541 327.286 280.629 327.375 280.742 327.419L282.349 328.053C282.716 328.198 282.716 328.718 282.349 328.863L280.742 329.497C280.629 329.541 280.541 329.63 280.496 329.742L279.863 331.349C279.718 331.717 279.198 331.717 279.053 331.349L278.419 329.742C278.375 329.63 278.286 329.541 278.174 329.497L276.567 328.863C276.199 328.718 276.199 328.198 276.567 328.053L278.174 327.419C278.286 327.375 278.375 327.286 278.419 327.174L279.053 325.567Z"
               stroke="white"
-              stroke-width="1.5"
+              strokeWidth="1.5"
             />
           </g>
           <rect
@@ -239,7 +238,7 @@ export const Discover = () => {
             height="49"
             rx="7.5"
             stroke="url(#paint3_linear_50_493)"
-            stroke-opacity="0.95"
+            strokeOpacity="0.95"
           />
           <rect
             x="31"
@@ -247,7 +246,7 @@ export const Discover = () => {
             height="315"
             fill="url(#paint4_linear_50_493)"
           />
-          <g clip-path="url(#clip2_50_493)">
+          <g clipPath="url(#clip2_50_493)">
             <rect x="31" y="295" width="40" height="40" rx="6" fill="#8209ba" />
             <rect
               x="60.5"
@@ -314,13 +313,13 @@ export const Discover = () => {
             height="39"
             rx="5.5"
             stroke="url(#paint5_linear_50_493)"
-            stroke-opacity="0.95"
+            strokeOpacity="0.95"
           />
           <circle cx="217" cy="372.605" r="2" fill="#9900e0" />
           <path
             d="M217 296L217 371.263"
             stroke="url(#paint6_linear_50_493)"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <g filter="url(#filter0_f_50_493)">
             <circle cx="217" cy="373" r="4" fill="#9900e0" />
@@ -329,7 +328,7 @@ export const Discover = () => {
           <path
             d="M316 207L316 282.263"
             stroke="url(#paint7_linear_50_493)"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <g filter="url(#filter1_f_50_493)">
             <circle cx="316" cy="284" r="4" fill="#9900e0" />
@@ -338,7 +337,7 @@ export const Discover = () => {
           <path
             d="M82 210L82 285.263"
             stroke="url(#paint8_linear_50_493)"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <g filter="url(#filter2_f_50_493)">
             <circle cx="82" cy="287" r="4" fill="#9900e0" />
@@ -347,7 +346,7 @@ export const Discover = () => {
           <path
             d="M12 170L12 245.263"
             stroke="url(#paint9_linear_50_493)"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <g filter="url(#filter3_f_50_493)">
             <circle cx="12" cy="247" r="4" fill="#9900e0" />
@@ -356,7 +355,7 @@ export const Discover = () => {
           <path
             d="M115 245L115 320.263"
             stroke="url(#paint10_linear_50_493)"
-            stroke-linecap="round"
+            strokeLinecap="round"
           />
           <g filter="url(#filter4_f_50_493)">
             <circle cx="115" cy="322" r="4" fill="#9900e0" />
@@ -369,9 +368,9 @@ export const Discover = () => {
               width="24"
               height="24"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -390,9 +389,9 @@ export const Discover = () => {
               width="24"
               height="24"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -411,9 +410,9 @@ export const Discover = () => {
               width="24"
               height="24"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -432,9 +431,9 @@ export const Discover = () => {
               width="24"
               height="24"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -453,9 +452,9 @@ export const Discover = () => {
               width="24"
               height="24"
               filterUnits="userSpaceOnUse"
-              color-interpolation-filters="sRGB"
+              colorInterpolationFilters="sRGB"
             >
-              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+              <feFlood floodOpacity="0" result="BackgroundImageFix" />
               <feBlend
                 mode="normal"
                 in="SourceGraphic"
@@ -475,8 +474,8 @@ export const Discover = () => {
               y2="371"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-opacity="0" />
-              <stop offset="1" stop-color="#9d00ff" />
+              <stop stopOpacity="0" />
+              <stop offset="1" stopColor="#9d00ff" />
             </linearGradient>
             <linearGradient
               id="paint1_linear_50_493"
@@ -486,8 +485,8 @@ export const Discover = () => {
               y2="401"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="white" stop-opacity="0.5" />
-              <stop offset="1" stop-color="#9900e0" stop-opacity="0.5" />
+              <stop stopColor="white" stopOpacity="0.5" />
+              <stop offset="1" stopColor="#9900e0" stopOpacity="0.5" />
             </linearGradient>
             <linearGradient
               id="paint2_linear_50_493"
@@ -497,8 +496,8 @@ export const Discover = () => {
               y2="324"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-opacity="0" />
-              <stop offset="1" stop-color="#9d00ff" />
+              <stop stopOpacity="0" />
+              <stop offset="1" stopColor="#9d00ff" />
             </linearGradient>
             <linearGradient
               id="paint3_linear_50_493"
@@ -508,8 +507,8 @@ export const Discover = () => {
               y2="349"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="white" stop-opacity="0.5" />
-              <stop offset="1" stop-color="#9900e0" stop-opacity="0.5" />
+              <stop stopColor="white" stopOpacity="0.5" />
+              <stop offset="1" stopColor="#9900e0" stopOpacity="0.5" />
             </linearGradient>
             <linearGradient
               id="paint4_linear_50_493"
@@ -519,8 +518,8 @@ export const Discover = () => {
               y2="315"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-opacity="0" />
-              <stop offset="1" stop-color="#9d00ff" />
+              <stop stopOpacity="0" />
+              <stop offset="1" stopColor="#9d00ff" />
             </linearGradient>
             <linearGradient
               id="paint5_linear_50_493"
@@ -530,8 +529,8 @@ export const Discover = () => {
               y2="335"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="white" stop-opacity="0.5" />
-              <stop offset="1" stop-color="#9900e0" stop-opacity="0.5" />
+              <stop stopColor="white" stopOpacity="0.5" />
+              <stop offset="1" stopColor="#9900e0" stopOpacity="0.5" />
             </linearGradient>
             <linearGradient
               id="paint6_linear_50_493"
@@ -541,8 +540,8 @@ export const Discover = () => {
               y2="371.263"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#040102" stop-opacity="0" />
-              <stop offset="1" stop-color="#9900e0" />
+              <stop stopColor="#040102" stopOpacity="0" />
+              <stop offset="1" stopColor="#9900e0" />
             </linearGradient>
             <linearGradient
               id="paint7_linear_50_493"
@@ -552,8 +551,8 @@ export const Discover = () => {
               y2="282.263"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#040102" stop-opacity="0" />
-              <stop offset="1" stop-color="#9900e0" />
+              <stop stopColor="#040102" stopOpacity="0" />
+              <stop offset="1" stopColor="#9900e0" />
             </linearGradient>
             <linearGradient
               id="paint8_linear_50_493"
@@ -563,8 +562,8 @@ export const Discover = () => {
               y2="285.263"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#040102" />
-              <stop offset="1" stop-color="#9900e0" />
+              <stop stopColor="#040102" />
+              <stop offset="1" stopColor="#9900e0" />
             </linearGradient>
             <linearGradient
               id="paint9_linear_50_493"
@@ -574,8 +573,8 @@ export const Discover = () => {
               y2="245.263"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#040102" />
-              <stop offset="1" stop-color="#9900e0" />
+              <stop stopColor="#040102" />
+              <stop offset="1" stopColor="#9900e0" />
             </linearGradient>
             <linearGradient
               id="paint10_linear_50_493"
@@ -585,8 +584,8 @@ export const Discover = () => {
               y2="320.263"
               gradientUnits="userSpaceOnUse"
             >
-              <stop stop-color="#040102" stop-opacity="0" />
-              <stop offset="1" stop-color="#9900e0" />
+              <stop stopColor="#040102" stopOpacity="0" />
+              <stop offset="1" stopColor="#9900e0" />
             </linearGradient>
             <clipPath id="clip0_50_493">
               <rect
