@@ -19,15 +19,16 @@ const Footer = () => {
                 className="font-normal flex space-x-2 items-center text-sm mr-4 text-black px-2 py-1 relative z-20"
                 href="/"
               >
-                <Image alt="Astute Icon" width={30} height={30} src={Logooo} />
-                <span className="font-bold text-white">Astute ai</span>
+                <Image alt="Astute Icon" width={40} height={40} src={Logooo} />
+                <span className="font-bold text-white text-xl md:text-3xl lg:text-4xl">
+                Astute ai</span>
               </Link>
             </div>
-            <div className="relative z-10 text-white">Copyright © 2024 Astute ai</div>
+            <div className="relative z-10 text-white text-bold">AI SaaS for the future E-Commerce</div>
             <div className="mt-2 relative z-10 ">All rights reserved</div>
           </div>
 
-          <div className="grid grid-cols-3 gap-10 items-start mt-16 md:mt-0">
+          <div className="grid grid-cols-3 gap-24 items-start mt-16 md:mt-0">
             <div className="flex justify-center space-y-4 flex-col mt-4 relative z-10">
               {" "}
               <h3 className="text-white font-bold text-sm sm:text-base">
@@ -57,6 +58,28 @@ const Footer = () => {
               >
                 InsightQ
               </Link>
+            </div><div className="flex justify-center space-y-4 flex-col mt-4 relative z-10">
+              <h3 className="text-white font-bold text-sm sm:text-base">
+                Resources
+              </h3>
+              <Link
+                className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
+                href="/privacy"
+              >
+                Blog{" "}
+              </Link>
+              {/* <Link
+                className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
+                href="/terms"
+              >
+                Terms of Service
+              </Link>
+              <Link
+                className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
+                href="/about"
+              >
+                About Us
+              </Link> */}
             </div>
             <div className="flex justify-center space-y-4 flex-col mt-4 relative z-10">
               <h3 className="text-white font-bold text-sm sm:text-base">
@@ -81,29 +104,7 @@ const Footer = () => {
                 Contact us
               </Link>
             </div>
-            <div className="flex justify-center space-y-4 flex-col mt-4 relative z-10">
-              <h3 className="text-white font-bold text-sm sm:text-base">
-                Resources
-              </h3>
-              <Link
-                className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="/privacy"
-              >
-                Blog{" "}
-              </Link>
-              {/* <Link
-                className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="/terms"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="/about"
-              >
-                About Us
-              </Link> */}
-            </div>
+            
           </div>
         </div>
       </div>
