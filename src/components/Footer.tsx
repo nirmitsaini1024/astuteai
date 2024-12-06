@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Particles from "@/components/ui/particles";
 
 import Logooo from "@/assets/logooo.png";
 
@@ -155,13 +154,13 @@ const Footer = () => {
         </div>
       </div>
     </div>{" "}
-      <Particles
+      {/* <Particles
         className="absolute inset-0"
         quantity={100}
         ease={80}
         color="#ffffff" 
         refresh
-      />
+      /> */}
     </div>
   );
 };

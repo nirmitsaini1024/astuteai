@@ -4,7 +4,6 @@ import emojiStarImage from "../assets/images/emojistar.png";
 import Image from "next/image";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
-import Particles from "@/components/ui/particles";
 
 
 export const CallToAction = () => {
