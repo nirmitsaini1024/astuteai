@@ -16,21 +16,6 @@ export const Hero = () => {
       border border-[#B48CDE] bg-[radial-gradient(closest-side,#000_82%,#9560EB)] top-[calc(100%-140px)]"
       ></div>
       <div className="container relative">
-        {/* <div className="flex justify-center items-center">
-          <a
-            href="#"
-            className="inline-flex gap-3 border py-1 px-2 rounded-lg border-white/30"
-          >
-            <span className="bg-[linear-gradient(to_right,#F87AFF,#FB93D0,#FFDD99,#C3F0B2)] text-transparent bg-clip-text [webkit-background-clip:text]">
-              {" "}
-              Version 2.0 is here
-            </span>
-            <span className="inline-flex gap-1 items-center">
-              <span> Read More</span>
-              <ArrowWIcon />
-            </span>
-          </a>
-        </div> */}
 
         <div className="flex justify-center mt-8">
           <div className="inline-flex relative">

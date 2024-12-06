@@ -193,7 +193,7 @@ export function SeoSection() {
             "border border-zinc-800 border-muted rounded-xl p-2.5 mt-3 relative"
           }
         >
-          <BorderBeam />
+          {/* <BorderBeam /> */}
           <div
             className={
               "aspect-video bg-cover border border-muted border-zinc-600 rounded-lg"
