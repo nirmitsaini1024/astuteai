@@ -20,7 +20,7 @@ const Footer = () => {
                 href="/"
               >
                 <Image alt="Astute Icon" width={40} height={40} src={Logooo} />
-                <span className="font-bold text-white text-xl md:text-3xl lg:text-4xl">
+                <span className="font-bold text-white text-2xl md:text-3xl lg:text-4xl">
                 Astute ai</span>
               </Link>
             </div>
