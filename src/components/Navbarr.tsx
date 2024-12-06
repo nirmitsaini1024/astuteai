@@ -103,7 +103,7 @@ export default function SiteHeader() {
                         }
                       >
                         <Feather className={"size-6"} />
-                        Features
+                        Product
                       </Link>
                       <Link
                         href={"#"}
@@ -112,7 +112,7 @@ export default function SiteHeader() {
                         }
                       >
                         <CodeXml className={"size-6"} />
-                        Insights
+                        Features
                       </Link>
                       <Link
                         href={"#"}
@@ -121,17 +121,17 @@ export default function SiteHeader() {
                         }
                       >
                         <Wallet2 className={"size-6"} />
-                        Pricing
+                        Resources
                       </Link>
-                      <Link
+                      {/* <Link
                         href={"#"}
                         className={
                           "flex items-center gap-3 text-white hover:text-white transition"
                         }
                       >
                         <Newspaper className={"size-6"} />
-                        Dashboard
-                      </Link>
+                        
+                      </Link> */}
                     </nav>
                   </div>
                 </SheetContent>
