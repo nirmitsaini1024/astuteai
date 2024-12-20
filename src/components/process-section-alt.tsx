@@ -57,7 +57,7 @@ function ProcessItem({ step, index }: { step: typeof steps[0]; index: number }) 
         index % 2 === 0 ? "md:justify-end" : "md:justify-start"
       )}>
         <div className="relative">
-          <div className="w-16 h-16 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center relative z-10">
+          <div className="w-16 h-16 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center relative z-9">
             <Icon className="w-8 h-8 text-zinc-200" />
           </div>
           <div className="absolute inset-0 bg-violet-500/10 rounded-full blur-xl" />
