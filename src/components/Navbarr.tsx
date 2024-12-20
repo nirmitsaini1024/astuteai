@@ -45,13 +45,13 @@ export default function SiteHeader() {
     <>
       <header
         className={
-          "pb-4 border-b border-transparent max-md:backdrop-blur md:border-none sticky top-0 z-10"
+          "pb-4 border-b mt-4 border-transparent max-md:backdrop-blur md:border-none sticky top-0 z-10"
         }
       >
-        <div className={"container max-md:px-4 "}>
+        <div className={"container max-md:px-4"}>
           <div
             className={
-              "flex items-center justify-between  md:border md:p-2.5 md:rounded-xl max-w-2xl mx-auto md:backdrop-blur border-zinc-800"
+              "flex items-center justify-between md:border md:p-2.5 md:rounded-xl max-w-2xl mx-auto md:backdrop-blur border-zinc-800"
             }
           >
             <Link href={"/"}>
