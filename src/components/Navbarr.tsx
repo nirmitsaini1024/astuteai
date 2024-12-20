@@ -20,7 +20,7 @@ export default function SiteHeader() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDropdownOpen(false); // Close dropdown on window resize
+      setIsDropdownOpen(false); 
     };
 
     window.addEventListener("resize", handleResize);
