@@ -5,6 +5,13 @@ import messageImage from "../assets/images/message.png";
 import { motion } from "framer-motion";
 
 export const Hero = () => {
+  const handleScroll = () => {
+    const section = document.getElementById("divein");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div
       className="relative bg-black text-white 
@@ -16,7 +23,6 @@ export const Hero = () => {
       border border-[#B48CDE] bg-[radial-gradient(closest-side,#000_82%,#9560EB)] top-[calc(100%-140px)]"
       ></div>
       <div className="container relative">
-
         <div className="flex justify-center mt-8">
           <div className="inline-flex relative">
             <h1 className="text-7xl sm:text-9xl font-bold tracking-tighter text-center inline-flex">
@@ -57,12 +63,15 @@ export const Hero = () => {
         <div className="flex justify-center">
           <p className="text-center mt-8 text-xl max-w-md">
             Empowering businesses with AI-driven tools for seamless website
-            creation, automa  ted marketing, optimized content, and insightful
+            creation, automated marketing, optimized content, and insightful
             analytics across platforms.
           </p>
         </div>
         <div className="flex mt-8 justify-center">
-          <button className="bg-white text-black rounded-lg font-medium px-5 py-3">
+          <button
+            className="bg-white text-black rounded-lg font-medium px-5 py-3"
+            onClick={handleScroll}
+          >
             Dive In
           </button>
         </div>

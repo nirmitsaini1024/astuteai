@@ -40,6 +40,7 @@ function ProcessItem({ step, index }: { step: typeof steps[0]; index: number }) 
 
   return (
     <motion.div
+    id="divein" 
       ref={ref}
       style={{ y, opacity, scale }}
       className={cn(
