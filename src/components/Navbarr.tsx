@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
   HoveredLink,
   Menu,
@@ -20,7 +21,7 @@ export default function SiteHeader() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDropdownOpen(false); 
+      setIsDropdownOpen(false);
     };
 
     window.addEventListener("resize", handleResize);
@@ -70,29 +71,55 @@ export default function SiteHeader() {
             </Link>
 
             <section className={"max-md:hidden"}>
-              <nav className={"flex gap-8 items-center text-sm"}>
-              <Menu setActive={setActive}>
-        <MenuItem setActive={setActive} active={active} item="Product">
-          
-        </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Features">
-          
-        </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Resources">
-          <div className="flex flex-col space-y-4 text-sm">
-          <ProductItem
-              title="Blog"
-              href="/blog"
-              src="https://assets.aceternity.com/demos/algochurn.webp"
-              description="Read our latest articles and blogs on various topics."
-            />
-
-          </div>
-        </MenuItem>
-      </Menu>
-
-                
-              </nav>
+              <motion.div
+                className={"flex gap-8 items-center text-sm"}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+              >
+                <Menu setActive={setActive}>
+                  {["Product", "Features", "Resources"].map((item, index) => (
+                    <motion.div
+                      key={item}
+                      whileHover={{
+                        scale: 1.08,
+                        originX: 0,
+                        color: "#1f2937",
+                        textShadow: "0px 4px 8px rgba(0, 0, 0, 0.3)",
+                      }}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        delay: index * 0.2,
+                        type: "spring",
+                        stiffness: 200,
+                      }}
+                    >
+                      <MenuItem
+                        setActive={setActive}
+                        active={active}
+                        item={item}
+                      >
+                        {item === "Resources" && (
+                          <motion.div
+                            className="flex flex-col space-y-4 text-sm"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.2, duration: 0.2 }}
+                          >
+                            <ProductItem
+                              title="Blog"
+                              href="/blog"
+                              src="https://assets.aceternity.com/demos/algochurn.webp"
+                              description="Read our latest articles and blogs on various topics."
+                            />
+                          </motion.div>
+                        )}
+                      </MenuItem>
+                    </motion.div>
+                  ))}
+                </Menu>
+              </motion.div>
             </section>
 
             <section className={"flex max-md:gap-4 items-center"}>
@@ -147,15 +174,14 @@ export default function SiteHeader() {
                       </Link>
                       <div
                         className="relative"
-                        onMouseEnter={() => setIsDropdownOpen(true)} 
-                        onMouseLeave={() => setIsDropdownOpen(false)} 
+                        onMouseEnter={() => setIsDropdownOpen(true)}
+                        onMouseLeave={() => setIsDropdownOpen(false)}
                       >
                         <button
                           className={
                             "text-white/90 hover:text-white transition"
                           }
                         >
-                          
                           Resources
                         </button>
 
