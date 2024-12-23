@@ -34,15 +34,4 @@
     },
   };
 
-<<<<<<< HEAD
-    return config;
-  },
-  images: {
-    domains: ["assets.aceternity.com", 'cdn.prod.website-files.com'], // Add custom domains for next/image
-  },
-};
-
-export default nextConfig;
-=======
   export default nextConfig;
->>>>>>> 25bb0ab (fixed)

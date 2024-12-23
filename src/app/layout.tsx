@@ -7,13 +7,8 @@ import SiteHeader from "@/components/Navbarr";
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-<<<<<<< HEAD
   title: "Astute AI",
   description: "One stop solution for all your Startup needs",
-=======
-  title: "Astute ai",
-  description: "One step solution for all your Startup needs",
->>>>>>> 25bb0ab (fixed)
 };
 
 export default function RootLayout({
