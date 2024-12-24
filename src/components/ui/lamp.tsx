@@ -55,7 +55,7 @@ export const LampContainer = ({
         className
       )}
     >
-      <div className="relative flex w-full h-64 items-center justify-center isolate z-0">
+      <div className="mt-8 relative flex w-full h-48 items-center justify-center isolate z-0">
         <motion.div
           initial={{ opacity: 0.4, width: size.initialWidth }}
           whileInView={{ opacity: 0.8, width: size.viewWidth }}
