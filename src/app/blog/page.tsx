@@ -18,14 +18,16 @@ const blogs = [
     title: "How Our AI Software Revolutionizes Your Content Marketing",
     category: "AI Tools",
     date: "October 1, 2023",
-    image: "https://cdn.prod.website-files.com/6700ee976677a427228396a4/6700ee976677a42722839774_Blog-Image-4-p-500.jpg",
+    image:
+      "https://cdn.prod.website-files.com/6700ee976677a427228396a4/6700ee976677a42722839774_Blog-Image-4-p-500.jpg",
   },
   {
     id: 3,
     title: "Crafting Compelling Content with Our SAAS AI Software",
     category: "Marketing",
     date: "October 1, 2023",
-    image: "https://cdn.prod.website-files.com/6700ee976677a427228396a4/6700ee976677a42722839739_Blog-Image-3-p-500.jpg",
+    image:
+      "https://cdn.prod.website-files.com/6700ee976677a427228396a4/6700ee976677a42722839739_Blog-Image-3-p-500.jpg",
   },
   {
     id: 4,
@@ -41,8 +43,16 @@ export default function BlogPage() {
   const [sortBy, setSortBy] = useState("recent");
   const [filteredBlogs, setFilteredBlogs] = useState(blogs);
 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false); //
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
+  };
 
+  const handleOptionClick = (option: string) => {
+    setSortBy(option); // Update selected option
+    setIsDropdownOpen(false); // Close the dropdown
+  };
 
   return (
     <div className="relative min-h-screen bg-[#070616] text-white px-4 py-8 md:px-8 lg:px-16 -mt-[7rem]">
@@ -82,20 +92,51 @@ export default function BlogPage() {
             />
           </div>
           <div className="relative w-full md:w-44">
-            <select
-              className="w-full h-10 pl-10 pr-4 bg-gray-800/50 border-gray-700 rounded-md text-white"
-              // value={sortBy}
-              // onChange={(e) => setSortBy(e.target.value)}
+            {/* Dropdown Button */}
+            <button
+              className="flex items-center justify-between w-full h-10 px-4 bg-gray-800 border border-gray-700 rounded-md text-white"
+              onClick={toggleDropdown}
             >
-              <option value="recent">Most Recent</option>
-              <option value="oldest">Oldest First</option>
-              <option value="a-z">A-Z</option>
-              <option value="z-a">Z-A</option>
-            </select>
-            <SlidersHorizontal
-              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-              size={20}
-            />
+              {/* Display selected option */}
+              {sortBy === "recent"
+                ? "Most Recent"
+                : sortBy === "oldest"
+                ? "Oldest First"
+                : sortBy === "a-z"
+                ? "A-Z"
+                : "Z-A"}
+              <SlidersHorizontal className="text-gray-400" size={20} />
+            </button>
+
+            {/* Dropdown Menu */}
+            {isDropdownOpen && (
+              <ul className="absolute z-10 mt-2 w-full bg-gray-800 border border-gray-700 rounded-md shadow-lg">
+                <li
+                  className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white"
+                  onClick={() => handleOptionClick("recent")}
+                >
+                  Most Recent
+                </li>
+                <li
+                  className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white"
+                  onClick={() => handleOptionClick("oldest")}
+                >
+                  Oldest First
+                </li>
+                <li
+                  className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white"
+                  onClick={() => handleOptionClick("a-z")}
+                >
+                  A-Z
+                </li>
+                <li
+                  className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white"
+                  onClick={() => handleOptionClick("z-a")}
+                >
+                  Z-A
+                </li>
+              </ul>
+            )}
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
