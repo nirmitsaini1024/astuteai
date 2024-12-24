@@ -43,7 +43,7 @@ export default function BlogPage() {
   }, [searchTerm, sortBy]);
 
   return (
-    <div className="relative min-h-screen bg-[#070616] text-white px-4 py-8 md:px-8 lg:px-16 -mt-[7rem]">
+    <div className="relative min-h-screen bg-black text-white px-4 py-8 md:px-8 lg:px-16 -mt-[7rem]">
       <div className="relative z-5 max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
