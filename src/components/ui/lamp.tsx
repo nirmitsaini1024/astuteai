@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +21,7 @@ export function LampDemo() {
     </LampContainer>
   );
 }
+
 export const LampContainer = ({
   children,
   className,
@@ -28,6 +29,25 @@ export const LampContainer = ({
   children: React.ReactNode;
   className?: string;
 }) => {
+  const [size, setSize] = useState({ initialWidth: "12rem", viewWidth: "24rem" });
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setSize({ initialWidth: "6rem", viewWidth: "12rem" });
+      } else {
+        setSize({ initialWidth: "12rem", viewWidth: "24rem" });
+      }
+    };
+
+    // Set size on component mount and attach resize event listener
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div
       className={cn(
@@ -37,8 +57,8 @@ export const LampContainer = ({
     >
       <div className="relative flex w-full h-64 items-center justify-center isolate z-0">
         <motion.div
-          initial={{ opacity: 0.4, width: "12rem" }}
-          whileInView={{ opacity: 0.8, width: "24rem" }}
+          initial={{ opacity: 0.4, width: size.initialWidth }}
+          whileInView={{ opacity: 0.8, width: size.viewWidth }}
           transition={{
             delay: 0.3,
             duration: 0.8,
@@ -53,8 +73,8 @@ export const LampContainer = ({
           <div className="absolute w-32 h-[100%] left-0 bg-black bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]" />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0.4, width: "12rem" }}
-          whileInView={{ opacity: 0.8, width: "24rem" }}
+          initial={{ opacity: 0.4, width: size.initialWidth }}
+          whileInView={{ opacity: 0.8, width: size.viewWidth }}
           transition={{
             delay: 0.3,
             duration: 0.8,
@@ -69,20 +89,9 @@ export const LampContainer = ({
           <div className="absolute w-[100%] right-0 bg-black h-32 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
         </motion.div>
         <div className="absolute top-1/2 h-32 w-full translate-y-10 scale-x-150 bg-black blur-2xl"></div>
-        <div className="absolute inset-auto z-50 h-20 w-[24rem] -translate-y-[5rem] rounded-full bg-gray-500 opacity-40 blur-3xl"></div>
         <motion.div
-          initial={{ width: "8rem" }}
-          whileInView={{ width: "16rem" }}
-          transition={{
-            delay: 0.3,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          className="absolute inset-auto z-30 h-20 w-48 -translate-y-[4rem] rounded-full bg-gray-400 opacity-70 blur-2xl"
-        ></motion.div>
-        <motion.div
-          initial={{ width: "12rem" }}
-          whileInView={{ width: "24rem" }}
+          initial={{ width: size.initialWidth }}
+          whileInView={{ width: size.viewWidth }}
           transition={{
             delay: 0.3,
             duration: 0.8,
@@ -98,4 +107,3 @@ export const LampContainer = ({
     </div>
   );
 };
-

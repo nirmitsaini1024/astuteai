@@ -64,13 +64,11 @@ export default function BlogPage() {
               }}
               className="mt-8 bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
             >
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Read Professionally
-                <br />
-                Written Articles
-                <br />
-                About AI
-              </h1>
+              Read Professionally
+              <br />
+              Written Articles
+              <br />
+              About AI
             </motion.h1>
 
             <p className="text-gray-400 max-w-2xl mx-auto">
@@ -140,7 +138,6 @@ export default function BlogPage() {
             )}
           </div>
         </div>
-        {/* Blog Cards with Hover Effect */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredBlogs.map((blog) => (
             <motion.div
