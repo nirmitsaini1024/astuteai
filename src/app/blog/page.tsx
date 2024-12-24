@@ -59,7 +59,7 @@ export default function BlogPage() {
       <div className="relative z-5 max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
-          className="text-center mt-40 blog-header text-white"
+          className="text-center mt-32 md:mt-40 blog-header text-white"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
