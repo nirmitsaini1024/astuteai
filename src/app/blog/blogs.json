@@ -1,0 +1,51 @@
+[
+      {
+            "id": 1,
+            "title": "Using AI-Generated Content from Our SAAS for Better Marketing",
+            "category": "Content Creation",
+            "date": "2023-10-02",
+            "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995"
+      },
+      {
+            "id": 2,
+            "title": "How Our AI Software Revolutionizes Your Content Marketing",
+            "category": "AI Tools",
+            "date": "2023-10-10",
+            "image": "https://cdn.prod.website-files.com/6700ee976677a427228396a4/6700ee976677a42722839774_Blog-Image-4-p-500.jpg"
+      },
+      {
+            "id": 3,
+            "title": "Crafting Compelling Content with Our SAAS AI Software",
+            "category": "Marketing",
+            "date": "2023-11-01",
+            "image": "https://cdn.prod.website-files.com/6700ee976677a427228396a4/6700ee976677a42722839739_Blog-Image-3-p-500.jpg"
+      },
+      {
+            "id": 4,
+            "title": "How AI is Changing the Content Marketing Game",
+            "category": "Content Creation",
+            "date": "2023-09-15",
+            "image": "https://plus.unsplash.com/premium_photo-1687989478462-f21931633791?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+            "id": 5,
+            "title": "How AI is Revolutionizing Content Marketing",
+            "category": "Marketing",
+            "date": "2023-08-05",
+            "image": "https://images.unsplash.com/photo-1709884732297-4b3c1a3f725b?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+            "id": 6,
+            "title": "How AI is Changing the Content Marketing Landscape",
+            "category": "Content Creation",
+            "date": "2023-07-10",
+            "image": "https://images.unsplash.com/photo-1709884735017-114f4a31f944?q=80&w=1858&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      },
+      {
+            "id": 7,
+            "title": "The Benefits of Using AI for Content Marketing",
+            "category": "AI Tools",
+            "date": "2023-06-30",
+            "image": "https://images.unsplash.com/photo-1709884735626-63e92727d8b6?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      }
+]
