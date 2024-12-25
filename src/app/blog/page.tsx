@@ -55,7 +55,7 @@ export default function BlogPage() {
     transition={{ duration: 0.6 }}
   >
     <motion.h1
-      initial={{ opacity: 0.5, y: -80 }} // Animate from above, not from below
+      initial={{ opacity: 0.5, y: -80 }} 
       whileInView={{ opacity: 1, y: 0 }}
       transition={{
         delay: 0.3,
