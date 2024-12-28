@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
-import blogs from "./blogs.json"; // Importing the JSON data
+import blogs from "./blogs.json";
 import { LampContainer } from "@/components/ui/lamp";
 
 export default function BlogPage() {
@@ -16,11 +16,10 @@ export default function BlogPage() {
   };
 
   const handleOptionClick = (option: string) => {
-    setSortBy(option); // Update selected option
-    setIsDropdownOpen(false); // Close the dropdown
+    setSortBy(option);
+    setIsDropdownOpen(false);
   };
 
-  // Filter and sort blogs based on searchTerm and sortBy
   useEffect(() => {
     let filtered = blogs.filter((blog) =>
       blog.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -46,41 +45,40 @@ export default function BlogPage() {
   return (
     <div className="relative bg-black text-white px-4 py-8 md:px-8 lg:px-16 -mt-[7rem]">
       <div className="relative z-5 max-w-7xl mx-auto">
-      <LampContainer>
-  {/* Header */}
-  <motion.div
-    className="text-center blog-header text-white"
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-  >
-    <motion.h1
-      initial={{ opacity: 0.5, y: -80 }} 
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{
-        delay: 0.3,
-        duration: 0.8,
-        ease: "easeInOut",
-      }}
-      className="bg-gradient-to-b from-white to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
-    >
-      Read Professionally
-      <br />
-      Written Articles
-      <br />
-      About AI
-    </motion.h1>
+        <LampContainer>
+          {/* Header */}
+          <motion.div
+            className="text-center blog-header text-white"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.h1
+              initial={{ opacity: 0.5, y: -80 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              className="bg-gradient-to-b from-white to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
+            >
+              Read Professionally
+              <br />
+              Written Articles
+              <br />
+              About AI
+            </motion.h1>
 
-    <p className="text-gray-400 max-w-2xl mx-auto">
-      Our AI-Powered Tool Takes Your Ideas And Turns Them Into
-      Captivating, Reader-Friendly Content That Resonates With Your
-      Audience.
-    </p>
-  </motion.div>
-</LampContainer>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              Our AI-Powered Tool Takes Your Ideas And Turns Them Into
+              Captivating, Reader-Friendly Content That Resonates With Your
+              Audience.
+            </p>
+          </motion.div>
+        </LampContainer>
 
         <div className="flex flex-col md:flex-row gap-4 mb-12 w-full max-w-md mx-auto">
-          {/* Search Input */}
           <div className="relative flex-1">
             <input
               type="text"
@@ -94,7 +92,6 @@ export default function BlogPage() {
               size={20}
             />
           </div>
-          {/* Dropdown */}
           <div className="relative w-full md:w-44">
             <button
               className="flex items-center justify-between w-full h-10 px-4 bg-gray-800 border border-gray-700 rounded-md text-white"

@@ -7,6 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ServiceCard } from "./Service-card";
 import { Globe, PenTool, Share2, BarChart3 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Tilt } from "@/components/ui/tilt";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -97,16 +99,17 @@ export function ServicesSection() {
             and growth effortlessly.
           </motion.p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
           {services.map((service, index) => (
-            <ServiceCard
-              key={service.title}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-              delay={index * 0.2}
-            />
+            <Tilt key={service.title} rotationFactor={8} isRevese>
+              <ServiceCard
+                icon={service.icon}
+                title={service.title}
+                description={service.description}
+                delay={index * 0.2}
+              />
+            </Tilt>
           ))}
         </div>
       </div>

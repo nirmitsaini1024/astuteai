@@ -11,11 +11,7 @@ export default function Home() {
       <Hero />
       <ServicesSection />
       <ProcessSectionAlt />
-
-      {/* <Features /> */}
-      {/* <TimelineDemo /> */}
       <SeoSection />
-
       <Discover />
       <CallToAction />
     </>

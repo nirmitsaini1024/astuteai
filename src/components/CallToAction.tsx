@@ -4,7 +4,7 @@ import emojiStarImage from "../assets/images/emojistar.png";
 import Image from "next/image";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
-
+import { Magnetic } from "@/components/ui/magnetic";
 
 export const CallToAction = () => {
   const conatainerRef = useRef<HTMLDivElement>(null);
@@ -15,7 +15,7 @@ export const CallToAction = () => {
   const translateY = useTransform(scrollYProgress, [0, 1], [50, -50]);
   return (
     <div
-      id="waitlist" 
+      id="waitlist"
       className="bg-black text-white  py-[72px] sm:py-24 text-center relative"
       ref={conatainerRef}
     >
@@ -48,11 +48,12 @@ export const CallToAction = () => {
             placeholder="your@email.com"
             className="h-12 bg-white/20 rounded-lg px-5 font-medium placeholder:text-[#9CA3CF] sm:flex-1"
           />
-          <button className="bg-white py-2 h-12 rounded-lg text-black px-5">
-            Join Waitlist{" "}
-          </button>
+          <Magnetic>
+            <button className="bg-white py-2 h-12 rounded-lg text-black px-5">
+              Join Waitlist{" "}
+            </button>
+          </Magnetic>
         </form>
-        
       </div>
       {/* <Particles
         className="absolute inset-0"

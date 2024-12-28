@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Spotlight } from "@/components/ui/spotlight";
 
 interface ServiceCardProps {
   title: string;
@@ -13,25 +13,12 @@ interface ServiceCardProps {
   delay: number;
 }
 
-export function ServiceCard({ title, description, icon: Icon, delay }: ServiceCardProps) {
-  const offsetX = useMotionValue(-100);
-  const offsetY = useMotionValue(-100);
-  const maskImage = useMotionTemplate`radial-gradient(150px 150px at ${offsetX}px ${offsetY}px, rgba(128, 90, 213, 0.8), transparent)`; // Bright purple glow
-  const border = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      if (!border.current) return;
-      const borderRect = border.current.getBoundingClientRect();
-      offsetX.set(e.clientX - borderRect.left);
-      offsetY.set(e.clientY - borderRect.top);
-    };
-    window.addEventListener("mousemove", updateMousePosition);
-    return () => {
-      window.removeEventListener("mousemove", updateMousePosition);
-    };
-  }, [offsetX, offsetY]);
-
+export function ServiceCard({
+  title,
+  description,
+  icon: Icon,
+  delay,
+}: ServiceCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -40,18 +27,10 @@ export function ServiceCard({ title, description, icon: Icon, delay }: ServiceCa
       viewport={{ once: true }}
       className="h-full relative"
     >
-      {/* Glowing border effect */}
-      <motion.div
-        className="absolute inset-0 rounded-xl pointer-events-none"
-        style={{
-          WebkitMaskImage: maskImage,
-          maskImage,
-          background: "rgba(128, 90, 213, 0.4)", // Glow overlay
-          boxShadow: "0 0 20px 10px rgba(128, 90, 213, 0.6)", // Glow effect
-        }}
-        ref={border}
-      ></motion.div>
-
+      <Spotlight
+        className="from-blue-600 via-blue-500 to-blue-400 blur-3xl dark:from-blue-200 dark:via-blue-300 dark:to-blue-400"
+        size={124}
+      />
       {/* Card */}
       <Card
         className={cn(
@@ -64,7 +43,9 @@ export function ServiceCard({ title, description, icon: Icon, delay }: ServiceCa
             <Icon className="w-6 h-6 text-black" />
           </div>
 
-          <h3 className="text-xl font-semibold mt-4 mb-3 text-white/90">{title}</h3>
+          <h3 className="text-xl font-semibold mt-4 mb-3 text-white/90">
+            {title}
+          </h3>
 
           <p className="text-zinc-400 flex-grow">{description}</p>
         </div>
