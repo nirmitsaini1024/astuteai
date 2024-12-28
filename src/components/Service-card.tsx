@@ -25,12 +25,8 @@ export function ServiceCard({
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
-      className="h-full relative"
+      className="h-full relative "
     >
-      <Spotlight
-        className="from-blue-600 via-blue-500 to-blue-400 blur-2xl dark:from-blue-200 dark:via-blue-300 dark:to-blue-400"
-        size={124}
-      />
       {/* Card */}
       <Card
         className={cn(
@@ -38,6 +34,10 @@ export function ServiceCard({
           "p-6"
         )}
       >
+        <Spotlight
+          className="from-violet-600 via-violet-500 to-violet-400 blur-3xl dark:from-blue-200 dark:via-blue-300 dark:to-blue-400"
+          size={110}
+        />
         <div className="flex flex-col h-full">
           <div className="p-3 rounded-lg w-fit bg-white">
             <Icon className="w-6 h-6 text-black" />
