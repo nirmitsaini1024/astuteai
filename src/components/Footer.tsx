@@ -99,9 +99,9 @@ const Footer = () => {
       </div>
       <div className="w-full h-full bg-black ">
       <div className="size-full mx-auto max-w-6xl pb-8 px-4 md:px-12 flex items-center justify-between relative">
-        <p className="text-sm text-white">
+        {/* <p className="text-sm text-white">
           © 2024 Astute. All rights reserved.
-        </p>
+        </p> */}
         <div className="flex items-center gap-4">
           <a className="p-1" href="#" aria-label="Instagram">
             <svg
