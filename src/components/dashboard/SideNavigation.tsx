@@ -20,7 +20,7 @@ interface SideNavigationProps {
 
 export function SideNavigation({ activeSection, onNavigate }: SideNavigationProps) {
   return (
-    <div className="space-y-8 w-64">
+    <div className="space-y-8 w-64 ml-4 pl-2">
       {navItems.map((item) => (
         <Button
           key={item.label}
