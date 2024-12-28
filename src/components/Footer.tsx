@@ -77,19 +77,19 @@ const Footer = () => {
               </h3>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="https://x.com/creem_io"
+                href="https://x.com/Astute_AI"
               >
                 About us
               </Link>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="https://discord.gg/q3GKZs92Av"
+                href="#"
               >
                 Careers{" "}
               </Link>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="https://discord.gg/q3GKZs92Av"
+                href="#"
               >
                 Contact us
               </Link>
@@ -99,13 +99,20 @@ const Footer = () => {
       </div>
       <div className="w-full h-full bg-black ">
         <div className="size-full mx-auto max-w-6xl pb-8 px-4 md:px-12 flex items-center justify-between relative">
-          
           <div className="flex items-center gap-4">
-            <a className="p-1" href="#" aria-label="Instagram">
+            <a
+              className="p-1"
+              href="https://www.linkedin.com/company/astute-ai/"
+              aria-label="Linkedin"
+            >
               <FaLinkedin fill="white" />
             </a>
 
-            <a className="p-1" href="#" aria-label="Instagram">
+            <a
+              className="p-1"
+              href="https://www.instagram.com/astuteai/"
+              aria-label="Instagram"
+            >
               <FaInstagram fill="white" />
             </a>
             <a

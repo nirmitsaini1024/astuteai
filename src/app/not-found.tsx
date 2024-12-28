@@ -9,10 +9,10 @@ import { FloatingParticles } from "@/components/floating-particles";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-black flex items-center justify-center p-4 relative overflow-hidden -mt-[7rem]">
       <div className="absolute inset-0 bg-gradient-radial from-violet-900/5 to-transparent pointer-events-none" />
 
-      <div className="text-center space-y-6 sm:space-y-8 md:space-y-12 relative z-10">
+      <div className="text-center space-y-6 sm:space-y-8 md:space-y-12 relative z-10 ">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
