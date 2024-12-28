@@ -8,9 +8,9 @@ const Footer = () => {
     <div className="relative">
       <div className="border-t border-neutral-800 px-8 pt-20 pb-10 relative bg-black z-0">
         <div className="absolute inset-0 z-[-1] flex items-center justify-center overflow-hidden pointer-events-none bg-transparent">
-          <p className="text-center text-5xl md:text-9xl lg:text-[18rem] font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-950 via-neutral-800 to-[#FFBE98]/30 select-none">
+          {/* <p className="text-center text-5xl md:text-9xl lg:text-[18rem] font-bold bg-clip-text text-transparent bg-gradient-to-b from-neutral-950 via-neutral-800 to-[#FFBE98]/30 select-none">
             Astute
-          </p>
+          </p> */}
         </div>
 
         <div className="max-w-7xl mx-auto text-sm text-neutral-400 flex sm:flex-row flex-col justify-between items-start z-10">

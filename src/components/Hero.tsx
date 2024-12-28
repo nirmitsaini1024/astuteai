@@ -3,6 +3,7 @@ import Image from "next/image";
 import cursorImage from "../assets/images/cursor.png";
 import messageImage from "../assets/images/message.png";
 import { motion } from "framer-motion";
+import { Magnetic } from "@/components/ui/magnetic";
 
 export const Hero = () => {
   const handleScroll = () => {
@@ -68,12 +69,15 @@ export const Hero = () => {
           </p>
         </div>
         <div className="flex mt-8 justify-center">
+          <Magnetic intensity={0.3}>
           <button
-            className="bg-white text-black rounded-lg font-medium px-5 py-3"
-            onClick={handleScroll}
-          >
-            Dive In
-          </button>
+              className="bg-white text-black rounded-lg font-medium px-5 py-3"
+              onClick={handleScroll}
+            >
+              Dive In
+            </button>
+
+          </Magnetic>
         </div>
       </div>
     </div>

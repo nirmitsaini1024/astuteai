@@ -28,7 +28,7 @@ export function ServiceCard({
       className="h-full relative"
     >
       <Spotlight
-        className="from-blue-600 via-blue-500 to-blue-400 blur-3xl dark:from-blue-200 dark:via-blue-300 dark:to-blue-400"
+        className="from-blue-600 via-blue-500 to-blue-400 blur-2xl dark:from-blue-200 dark:via-blue-300 dark:to-blue-400"
         size={124}
       />
       {/* Card */}

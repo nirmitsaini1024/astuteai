@@ -1,11 +1,8 @@
 "use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Menu,
-  MenuItem,
-  ProductItem,
-} from "@/components/ui/navbar-menu";
+import { Menu, MenuItem, ProductItem } from "@/components/ui/navbar-menu";
+import { Magnetic } from "@/components/ui/magnetic";
 
 import Logooo from "@/assets/logooo.png";
 import { CodeXml, Feather, MenuIcon, Wallet2 } from "lucide-react";
@@ -122,9 +119,12 @@ export default function SiteHeader() {
             </section>
 
             <section className={"flex max-md:gap-4 items-center"}>
-              <Link href="#waitlist" onClick={handleSmoothScroll}>
-                <ActionButton label="Join Waitlist" />
-              </Link>{" "}
+              <Magnetic intensity={0.3}>
+                <Link href="#waitlist" onClick={handleSmoothScroll}>
+                  <ActionButton label="Join Waitlist" />
+                </Link>{" "}
+              </Magnetic>
+
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger>
                   <MenuIcon
