@@ -8,7 +8,9 @@ import { ServiceCard } from "./Service-card";
 import { Globe, PenTool, Share2, BarChart3 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Tilt } from "@/components/ui/tilt";
+import { useTheme } from "next-themes";
 
+import { MagicCard } from "@/components/ui/magic-card";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,6 +63,7 @@ export function ServicesSection() {
         "Visualize data with multilingual, omnichannel analytics for smarter decision-making.",
     },
   ];
+  const { theme } = useTheme();
 
   return (
     <section
@@ -100,15 +103,19 @@ export function ServicesSection() {
           </motion.p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          
           {services.map((service, index) => (
             <Tilt key={service.title} rotationFactor={8} isRevese>
-              <ServiceCard
-                icon={service.icon}
-                title={service.title}
-                description={service.description}
-                delay={index * 0.2}
-              />
+              <MagicCard
+                gradientColor={theme === "dark" ? "#6E3DB6" : "#6E3DB6"}
+              >
+                <ServiceCard
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  delay={index * 0.2}
+                />
+              </MagicCard>
+              //{" "}
             </Tilt>
           ))}
         </div>

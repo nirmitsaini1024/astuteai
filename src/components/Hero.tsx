@@ -26,7 +26,7 @@ export const Hero = () => {
       <div className="container relative">
         <div className="flex justify-center mt-8">
           <div className="inline-flex relative">
-            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-center inline-flex">
+            <h1 className="text-7xl sm:text-9xl font-bold tracking-tighter text-center inline-flex">
               Build Your
               <br />
               Brand
@@ -70,12 +70,13 @@ export const Hero = () => {
         </div>
         <div className="flex mt-8 justify-center">
           <Magnetic intensity={0.3}>
-            <button
+          <button
               className="bg-white text-black rounded-lg font-medium px-5 py-3"
               onClick={handleScroll}
             >
               Dive In
             </button>
+
           </Magnetic>
         </div>
       </div>
