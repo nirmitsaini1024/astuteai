@@ -4,7 +4,6 @@ import {
   motion,
   useTransform,
   useScroll,
-  useVelocity,
   useSpring,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
@@ -49,10 +48,13 @@ export const TracingBeam = ({
   return (
     <motion.div
       ref={ref}
-      className={cn("relative w-full max-w-6xl mx-auto h-full", className)}
+      className={cn(
+        "relative w-full max-w-6xl mx-auto h-full px-4", // Added padding for smaller screens
+        className
+      )}
     >
-<div className="absolute -left-8 md:-left-32 top-3">
-<motion.div
+      <div className="absolute -left-8 md:-left-32 top-3">
+        <motion.div
           transition={{
             duration: 0.2,
             delay: 0.5,
@@ -63,7 +65,7 @@ export const TracingBeam = ({
                 ? "none"
                 : "rgba(0, 0, 0, 0.24) 0px 3px 8px",
           }}
-          className="ml-[27px] h-4 w-4 rounded-full border border-netural-200 shadow-sm flex items-center justify-center"
+          className="ml-[27px] h-4 w-4 rounded-full border border-neutral-200 shadow-sm flex items-center justify-center"
         >
           <motion.div
             transition={{
@@ -83,7 +85,7 @@ export const TracingBeam = ({
           viewBox={`0 0 20 ${svgHeight}`}
           width="20"
           height={svgHeight} // Set the SVG height
-          className=" ml-4 block"
+          className="ml-4 block"
           aria-hidden="true"
         >
           <motion.path
@@ -122,7 +124,9 @@ export const TracingBeam = ({
           </defs>
         </svg>
       </div>
-      <div ref={contentRef}>{children}</div>
+      <div ref={contentRef}> {/* Added margin-top to space out content */}
+        {children}
+      </div>
     </motion.div>
   );
 };
