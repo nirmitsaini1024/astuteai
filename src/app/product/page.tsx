@@ -1,5 +1,4 @@
 import Hero from "@/components/sections/Hero";
-import Features from "@/components/sections/Features";
 import ProductAddresses from "@/components/sections/ProductAddresses";
 import Benefits from "@/components/sections/Benefits";
 import Resources from "@/components/sections/Resources";
