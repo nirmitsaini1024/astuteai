@@ -16,7 +16,7 @@ export const CallToAction = () => {
   return (
     <div
       id="waitlist"
-      className="bg-black text-white  py-[72px] sm:py-24 text-center relative"
+      className="bg-black text-white  py-8 sm:py-24 text-center relative"
       ref={conatainerRef}
     >
       <div className="container max-w-xl relative">
