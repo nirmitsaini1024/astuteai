@@ -6,7 +6,7 @@ import { ServicesSection } from "@/components/service-section";
 import { ProcessSectionAlt } from "@/components/process-section-alt";
 import { Dashboard } from "@/components/dashboard/Dashboard";
 import { Brain, LineChart as ChartIcon, Link, Target } from "lucide-react";
-import FAQ from "@/components/accordion";
+import FAQ from "@/components/FAQ/index";
 
 // const products = [
 //   {
