@@ -5,8 +5,11 @@ import {
   Palette,
   ShieldCheck,
   MapPin,
+  ChevronRight,
 } from "lucide-react";
 import { SVGProps } from "react";
+import AnimatedGradientText from "./ui/animated-gradient-text";
+import { cn } from "@/lib/utils";
 
 type IconKey =
   | "zap"
@@ -114,8 +117,7 @@ export const Discover = () => {
             <rect
               x="123.5"
               y="384.5"
-              width="24"// Ensure the icons are compatible with SVGProps<SVGSVGElement>
-
+              width="24" // Ensure the icons are compatible with SVGProps<SVGSVGElement>
               height="24"
               rx="4.5"
               fill="#9d00ff"
@@ -618,11 +620,17 @@ export const Discover = () => {
         style={{ opacity: 1, transform: "none", willChange: "auto" }}
       >
         <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
-          <div className="px-4 py-1 border border-zinc-600 rounded-full bg-primary/20 cursor-pointer select-none">
-            <div className="bg-[linear-gradient(110deg,#6d28d9,45%,#c4b5fd,55%,#6d28d9)] bg-[length:250%_100%] bg-clip-text animate-background-shine text-transparent font-medium text-sm">
-              Perks
-            </div>
-          </div>
+          <AnimatedGradientText>
+            🎉 <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
+            <span
+              className={cn(
+                `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
+              )}
+            >
+              Enjoy the Perks
+            </span>
+            <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+          </AnimatedGradientText>
           <h2 className="text-2xl md:text-4xl text-white lg:text-5xl font-heading font-medium !leading-snug mt-6">
             Discover the benefits
           </h2>

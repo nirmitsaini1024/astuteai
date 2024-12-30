@@ -154,7 +154,7 @@ export default function SiteHeader() {
                   <div className={"mt-8 mb-4"}>
                     <nav className={"grid gap-4 items-center text-lg"}>
                       <Link
-                        href={"#"}
+                        href={"/product"}
                         className={
                           "flex items-center gap-3 text-white hover:text-white transition"
                         }
