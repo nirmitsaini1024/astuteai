@@ -13,8 +13,8 @@ const FAQ = () => {
   };
 
   return (
-    <div className="bg-black">
-    <div className="bg-black text-white p-6 rounded-xl max-w-2xl mx-auto">
+<div className="bg-black pb-4 md:pb-16">
+<div className="bg-black text-white p-6 rounded-xl max-w-2xl mx-auto ">
       <motion.h2 
         className="text-2xl font-bold text-center mb-6"
         initial={{ opacity: 0, y: -20 }}
