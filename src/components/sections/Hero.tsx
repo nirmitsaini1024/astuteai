@@ -1,8 +1,16 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Particles from "@/components/ui/particles";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
+  const { resolvedTheme } = useTheme();
+  const [color, setColor] = useState("#ffffff");
+  useEffect(() => {
+    setColor(resolvedTheme === "dark" ? "#ffffff" : "#ffffff");
+  }, [resolvedTheme]);
   return (
     <div className="min-h-screen bg-black flex items-center justify-center px-4 py-12 md:pt-24">
       <div className="container max-w-6xl mx-auto">
@@ -61,8 +69,15 @@ export default function Hero() {
               priority
             />
           </motion.div>
-        </div>
+        </div><Particles
+        className="absolute inset-0 z-0"
+        quantity={45}
+        ease={80}
+        color={color}
+        refresh
+      />
       </div>
+      
     </div>
   );
 }
