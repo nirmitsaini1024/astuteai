@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { Card } from "@/components/ui/card";
 import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Spotlight } from "@/components/ui/spotlight";
 
 interface ServiceCardProps {
   title: string;
@@ -34,10 +33,7 @@ export function ServiceCard({
           "p-6"
         )}
       >
-        {/* <Spotlight
-          className="from-violet-600 via-violet-500 to-violet-400 blur-3xl dark:from-blue-200 dark:via-blue-300 dark:to-blue-400"
-          size={110}
-        /> */}
+       
         <div className="flex flex-col h-full">
           <div className="p-3 rounded-lg w-fit bg-white">
             <Icon className="w-6 h-6 text-black" />

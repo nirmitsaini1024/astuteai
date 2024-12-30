@@ -70,13 +70,12 @@ export const Hero = () => {
         </div>
         <div className="flex mt-8 justify-center">
           <Magnetic intensity={0.3}>
-          <button
+            <button
               className="bg-white text-black rounded-lg font-medium px-5 py-3"
               onClick={handleScroll}
             >
               Dive In
             </button>
-
           </Magnetic>
         </div>
       </div>

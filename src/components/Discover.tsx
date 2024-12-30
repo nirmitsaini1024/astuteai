@@ -66,7 +66,7 @@ export const Discover = () => {
   ];
 
   return (
-    <div className="flex flex-col bg-black items-center justify-center pb-12 pt-4 md:py-16 lg:pb-24 lg:pt-4 w-full">
+    <div className="flex flex-col bg-black items-center justify-center pb-12 pt-4 md:py-16 lg:pb-12 lg:pt-4 w-full">
       {" "}
       <div className="flex items-center justify-center mx-auto mt-8">
         <svg
