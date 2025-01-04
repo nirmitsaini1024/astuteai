@@ -8,7 +8,8 @@ export default function ProductImage() {
       initial={{ opacity: 0, x: -50 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      className="relative h-[250px] sm:h-[300px] md:h-[400px] rounded-2xl overflow-hidden"
+      className="relative mx-auto h-[200px] sm:h-[300px] md:h-[400px] rounded-2xl overflow-hidden 
+                 w-[90%] sm:w-[80%] md:w-[70%]"
     >
       <Image
         src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&q=80"

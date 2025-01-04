@@ -29,9 +29,7 @@ const benefits = [
 
 export default function Benefits() {
   return (
-    <section
-      className=" py-16 md:py-24 bg-gradient-to-b from-violet-900/20 via-black/50 to-violet-900/20"
-    >
+    <section className=" py-16 md:py-24 bg-gradient-to-b from-violet-900/20 via-black/50 to-violet-900/20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl ">
         <motion.div
           className="text-center mb-12 md:mb-16"
@@ -71,45 +69,18 @@ export default function Benefits() {
                 <p className="text-gray-400 text-lg leading-relaxed">
                   {benefit.description}
                 </p>
-                {/* <motion.div
-                  className="mt-6"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <button className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold text-sm transition-all hover:shadow-lg hover:shadow-blue-500/25">
-                    Learn More
-                    <svg
-                      className="ml-2 w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </button>
-                </motion.div> */}
               </div>
               <div className="flex-1">
-                <motion.div
-                  className="relative h-72 md:h-96 w-full rounded-xl overflow-hidden shadow-2xl"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Image
-                    src={benefit.image}
-                    alt={benefit.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority={index === 0}
-                    className="object-cover transition-transform hover:scale-105 duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                </motion.div>
+              <div className="relative w-full h-72 md:h-96 rounded-xl overflow-hidden shadow-2xl">
+  <Image
+    src={benefit.image}
+    alt={benefit.title}
+    layout="fill"
+    priority={index === 0}
+    className="object-cover transition-transform hover:scale-105 duration-700"
+  />
+</div>
+
               </div>
             </motion.div>
           ))}

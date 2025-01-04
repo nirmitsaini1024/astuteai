@@ -64,7 +64,7 @@ export const Hero = () => {
           <p className="text-center mt-8 text-xl max-w-md">
             Ready to level up your business? Our AI tools make building
             stunning websites, automating marketing, and optimizing content a
-            breeze. Say goodbye to the hassle—we’ll handle the hard stuff while
+            breeze. Say goodbye to the hassle, we’ll handle the hard stuff while
             you shine!
           </p>
         </div>
