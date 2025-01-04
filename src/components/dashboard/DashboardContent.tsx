@@ -94,7 +94,7 @@ export function DashboardContent({ section }: DashboardContentProps) {
                     axisLine={true}
                     tickFormatter={(value) => `${value}%`}
                   />
-                  <Tooltip />
+                  {/* <Tooltip /> */}
                   <Line
                     type="monotone"
                     dataKey="value"
@@ -125,7 +125,7 @@ export function DashboardContent({ section }: DashboardContentProps) {
                     padding={{ left: 10, right: 10 }}
                   />
                   <YAxis stroke="#888888" tickLine={true} axisLine={true} />
-                  <Tooltip />
+                  {/* <Tooltip /> */}
                   <Line
                     type="monotone"
                     dataKey="value"

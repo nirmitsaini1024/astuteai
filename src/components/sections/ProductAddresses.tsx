@@ -21,49 +21,83 @@ const points = [
   }
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.4, 0, 0.2, 1]
+    }
+  }
+};
+
 export default function ProductAddresses() {
   return (
-    <section className="pb-[32px] pt-[8px] bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-black relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-black/50 pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.h2 
-          className="text-4xl md:text-5xl font-bold text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-4xl md:text-6xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           What this product addresses
         </motion.h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="relative h-[400px] rounded-2xl overflow-hidden"
+            className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/10"
           >
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
             <Image
               src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&q=80"
               alt="AI Analytics Dashboard"
               fill
-              className="object-cover"
+              className="object-cover transform hover:scale-105 transition-transform duration-700"
             />
           </motion.div>
           
-          <div className="space-y-6">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
             {points.map((point, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-purple-600/10 p-4 rounded-lg border border-purple-500/20 hover:border-purple-500/40 transition-colors"
+                variants={itemVariants}
+                className="bg-gradient-to-r from-slate-900 to-slate-800 p-6 rounded-xl border border-blue-500/10 hover:border-blue-400/30 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/5 group"
               >
-                <h3 className="font-semibold text-lg text-purple-400">{point.title}</h3>
-                <p className="text-gray-400 mt-1">{point.description}</p>
+                <h3 className="font-semibold text-xl text-blue-300 group-hover:text-blue-200 transition-colors">
+                  {point.title}
+                </h3>
+                <p className="text-slate-400 mt-2 group-hover:text-slate-300 transition-colors">
+                  {point.description}
+                </p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

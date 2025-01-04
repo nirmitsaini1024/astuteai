@@ -27,12 +27,11 @@ export const Hero = () => {
         <div className="flex justify-center mt-8">
           <div className="inline-flex relative">
             <h1 className="text-7xl sm:text-9xl font-bold tracking-tighter text-center inline-flex">
-              Build Your
-              <br />
-              Brand
+              Power your <br />
+              presence{" "}
             </h1>
             <motion.div
-              className="absolute right-[512px] top-[108px] hidden sm:inline"
+              className="absolute right-[620px] top-[108px] hidden sm:inline"
               drag
               dragSnapToOrigin
             >
@@ -46,7 +45,7 @@ export const Hero = () => {
               />
             </motion.div>
             <motion.div
-              className="absolute left-[550px] top-[100px] hidden sm:inline"
+              className="absolute left-[630px] top-[100px] hidden sm:inline"
               drag
               dragSnapToOrigin
             >
@@ -63,9 +62,10 @@ export const Hero = () => {
         </div>
         <div className="flex justify-center">
           <p className="text-center mt-8 text-xl max-w-md">
-            Empowering businesses with AI-driven tools for seamless website
-            creation, automated marketing, optimized content, and insightful
-            analytics across platforms.
+            Ready to level up your business? Our AI tools make building
+            stunning websites, automating marketing, and optimizing content a
+            breeze. Say goodbye to the hassle—we’ll handle the hard stuff while
+            you shine!
           </p>
         </div>
         <div className="flex mt-8 justify-center">

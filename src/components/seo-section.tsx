@@ -169,7 +169,7 @@ export function SeoSection() {
             "text-5xl md:text-6xl font-medium text-center text-white tracking-tighter"
           }
         >
-          Elevate your SEO efforts.
+          SEO that Gets You Noticed{" "}
         </h2>
         <p
           className={
@@ -190,7 +190,7 @@ export function SeoSection() {
           ))}
         </div>
         <motion.div className="border border-zinc-800 rounded-xl p-2.5 mt-3 relative">
-        <BorderBeam />
+          <BorderBeam />
 
           <div className=" bg-cover bg-black border border-muted border-zinc-600 rounded-lg flex items-center justify-center">
             <div className="w-full h-full">

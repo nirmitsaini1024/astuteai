@@ -10,6 +10,18 @@ import {
 import { SVGProps } from "react";
 import AnimatedGradientText from "./ui/animated-gradient-text";
 import { cn } from "@/lib/utils";
+import {
+  FaBusinessTime,
+  FaChartLine,
+  FaLifeRing,
+  FaPalette,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
+import { LuBrainCircuit } from "react-icons/lu";
+import { MdOutlineQueryStats } from "react-icons/md";
+import { BiTask } from "react-icons/bi";
+import { GrLanguage } from "react-icons/gr";
+import { FaUsersCog } from "react-icons/fa";
 
 type IconKey =
   | "zap"
@@ -20,12 +32,12 @@ type IconKey =
   | "waypoints";
 
 const iconMap: Record<IconKey, React.FC<SVGProps<SVGSVGElement>>> = {
-  zap: Zap,
-  "chart-spline": ChartLine,
-  "life-buoy": LifeBuoy,
-  palette: Palette,
-  "shield-check": ShieldCheck,
-  waypoints: MapPin,
+  zap: FaBusinessTime, // Example icon for "zap"
+  "chart-spline": FaUsersCog, // Example icon for "chart-spline"
+  "life-buoy": BiTask, // Example icon for "life-buoy"
+  palette: MdOutlineQueryStats, // Example icon for "palette"
+  "shield-check": LuBrainCircuit, // Example icon for "shield-check"
+  waypoints: GrLanguage, // Example icon for "waypoints"
 };
 
 export const Discover = () => {
@@ -33,7 +45,7 @@ export const Discover = () => {
     {
       title: "Fast and Efficient",
       description:
-        "Experience quick and seamless content creation with our optimized AI tools.",
+        "Enjoy fast and flawless content creation with our optimized AI tools.",
       icon: "zap",
     },
     {
@@ -621,18 +633,16 @@ export const Discover = () => {
       >
         <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
           <AnimatedGradientText>
-            🎉 <hr className="mx-2 h-4 w-px shrink-0 bg-gray-300" />{" "}
             <span
               className={cn(
                 `inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent`
               )}
             >
-              Enjoy the Perks
+              Perks
             </span>
-            <ChevronRight className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
           </AnimatedGradientText>
           <h2 className="text-2xl md:text-4xl text-white lg:text-5xl font-heading font-medium !leading-snug mt-6">
-            Discover the benefits
+            Experience the benefits
           </h2>
           <p className="text-base text-zinc-400 md:text-lg text-center text-accent-foreground/80 mt-6">
             Explore the powerful features and advantages that Astute offers to
@@ -644,33 +654,38 @@ export const Discover = () => {
         className="max-w-7xl  px-4 md:px-12 py-7 relative size-full"
         style={{ opacity: 1, transform: "none", willChange: "auto" }}
       >
-        <div className="mt-16 w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full relative">
-            {features.map((feature, index) => {
-              const IconComponent = iconMap[feature.icon];
-              return (
-                <div
-                  key={index}
-                  className="flex flex-col lg:border-r transform-gpu py-10 relative group/feature border-neutral-800 lg:border-b"
-                >
-                  <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-80 from-violet-950/25 to-transparent pointer-events-none"></div>
-                  <div className="group-hover/feature:-translate-y-1 transform-gpu transition-all duration-300 flex flex-col w-full">
-                    <div className="mb-4 relative z-10 px-10">
-                      <IconComponent className="w-10 h-10 origin-left transform-gpu text-neutral-500 transition-all duration-300 ease-in-out group-hover/feature:scale-75 group-hover/feature:text-white" />
+        <div
+          className="max-w-7xl px-4 md:px-12 py-7 relative size-full"
+          style={{ opacity: 1, transform: "none", willChange: "auto" }}
+        >
+          <div className="mt-16 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full relative">
+              {features.map((feature, index) => {
+                const IconComponent = iconMap[feature.icon];
+                return (
+                  <div
+                    key={index}
+                    className="flex flex-col lg:border-r transform-gpu py-10 relative group/feature border-neutral-800 lg:border-b"
+                  >
+                    <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-80 from-violet-950/25 to-transparent pointer-events-none"></div>
+                    <div className="group-hover/feature:-translate-y-1 transform-gpu transition-all duration-300 flex flex-col w-full">
+                      <div className="mb-4 relative z-10 px-10">
+                        <IconComponent className="w-10 h-10 origin-left transform-gpu text-neutral-500 transition-all duration-300 ease-in-out group-hover/feature:scale-75 group-hover/feature:text-white" />
+                      </div>
+                      <div className="text-lg font-medium font-heading mb-2 relative z-10 px-10">
+                        <div className="absolute left-0 -inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-700 group-hover/feature:bg-violet-600 transition-all duration-500 origin-center"></div>
+                        <span className="transition duration-500 inline-block text-violet-300">
+                          {feature.title}
+                        </span>
+                      </div>
+                      <p className="text-sm text-neutral-300 max-w-xs relative z-10 px-10">
+                        {feature.description}
+                      </p>
                     </div>
-                    <div className="text-lg font-medium font-heading mb-2 relative z-10 px-10">
-                      <div className="absolute left-0 -inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-700 group-hover/feature:bg-violet-600 transition-all duration-500 origin-center"></div>
-                      <span className="transition duration-500 inline-block text-violet-300">
-                        {feature.title}
-                      </span>
-                    </div>
-                    <p className="text-sm text-neutral-300 max-w-xs relative z-10 px-10">
-                      {feature.description}
-                    </p>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

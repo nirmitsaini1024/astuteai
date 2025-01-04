@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
 import { Magnetic } from "@/components/ui/magnetic";
+import Link from "next/link";
 
 export const CallToAction = () => {
   const conatainerRef = useRef<HTMLDivElement>(null);
@@ -49,9 +50,12 @@ export const CallToAction = () => {
             className="h-12 bg-white/20 rounded-lg px-5 font-medium placeholder:text-[#9CA3CF] sm:flex-1"
           />
           <Magnetic>
-            <button className="bg-white py-2 h-12 rounded-lg text-black px-5">
-              Join Waitlist{" "}
-            </button>
+            <Link href="/product">
+              
+                <button className="bg-white py-2 h-12 rounded-lg text-black px-5">
+                  Join Waitlist
+                </button>
+            </Link>
           </Magnetic>
         </form>
       </div>

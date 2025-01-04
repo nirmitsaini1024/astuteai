@@ -1,12 +1,18 @@
-import Hero from "@/components/sections/Hero";
+import { HeroContent } from "@/components/sections/Hero";
 import ProductAddresses from "@/components/sections/ProductAddresses";
 import Benefits from "@/components/sections/Benefits";
 import Resources from "@/components/sections/Resources";
+import { HeroBackground } from "@/components/sections/hero-background";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white -mt-[7rem]">
-      <Hero />
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <HeroBackground />
+        <div className="relative container max-w-6xl mx-auto px-4 py-12">
+          <HeroContent />
+        </div>
+      </div>
       {/* <Features /> */}
       <ProductAddresses />
       <Benefits />

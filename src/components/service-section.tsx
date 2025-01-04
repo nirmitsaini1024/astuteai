@@ -89,7 +89,7 @@ export function ServicesSection() {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
           >
-            Our Services
+            What we offer{" "}
           </motion.h2>
           <motion.p
             className="text-lg text-zinc-300 max-w-2xl mx-auto"
@@ -98,8 +98,8 @@ export function ServicesSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            Empowering entrepreneurs with AI-driven tools to transform marketing
-            and growth effortlessly.
+            Fueling entrepreneurs with AI tools to simplify marketing and
+            accelerate growth!
           </motion.p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
