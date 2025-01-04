@@ -9,11 +9,10 @@ export default function Home() {
     <main className="min-h-screen bg-black text-white -mt-[7rem]">
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <HeroBackground />
-        <div className="relative container max-w-6xl mx-auto px-4 py-12">
-          <HeroContent />
+        <div className="relative container max-w-6xl mx-auto px-4 py-12 mt-20 md:mt-16">
+            <HeroContent />
         </div>
       </div>
-      {/* <Features /> */}
       <ProductAddresses />
       <Benefits />
       <Resources />
