@@ -10,7 +10,7 @@ export default function Home() {
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <HeroBackground />
         <div className="relative container max-w-6xl mx-auto px-4 py-12 mt-20 md:mt-16">
-            <HeroContent />
+          <HeroContent />
         </div>
       </div>
       <ProductAddresses />
