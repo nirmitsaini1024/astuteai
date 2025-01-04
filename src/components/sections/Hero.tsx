@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { SparklesCore } from "../ui/sparkles";
 
 export function HeroContent() {
   return (
@@ -49,9 +48,6 @@ export function HeroContent() {
           <button className="px-8 py-3 bg-violet-600 text-white rounded-lg font-medium transition-all duration-300 hover:bg-violet-700 hover:shadow-[0_0_30px_rgba(139,92,246,0.2)]">
             Get Started
           </button>
-          {/* <button className="px-8 py-3 border border-violet-900 text-violet-300 rounded-lg font-medium transition-all duration-300 hover:border-violet-800 hover:text-violet-200">
-            Learn More
-          </button> */}
         </motion.div>
       </motion.div>
 
