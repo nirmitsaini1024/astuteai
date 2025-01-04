@@ -71,7 +71,7 @@ export default function Benefits() {
                 <p className="text-gray-400 text-lg leading-relaxed">
                   {benefit.description}
                 </p>
-                <motion.div
+                {/* <motion.div
                   className="mt-6"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.2 }}
@@ -92,7 +92,7 @@ export default function Benefits() {
                       />
                     </svg>
                   </button>
-                </motion.div>
+                </motion.div> */}
               </div>
               <div className="flex-1">
                 <motion.div
