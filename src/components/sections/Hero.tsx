@@ -18,9 +18,6 @@ export function HeroContent() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="space-y-4"
         >
-          <span className="inline-block text-violet-300/80 text-sm font-medium tracking-wider uppercase">
-            Welcome to the Future
-          </span>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
             Shop FrontAI
           </h1>
@@ -64,7 +61,7 @@ export function HeroContent() {
         transition={{ duration: 0.8, delay: 0.4 }}
         className="relative w-full max-w-md mx-auto aspect-square md:aspect-[4/3]"
       >
-        <div className="absolute inset-0 bg-violet-900/5 rounded-2xl -z-10 blur-3xl transform scale-95" />
+        <div className="absolute inset-0 bg-violet-900/5 rounded-xl -z-10 blur-3xl transform scale-95" />
         <Image
           src="https://images.unsplash.com/photo-1596558450268-9c27524ba856?q=80&w=800&auto=format&fit=crop"
           alt="Product showcase"

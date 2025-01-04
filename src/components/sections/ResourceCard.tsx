@@ -23,7 +23,7 @@ export function ResourceCard({
   if (image) {
     return (
       <Link href={href} className="group w-full max-w-[480px] mx-auto">
-        <div className="h-[280px] bg-[#0A0A0A] rounded-3xl overflow-hidden hover:bg-[#111111] transition-all duration-300 border border-gray-800">
+        <div className="h-[280px] bg-[#0A0A0A] rounded-xl overflow-hidden hover:bg-[#111111] transition-all duration-300 border border-gray-800">
           <div className="relative h-[140px]">
             <img
               src={image}

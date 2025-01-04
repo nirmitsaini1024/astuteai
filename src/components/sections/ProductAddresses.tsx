@@ -46,11 +46,11 @@ const itemVariants = {
 export default function ProductAddresses() {
   return (
     <section className="py-20 bg-black relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-black/50 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b to-violet-900/20 from-black/50 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.h2 
-          className="text-4xl md:text-6xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400"
+          className="text-4xl md:text-6xl font-bold text-center mb-16 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-300"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -65,7 +65,7 @@ export default function ProductAddresses() {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="relative h-[500px] rounded-3xl overflow-hidden shadow-2xl shadow-blue-500/10"
+            className="relative h-[500px] rounded-xl overflow-hidden shadow-2xl shadow-blue-500/10"
           >
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10" />
             <Image

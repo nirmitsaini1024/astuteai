@@ -5,10 +5,10 @@ import { ResourceCard } from "./ResourceCard";
 
 export default function Resources() {
   return (
-    <div className="bg-black text-white pt-4 pb-16 px-4 sm:px-6 lg:px-8">
+    <div className=" text-white pt-4 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-violet-900/20 to-black/50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Resources</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 ">Resources</h1>
           <p className="text-gray-400 text-lg">
             Everything you need to get started
           </p>
