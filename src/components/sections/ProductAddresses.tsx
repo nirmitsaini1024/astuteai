@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 import Image from "next/image";
 import {
@@ -80,24 +79,21 @@ export default function ResponsiveProductAddresses() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start lg:min-h-[450px] xl:min-h-[550px]">
           {/* Image Section */}
           <motion.div
-  initial={{ opacity: 0, scale: 0.95 }}
-  whileInView={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 0.9, ease: "easeOut" }}
-  viewport={{ once: true }}
-  className="relative aspect-[4/3] sm:aspect-[4/3] lg:aspect-[5/4] xl:aspect-[3/2] 2xl:aspect-[4/3] rounded-2xl overflow-hidden group lg:sticky lg:top-4"
->
-  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
-  <Image
-    src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&q=80"
-    alt="AI Analytics Dashboard"
-    fill
-    className="object-cover transition-transform duration-700 will-change-transform group-hover:scale-105"
-  />
-  <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
-</motion.div>
-
-
-
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            viewport={{ once: true }}
+            className="relative aspect-[4/3] sm:aspect-[4/3] lg:aspect-[5/4] xl:aspect-[3/2] 2xl:aspect-[4/3] rounded-2xl overflow-hidden group lg:sticky lg:top-4"
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent z-10" />
+            <Image
+              src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=800&q=80"
+              alt="AI Analytics Dashboard"
+              fill
+              className="object-cover transition-transform duration-700 will-change-transform group-hover:scale-105"
+            />
+            <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
+          </motion.div>
 
           {/* Points Section */}
           <motion.div
