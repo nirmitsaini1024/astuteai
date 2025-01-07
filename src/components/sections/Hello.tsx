@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 export default function Hello() {
   return (
     <main>
-      <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-violet-900/70 to-bg">
+      <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-violet-900/70 to-bg ">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
         <section className="relative w-full max-w-6xl px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center sm:mt-8">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -21,7 +21,7 @@ export default function Hello() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="space-y-4"
               >
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white">
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mt-12 md:mt-0">
                   Shop FrontAI
                 </h1>
                 <div className="w-[40rem] relative">
@@ -56,7 +56,7 @@ export default function Hello() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="relative w-full max-w-md mx-auto aspect-square md:aspect-[4/3]"
+              className="relative w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto aspect-square md:aspect-[4/3]"
             >
               <div className="absolute inset-0 bg-violet-900/5 rounded-xl -z-10 blur-3xl transform scale-95" />
               <Image
@@ -64,11 +64,11 @@ export default function Hello() {
                 alt="Product showcase"
                 fill
                 className="object-cover rounded-2xl shadow-2xl"
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes="(max-width: 640px) 50vw, (max-width: 768px) 75vw, 50vw"
                 priority
               />
             </motion.div>
-          </div>{" "}
+          </div>
         </section>
       </section>
     </main>
