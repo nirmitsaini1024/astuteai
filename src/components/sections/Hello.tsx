@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function Hello() {
   return (
     <main>
-      <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-violet-900 to-bg">
+      <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-violet-900/70 to-bg">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
         <section className="relative w-full max-w-6xl px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
