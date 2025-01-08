@@ -67,7 +67,7 @@ export default function ResponsiveProductAddresses() {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-800 via-fuchsia-300 to-pink-400">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
             What this product addresses
           </h2>
           <p className="mt-4 text-lg text-slate-400">

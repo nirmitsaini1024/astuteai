@@ -60,6 +60,7 @@ export default function SiteHeader() {
                   className="object-contain"
                   alt="Stute.ai Logo"
                 />
+                
                 <span className="text-white font-semibold text-lg">
                   stute.ai
                 </span>
