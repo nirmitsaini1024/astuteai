@@ -82,7 +82,7 @@ export default function Works() {
               width={800}
               height={457}
               className="h-[350px] w-[500px] object-cover align-top"
-              src="/premium_photo-1683540450469.png"
+              src="https://plus.unsplash.com/premium_photo-1683540450469-bacd12a1843f?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
           </div>
         </motion.div>
