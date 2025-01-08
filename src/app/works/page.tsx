@@ -102,14 +102,14 @@ export default function Works() {
               continuous growth.
             </p>
           </div>
-          <div className="flex justify-center items-center -mt-8">
+          <div className="flex justify-center items-center -mt-4">
             <Image
               loading="lazy"
               alt="Portfolio Website"
               width={1688}
               height={919}
               className="h-[350px] w-[500px] object-cover"
-              src="/img (1).png"
+              src="/premium_photo (1).png"
             />
           </div>
         </motion.div>
