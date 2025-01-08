@@ -62,27 +62,28 @@ export default function Works() {
 
         {/* Project 02 */}
         <motion.div
-          {...animationProps} 
-          className="mt-8 flex flex-col md:flex-row-reverse gap-12"
-        >
-          <div className="space-y-2 max-w-[550px]">
-            <h2 className="text-6xl my-4 text-white">02</h2>
-            <h2 className="text-4xl text-white/70">Advertise</h2>
-            <p className="text-lg text-zinc-400 break-words pt-4 pr-4 pb-4">
-            Streamline your content with AI! Effortlessly generate blogs, social media posts, and ads that grab attention and drive engagement!
-            </p>
-          </div>
-          <div className="flex justify-center items-center">
-            <Image
-              loading="lazy"
-              alt="Interactive E-Learning Platform"
-              width={800}
-              height={457}
-              className="h-[350px] w-[500px] object-cover align-top"
-              src="/premium_photo-1683540450469.png"
-            />
-          </div>
-        </motion.div>
+  {...animationProps}
+  className="mt-8 flex flex-col md:flex-row-reverse gap-12"
+>
+  <div className="space-y-2 max-w-[550px]">
+    <h2 className="text-6xl my-4 text-white">02</h2>
+    <h2 className="text-4xl text-white/70">Advertise</h2>
+    <p className="text-lg text-zinc-400 break-words pt-4 pr-4 pb-4">
+      Streamline your content with AI! Effortlessly generate blogs, social media posts, and ads that grab attention and drive engagement!
+    </p>
+  </div>
+  <div className="flex justify-center items-center -mt-8"> {/* Added -mt-4 here */}
+    <Image
+      loading="lazy"
+      alt="Interactive E-Learning Platform"
+      width={800}
+      height={457}
+      className="h-[350px] w-[500px] object-cover align-top"
+      src="/premium_photo-1683540450469.png"
+    />
+  </div>
+</motion.div>
+
 
         {/* Project 03 */}
         <motion.div
