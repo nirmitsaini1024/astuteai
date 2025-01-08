@@ -14,8 +14,9 @@ import Image from "next/image";
 import Logooo from "@/assets/logooo.png";
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
-import { SignOutButton } from '@clerk/nextjs';
-import { Skeleton } from '@/components/ui/skeleton'; // Assuming the skeleton component is imported from 'ui/skeleton'
+import { SignOutButton } from "@clerk/nextjs";
+import { Skeleton } from "@/components/ui/skeleton"; // Assuming the skeleton component is imported from 'ui/skeleton'
+import { Button } from "@/components/ui/button";
 
 // Fetch data from Prisma
 const ITEMS_PER_PAGE = 8;
@@ -25,6 +26,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [tableData, setTableData] = useState<any[]>([]); // Ensure it's an empty array by default
   const [totalUsers, setTotalUsers] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -35,6 +37,8 @@ function App() {
         setTotalUsers(data.length); // Assuming 'data' contains the list of users
       } catch (error) {
         console.error("Error fetching users:", error);
+      } finally {
+        setIsLoading(false); // Stop loading once the data is fetched
       }
     };
 
@@ -43,7 +47,10 @@ function App() {
 
   const totalPages = Math.ceil(totalUsers / ITEMS_PER_PAGE);
   const currentTableData = totalUsers
-    ? tableData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
+    ? tableData.slice(
+        (currentPage - 1) * ITEMS_PER_PAGE,
+        currentPage * ITEMS_PER_PAGE
+      )
     : []; // Safe slicing if tableData is empty
 
   const handleStatusChange = (id: number, newStatus: string) => {
@@ -156,11 +163,17 @@ function App() {
             {/* Stats Cards */}
             <div className="bg-gray-800 p-6 rounded-lg">
               <h3 className="text-lg font-semibold mb-2">Total Users</h3>
-              <p className="text-3xl font-bold">{totalUsers}</p>
+              {isLoading ? (
+                <Skeleton className="h-8 bg-gray-500 w-32" />
+              ) : (
+                <p className="text-3xl font-bold">{totalUsers}</p>
+              )}
             </div>
             <div className="bg-gray-800 p-6 rounded-lg">
-              <h3 className="text-lg font-semibold mb-2">Active Users</h3>
-              <p className="text-3xl font-bold">789</p>
+              <h3 className="text-lg font-semibold mb-2">CSV Data</h3>
+              <Button className="text-white hover:text-black hover:bg-white ">
+                Download CSV
+              </Button>
             </div>
           </div>
 
@@ -170,8 +183,38 @@ function App() {
               <h2 className="text-xl font-semibold">Users List</h2>
             </div>
             <div className="overflow-x-auto">
-              {tableData.length === 0 ? (
-                <Skeleton />
+              {isLoading || tableData.length === 0 ? (
+                // Skeleton loading for table rows
+                <table className="w-full">
+                  <thead className="bg-gray-700">
+                    <tr>
+                      <th className="px-4 lg:px-6 py-3 text-left">Name</th>
+                      <th className="px-4 lg:px-6 py-3 text-left">Email</th>
+                      <th className="px-4 lg:px-6 py-3 text-left hidden sm:table-cell">
+                        Date
+                      </th>
+                      <th className="px-4 lg:px-6 py-3 text-left">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[...Array(ITEMS_PER_PAGE)].map((_, index) => (
+                      <tr key={index} className="border-b border-gray-700">
+                        <td className="px-4 lg:px-6 py-4">
+                          <Skeleton className="h-6 w-full bg-gray-500" />
+                        </td>
+                        <td className="px-4 lg:px-6 py-4">
+                          <Skeleton className="h-6 w-full bg-gray-500" />
+                        </td>
+                        <td className="px-4 lg:px-6 py-4 hidden sm:table-cell">
+                          <Skeleton className="h-6 w-full bg-gray-500" />
+                        </td>
+                        <td className="px-4 lg:px-6 py-4">
+                          <Skeleton className="h-6 w-32 bg-gray-500" />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               ) : (
                 <table className="w-full">
                   <thead className="bg-gray-700">
