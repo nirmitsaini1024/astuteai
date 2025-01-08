@@ -15,7 +15,7 @@ export default function Works() {
       className="text-white bg-gradient-to-b from-black via-[#381a5f] via-70% via-[#190c2b] to-black pb-12 pt-8"
       id="portfolio"
     >
-      <div className="text-center mb-12 ">
+      <div className="text-center ">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -36,11 +36,11 @@ export default function Works() {
         </motion.p>
       </div>
 
-      <div className="px-6 md:px-0 max-w-[1000px] mx-auto mt-40 space-y-24">
+      <div className="px-6 md:px-0 max-w-[1000px] mx-auto mt-32 space-y-24">
         {/* Project 01 */}
         <motion.div
           {...animationProps}
-          className="mt-12 flex flex-col md:flex-row"
+          className="mt-8 flex flex-col md:flex-row"
         >
           <div className="space-y-2 max-w-[550px]">
             <h2 className="text-6xl my-4 text-white">01</h2>
@@ -65,7 +65,7 @@ export default function Works() {
         {/* Project 02 */}
         <motion.div
           {...animationProps} 
-          className="mt-12 flex flex-col md:flex-row-reverse gap-12"
+          className="mt-8 flex flex-col md:flex-row-reverse gap-12"
         >
           <div className="space-y-2 max-w-[550px]">
             <h2 className="text-6xl my-4 text-white">02</h2>
@@ -90,7 +90,7 @@ export default function Works() {
         {/* Project 03 */}
         <motion.div
           {...animationProps}
-          className="mt-12 flex flex-col md:flex-row"
+          className="mt-8 flex flex-col md:flex-row"
         >
           <div className="space-y-2 max-w-[550px]">
             <h3 className="text-6xl my-4 text-white">03</h3>
