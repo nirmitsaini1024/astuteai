@@ -5,14 +5,15 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
-  id        Int      @id @default(autoincrement())  // id field added
+  id        Int      @id @default(autoincrement())  
   name      String
   email     String   @unique
-  dateTaken DateTime @default(now())  // default to current timestamp
-  status    Status   @default(Active)  // Correct enum value, Active is the default
+  dateTaken DateTime @default(now())  
+  status    Status   @default(Active)  
 }
 
 enum Status {
