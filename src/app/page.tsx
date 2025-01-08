@@ -10,6 +10,7 @@ import AnimatedTimeline from "./step/page3";
 import Works from "./works/page";
 
 export default function Home() {
+  
   return (
     <>
       <Hero />
