@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"  // Correct provider
+  provider = "prisma-client-js"  // Correct provider for Prisma Client
 }
 
 datasource db {
@@ -8,14 +8,15 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())  // id field added
   name      String
   email     String   @unique
-  dateTaken DateTime @default(now())
-  status    Status   @default(ACTIVE)
+  dateTaken DateTime @default(now())  // default to current timestamp
+  status    Status   @default(Active)  // Correct enum value, Active is the default
 }
 
 enum Status {
-  ACTIVE
-  NOT_ACTIVE
+  Active
+  Inactive
+  Pending
 }

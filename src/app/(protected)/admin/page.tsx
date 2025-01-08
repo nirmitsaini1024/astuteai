@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Menu,
   X,
@@ -14,29 +14,37 @@ import Image from "next/image";
 import Logooo from "@/assets/logooo.png";
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
-import { SignOutButton } from '@clerk/nextjs'
+import { SignOutButton } from '@clerk/nextjs';
+import { Skeleton } from '@/components/ui/skeleton'; // Assuming the skeleton component is imported from 'ui/skeleton'
 
-// Mock data for the table
-const allTableData = Array.from({ length: 50 }, (_, index) => ({
-  id: index + 1,
-  name: `User ${index + 1}`,
-  email: `user${index + 1}@example.com`,
-  date: new Date(2024, 2, 15 - index).toISOString().split("T")[0],
-  status: ["Active", "Inactive", "Pending"][Math.floor(Math.random() * 3)],
-}));
-
+// Fetch data from Prisma
 const ITEMS_PER_PAGE = 8;
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [tableData, setTableData] = useState(allTableData);
+  const [tableData, setTableData] = useState<any[]>([]); // Ensure it's an empty array by default
+  const [totalUsers, setTotalUsers] = useState<number>(0);
 
-  const totalPages = Math.ceil(tableData.length / ITEMS_PER_PAGE);
-  const currentTableData = tableData.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
-  );
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch("/api/users");
+        const data = await response.json();
+        setTableData(data);
+        setTotalUsers(data.length); // Assuming 'data' contains the list of users
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+  const totalPages = Math.ceil(totalUsers / ITEMS_PER_PAGE);
+  const currentTableData = totalUsers
+    ? tableData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
+    : []; // Safe slicing if tableData is empty
 
   const handleStatusChange = (id: number, newStatus: string) => {
     setTableData(
@@ -72,7 +80,6 @@ function App() {
                 className="object-contain"
                 alt="Stute.ai Logo"
               />
-
               <span className="text-white font-semibold text-lg">stute.ai</span>
             </div>
           </Link>
@@ -149,7 +156,7 @@ function App() {
             {/* Stats Cards */}
             <div className="bg-gray-800 p-6 rounded-lg">
               <h3 className="text-lg font-semibold mb-2">Total Users</h3>
-              <p className="text-3xl font-bold">1,234</p>
+              <p className="text-3xl font-bold">{totalUsers}</p>
             </div>
             <div className="bg-gray-800 p-6 rounded-lg">
               <h3 className="text-lg font-semibold mb-2">Active Users</h3>
@@ -163,86 +170,81 @@ function App() {
               <h2 className="text-xl font-semibold">Users List</h2>
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-gray-700">
-                  <tr>
-                    <th className="px-4 lg:px-6 py-3 text-left">Name</th>
-                    <th className="px-4 lg:px-6 py-3 text-left">Email</th>
-                    <th className="px-4 lg:px-6 py-3 text-left hidden sm:table-cell">
-                      Date
-                    </th>
-                    <th className="px-4 lg:px-6 py-3 text-left">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentTableData.map((user) => (
-                    <tr
-                      key={user.id}
-                      className="border-b border-gray-700 hover:bg-gray-750"
-                    >
-                      <td className="px-4 lg:px-6 py-4">{user.name}</td>
-                      <td className="px-4 lg:px-6 py-4">{user.email}</td>
-                      <td className="px-4 lg:px-6 py-4 hidden sm:table-cell">
-                        {user.date}
-                      </td>
-                      <td className="px-4 lg:px-6 py-4">
-                        <select
-                          value={user.status}
-                          onChange={(e) =>
-                            handleStatusChange(user.id, e.target.value)
-                          }
-                          className={`px-2 py-1 rounded text-sm bg-transparent border ${
-                            user.status === "Active"
-                              ? "border-green-500 text-green-500"
-                              : user.status === "Inactive"
-                              ? "border-red-500 text-red-500"
-                              : "border-yellow-500 text-yellow-500"
-                          }`}
-                        >
-                          <option value="Active" className="bg-gray-800">
-                            Active
-                          </option>
-                          <option value="Inactive" className="bg-gray-800">
-                            Inactive
-                          </option>
-                          <option value="Pending" className="bg-gray-800">
-                            Pending
-                          </option>
-                        </select>
-                      </td>
+              {tableData.length === 0 ? (
+                <Skeleton />
+              ) : (
+                <table className="w-full">
+                  <thead className="bg-gray-700">
+                    <tr>
+                      <th className="px-4 lg:px-6 py-3 text-left">Name</th>
+                      <th className="px-4 lg:px-6 py-3 text-left">Email</th>
+                      <th className="px-4 lg:px-6 py-3 text-left hidden sm:table-cell">
+                        Date
+                      </th>
+                      <th className="px-4 lg:px-6 py-3 text-left">Status</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {currentTableData.map((user) => (
+                      <tr
+                        key={user.id}
+                        className="border-b border-gray-700 hover:bg-gray-750"
+                      >
+                        <td className="px-4 lg:px-6 py-4">{user.name}</td>
+                        <td className="px-4 lg:px-6 py-4">{user.email}</td>
+                        <td className="px-4 lg:px-6 py-4 hidden sm:table-cell">
+                          {user.dateTaken.split("T")[0]}
+                        </td>
+                        <td className="px-4 lg:px-6 py-4">
+                          <select
+                            value={user.status}
+                            onChange={(e) =>
+                              handleStatusChange(user.id, e.target.value)
+                            }
+                            className={`px-2 py-1 rounded text-sm bg-transparent border ${
+                              user.status === "Active"
+                                ? "border-green-500 text-green-500"
+                                : user.status === "Inactive"
+                                ? "border-red-500 text-red-500"
+                                : "border-yellow-500 text-yellow-500"
+                            }`}
+                          >
+                            <option value="Active" className="bg-gray-800">
+                              Active
+                            </option>
+                            <option value="Inactive" className="bg-gray-800">
+                              Inactive
+                            </option>
+                            <option value="Pending" className="bg-gray-800">
+                              Pending
+                            </option>
+                          </select>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
             </div>
             {/* Pagination */}
-            <div className="p-4 border-t border-gray-700 flex items-center justify-between">
-              <div className="text-sm text-gray-400">
-                Showing {(currentPage - 1) * ITEMS_PER_PAGE + 1} to{" "}
-                {Math.min(currentPage * ITEMS_PER_PAGE, tableData.length)} of{" "}
-                {tableData.length} entries
-              </div>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
-                  disabled={currentPage === 1}
-                  className="p-2 rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-                <span className="px-4 py-2 rounded bg-gray-700">
-                  {currentPage} / {totalPages}
-                </span>
-                <button
-                  onClick={() =>
-                    setCurrentPage((p) => Math.min(totalPages, p + 1))
-                  }
-                  disabled={currentPage === totalPages}
-                  className="p-2 rounded hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <ChevronRight size={20} />
-                </button>
-              </div>
+            <div className="p-4 border-t border-gray-700 flex justify-between items-center">
+              <button
+                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                className="px-4 py-2 bg-gray-700 text-white rounded-lg"
+              >
+                <ChevronLeft />
+              </button>
+              <span className="text-white">
+                Page {currentPage} of {totalPages}
+              </span>
+              <button
+                onClick={() =>
+                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                }
+                className="px-4 py-2 bg-gray-700 text-white rounded-lg"
+              >
+                <ChevronRight />
+              </button>
             </div>
           </div>
         </main>
