@@ -29,8 +29,7 @@ export default function RootLayout({
       <body className={clsx(dmSans.className, "antialiased")}>
         <SiteHeader />
         {children}
-        <Analytics mode="production" />;
-
+        <Analytics mode="production" />
         <Footer />
 
       </body>

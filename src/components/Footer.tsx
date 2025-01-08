@@ -4,7 +4,6 @@ import Link from "next/link";
 import Logooo from "@/assets/logooo.png";
 import { FaLinkedin } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-
 import { FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
