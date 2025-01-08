@@ -4,6 +4,7 @@ import clsx from "clsx";
 import "./globals.css";
 import SiteHeader from "@/components/Navbarr";
 import Footer from "@/components/Footer";
+import { Analytics } from '@vercel/analytics/next';
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
@@ -28,6 +29,8 @@ export default function RootLayout({
       <body className={clsx(dmSans.className, "antialiased")}>
         <SiteHeader />
         {children}
+        <Analytics mode="production" />;
+
         <Footer />
 
       </body>
