@@ -11,9 +11,7 @@ export default function Works() {
   };
 
   return (
-    <section
-      className="text-white bg-gradient-to-b from-black via-[#381a5f] via-70% via-[#190c2b] to-black pb-12 pt-8"
-    >
+    <section className="text-white bg-gradient-to-b from-black via-[#381a5f] via-70% via-[#190c2b] to-black pb-12 pt-8">
       <div className="text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -45,7 +43,9 @@ export default function Works() {
             <h2 className="text-6xl my-4 text-white">01</h2>
             <h2 className="text-4xl text-white/70">Highlight</h2>
             <p className="text-lg text-zinc-400 break-words pt-4 pr-4 pb-4">
-            Design a website that works as hard as you do! SEO-optimized, visually striking, and packed with seamless user experiences to boost engagement.
+              Design a website that works as hard as you do! SEO-optimized,
+              visually striking, and packed with seamless user experiences to
+              boost engagement.
             </p>
           </div>
           <div className="flex justify-center items-center">
@@ -62,28 +62,31 @@ export default function Works() {
 
         {/* Project 02 */}
         <motion.div
-  {...animationProps}
-  className="mt-8 flex flex-col md:flex-row-reverse gap-12"
->
-  <div className="space-y-2 max-w-[550px]">
-    <h2 className="text-6xl my-4 text-white">02</h2>
-    <h2 className="text-4xl text-white/70">Advertise</h2>
-    <p className="text-lg text-zinc-400 break-words pt-4 pr-4 pb-4">
-      Streamline your content with AI! Effortlessly generate blogs, social media posts, and ads that grab attention and drive engagement!
-    </p>
-  </div>
-  <div className="flex justify-center items-center -mt-8"> {/* Added -mt-4 here */}
-    <Image
-      loading="lazy"
-      alt="Interactive E-Learning Platform"
-      width={800}
-      height={457}
-      className="h-[350px] w-[500px] object-cover align-top"
-      src="/premium_photo-1683540450469.png"
-    />
-  </div>
-</motion.div>
-
+          {...animationProps}
+          className="mt-8 flex flex-col md:flex-row-reverse gap-12"
+        >
+          <div className="space-y-2 max-w-[550px]">
+            <h2 className="text-6xl my-4 text-white">02</h2>
+            <h2 className="text-4xl text-white/70">Advertise</h2>
+            <p className="text-lg text-zinc-400 break-words pt-4 pr-4 pb-4">
+              Streamline your content with AI! Effortlessly generate blogs,
+              social media posts, and ads that grab attention and drive
+              engagement!
+            </p>
+          </div>
+          <div className="flex justify-center items-center -mt-8">
+            {" "}
+            {/* Added -mt-4 here */}
+            <Image
+              loading="lazy"
+              alt="Interactive E-Learning Platform"
+              width={800}
+              height={457}
+              className="h-[350px] w-[500px] object-cover align-top"
+              src="/premium_photo-1683540450469.png"
+            />
+          </div>
+        </motion.div>
 
         {/* Project 03 */}
         <motion.div
@@ -94,17 +97,19 @@ export default function Works() {
             <h3 className="text-6xl my-4 text-white">03</h3>
             <h2 className="text-4xl text-white/70">Analyse</h2>
             <p className="text-lg text-zinc-400 break-words pt-4 pr-4 pb-4">
-            Gain real-time insights with multilingual analytics! Monitor your business performance, decode trends, and refine strategies for continuous growth.
+              Gain real-time insights with multilingual analytics! Monitor your
+              business performance, decode trends, and refine strategies for
+              continuous growth.
             </p>
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center -mt-8">
             <Image
               loading="lazy"
               alt="Portfolio Website"
               width={1688}
               height={919}
-              className="h-[350px] w-[500px] object-cover border rounded border-gray-700"
-              src="https://plus.unsplash.com/premium_photo-1661265951476-f72c210b7e7e?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              className="h-[350px] w-[500px] object-cover"
+              src="/img (1).png"
             />
           </div>
         </motion.div>
