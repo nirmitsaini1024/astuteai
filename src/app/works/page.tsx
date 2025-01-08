@@ -13,9 +13,8 @@ export default function Works() {
   return (
     <section
       className="text-white bg-gradient-to-b from-black via-[#381a5f] via-70% via-[#190c2b] to-black pb-12 pt-8"
-      id="portfolio"
     >
-      <div className="text-center ">
+      <div className="text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -36,7 +35,7 @@ export default function Works() {
         </motion.p>
       </div>
 
-      <div className="px-6 md:px-0 max-w-[1000px] mx-auto mt-32 space-y-24">
+      <div className="px-6 md:px-0 max-w-[1000px] mx-auto mt-28 space-y-16  ">
         {/* Project 01 */}
         <motion.div
           {...animationProps}
