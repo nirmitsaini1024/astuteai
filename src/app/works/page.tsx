@@ -45,8 +45,7 @@ export default function Works() {
             <h2 className="text-6xl my-4 text-white">01</h2>
             <h2 className="text-4xl text-white/70">Highlight</h2>
             <p className="text-lg text-zinc-400 break-words pt-4 pr-4 pb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Design a website that works as hard as you do! SEO-optimized, visually striking, and packed with seamless user experiences to boost engagement.
             </p>
           </div>
           <div className="flex justify-center items-center">
@@ -70,8 +69,7 @@ export default function Works() {
             <h2 className="text-6xl my-4 text-white">02</h2>
             <h2 className="text-4xl text-white/70">Advertise</h2>
             <p className="text-lg text-zinc-400 break-words pt-4 pr-4 pb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Streamline your content with AI! Effortlessly generate blogs, social media posts, and ads that grab attention and drive engagement!
             </p>
           </div>
           <div className="flex justify-center items-center">
@@ -95,8 +93,7 @@ export default function Works() {
             <h3 className="text-6xl my-4 text-white">03</h3>
             <h2 className="text-4xl text-white/70">Analyse</h2>
             <p className="text-lg text-zinc-400 break-words pt-4 pr-4 pb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Gain real-time insights with multilingual analytics! Monitor your business performance, decode trends, and refine strategies for continuous growth.
             </p>
           </div>
           <div className="flex justify-center items-center">
