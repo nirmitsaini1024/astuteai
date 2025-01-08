@@ -15,9 +15,26 @@ export async function GET(req: NextRequest) {
       },
     });
 
-    return NextResponse.json(users);
+    // Create the response and set headers to prevent caching
+    const response = NextResponse.json(users, {
+      headers: {
+        "Cache-Control": "no-store, max-age=0, must-revalidate",
+      },
+    });
+
+    return response;
   } catch (error) {
     console.error("Error fetching users:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+
+    // Create the error response and set headers to prevent caching
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      {
+        status: 500,
+        headers: {
+          "Cache-Control": "no-store, max-age=0, must-revalidate",
+        },
+      }
+    );
   }
 }
