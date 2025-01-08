@@ -115,7 +115,6 @@ export function ServicesSection() {
                   delay={index * 0.2}
                 />
               </MagicCard>
-              //{" "}
             </Tilt>
           ))}
         </div>

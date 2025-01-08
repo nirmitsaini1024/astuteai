@@ -1,22 +1,7 @@
-import {
-  Zap,
-  ChartLine,
-  LifeBuoy,
-  Palette,
-  ShieldCheck,
-  MapPin,
-  ChevronRight,
-} from "lucide-react";
 import { SVGProps } from "react";
 import AnimatedGradientText from "./ui/animated-gradient-text";
 import { cn } from "@/lib/utils";
-import {
-  FaBusinessTime,
-  FaChartLine,
-  FaLifeRing,
-  FaPalette,
-  FaMapMarkerAlt,
-} from "react-icons/fa";
+import { FaBusinessTime } from "react-icons/fa";
 import { LuBrainCircuit } from "react-icons/lu";
 import { MdOutlineQueryStats } from "react-icons/md";
 import { BiTask } from "react-icons/bi";

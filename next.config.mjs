@@ -30,7 +30,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ["assets.aceternity.com", "images.unsplash.com"], // Add your custom domains
+    domains: ["assets.aceternity.com", "images.unsplash.com", "plus.unsplash.com"], // Add your custom domains
   },
 };
 
