@@ -18,7 +18,7 @@ export default function Home() {
       {/* <ProcessCards2 /> 
       <ProcessSectionAlt />
       <AnimatedTimeline /> */}
-      <SeoSection />
+      {/* <SeoSection /> */}
       <Discover />
       <FAQ />
       <CallToAction />
