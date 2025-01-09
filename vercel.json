@@ -1,11 +1,13 @@
 {
-    "version": 2,
-    "routes": [
+    "headers": [
       {
-        "src": "/api/:path*",
-        "headers": {
-          "Cache-Control": "s-maxage=60, stale-while-revalidate=30"
-        }
+        "source": "/api/:path*",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "s-maxage=30, stale-while-revalidate=0"
+          }
+        ]
       }
     ]
   }
