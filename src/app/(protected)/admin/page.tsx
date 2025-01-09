@@ -10,6 +10,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Trash,
+  Download,
 } from "lucide-react";
 import Image from "next/image";
 import Logooo from "@/assets/logooo.png";
@@ -27,9 +28,8 @@ import {
   AlertDialogAction,
   AlertDialogCancel,
 } from "@/components/ui/alert-dialog";
-import { useToast } from "@/hooks/use-toast"; // Updated import for custom useToast hook
+import { useToast } from "@/hooks/use-toast";
 
-// Fetch data from Prisma
 const ITEMS_PER_PAGE = 8;
 
 function AdminPage() {
@@ -41,7 +41,7 @@ function AdminPage() {
   const [deleteUserId, setDeleteUserId] = useState<number | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const { toast } = useToast(); // Destructure toast from the custom hook
+  const { toast } = useToast();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -76,7 +76,6 @@ function AdminPage() {
     );
   };
 
-  // Handle Delete User
   const handleDelete = async () => {
     if (deleteUserId !== null) {
       try {
@@ -94,7 +93,6 @@ function AdminPage() {
             description: "The user has been removed from the list.",
           });
         } else {
-          console.error("Failed to delete user:", await response.text());
           toast({
             title: "Failed to delete user.",
             description: "There was an error deleting the user.",
@@ -102,7 +100,6 @@ function AdminPage() {
           });
         }
       } catch (error) {
-        console.error("Error deleting user:", error);
         toast({
           title: "Error deleting user.",
           description: "An unexpected error occurred.",
@@ -114,71 +111,76 @@ function AdminPage() {
   };
 
   return (
-    <div className="h-screen bg-gray-900 text-gray-100 flex overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100 flex overflow-hidden">
       {/* Sidebar */}
       <div
-        className={`fixed lg:sticky top-0 left-0 z-50 w-64 bg-gray-800 transform transition-transform duration-300 ease-in-out h-screen ${
+        className={`fixed lg:sticky top-0 left-0 z-50 w-64 bg-gray-800/95 backdrop-blur-sm transform transition-transform duration-300 ease-in-out h-screen ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 flex flex-col`}
+        } lg:translate-x-0 flex flex-col shadow-2xl`}
       >
-        <div className="flex items-center justify-between p-4 border-b border-gray-700">
+        <div className="flex items-center justify-between p-6 border-b border-gray-700/50">
           <Link href={"/"}>
-            <div className="flex items-center pl-8">
-              <Image
-                src={Logooo}
-                height={40}
-                width={40}
-                className="object-contain"
-                alt="Stute.ai Logo"
-              />
-              <span className="text-white font-semibold text-lg">stute.ai</span>
+            <div className="flex items-center space-x-1 pl-2">
+              <div className="relative">
+                <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur opacity-10"></div>
+                <Image
+                  src={Logooo}
+                  height={40}
+                  width={40}
+                  className="relative object-contain"
+                  alt="Stute.ai Logo"
+                />
+              </div>
+              <span className="text-white font-semibold text-lg tracking-wide">stute.ai</span>
             </div>
           </Link>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="lg:hidden text-gray-400 hover:text-white"
+            className="lg:hidden text-gray-400 hover:text-white transition-colors"
           >
             <X size={24} />
           </button>
         </div>
-        <nav className="flex-1 p-4">
-          <ul className="space-y-2">
+        <nav className="flex-1 p-6">
+          <ul className="space-y-4">
             <li>
               <a
                 href="#"
-                className="flex items-center gap-3 p-2 rounded hover:bg-gray-700"
+                className="flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-gray-700/50 hover:scale-105 group"
               >
-                <LayoutDashboard size={20} />
-                Dashboard
+                <LayoutDashboard size={20} className="group-hover:text-violet-400" />
+                <span className="group-hover:text-violet-400">Dashboard</span>
               </a>
             </li>
             <li>
               <a
                 href="#"
-                className="flex items-center gap-3 p-2 rounded hover:bg-gray-700"
+                className="flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-gray-700/50 hover:scale-105 group"
               >
-                <Users size={20} />
-                Users
+                <Users size={20} className="group-hover:text-violet-400" />
+                <span className="group-hover:text-violet-400">Users</span>
               </a>
             </li>
             <li>
               <a
                 href="#"
-                className="flex items-center gap-3 p-2 rounded hover:bg-gray-700"
+                className="flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-gray-700/50 hover:scale-105 group"
               >
-                <Settings size={20} />
-                Settings
+                <Settings size={20} className="group-hover:text-violet-400" />
+                <span className="group-hover:text-violet-400">Settings</span>
               </a>
             </li>
           </ul>
         </nav>
-        <div className="p-4 border-t border-gray-700">
+        <div className="p-6 border-t border-gray-700/50">
           <a
             href="#"
-            className="flex items-center gap-3 p-2 rounded hover:bg-gray-700 text-red-400"
+            className="flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-red-500/10 group"
           >
-            <LogOut size={20} />
-            <SignOutButton />
+            <LogOut size={20} className="text-red-400 group-hover:text-red-500" />
+            <span className="text-red-400 group-hover:text-red-500">
+              <SignOutButton />
+            </span>
           </a>
         </div>
       </div>
@@ -186,70 +188,74 @@ function AdminPage() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
         {/* Header */}
-        <header className="bg-gray-800 p-4 flex items-center justify-between">
+        <header className="bg-gray-800/50 backdrop-blur-sm p-6 flex items-center justify-between border-b border-gray-700/50">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="lg:hidden text-gray-400 hover:text-white"
+            className="lg:hidden text-gray-400 hover:text-white transition-colors"
           >
             <Menu size={24} />
           </button>
-          <div className="ml-auto mr-4 ">
+          <div className="ml-auto">
             <UserButton />
           </div>
         </header>
 
         {/* Dashboard Content */}
         <main className="flex-1 p-6 overflow-y-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            <div className="bg-gray-800 p-6 rounded-lg">
-              <h3 className="text-lg font-semibold mb-2">Total Users</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-700/50 hover:border-violet-500/50 transition-colors">
+              <h3 className="text-lg font-semibold mb-3 text-gray-300">Total Users</h3>
               {isLoading ? (
-                <Skeleton className="h-8 bg-gray-500 w-32" />
+                <Skeleton className="h-12 bg-gray-700 w-32" />
               ) : (
-                <p className="text-3xl font-bold">{totalUsers}</p>
+                <p className="text-4xl font-bold bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
+                  {totalUsers}
+                </p>
               )}
             </div>
-            <div className="bg-gray-800 p-6 rounded-lg">
-              <h3 className="text-lg font-semibold mb-2">CSV Data</h3>
-              <Button className="text-white hover:text-black hover:bg-white ">
+            <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-700/50 hover:border-violet-500/50 transition-colors">
+              <h3 className="text-lg font-semibold mb-3 text-gray-300">CSV Data</h3>
+              <Button className="bg-violet-600 hover:bg-violet-700 text-white transition-colors flex items-center gap-2">
+                <Download size={18} />
                 Download CSV
               </Button>
             </div>
           </div>
 
           {/* Table */}
-          <div className="bg-gray-800 rounded-lg overflow-hidden">
-            <div className="p-4 border-b border-gray-700">
-              <h2 className="text-xl font-semibold">Users List</h2>
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-gray-700/50">
+            <div className="p-6 border-b border-gray-700/50">
+              <h2 className="text-xl font-semibold text-gray-200">Users List</h2>
             </div>
             <div className="overflow-x-auto">
               {isLoading || tableData.length === 0 ? (
                 <table className="w-full">
-                  <thead className="bg-gray-700">
+                  <thead className="bg-gray-700/50">
                     <tr>
-                      <th className="px-4 lg:px-6 py-3 text-left">Name</th>
-                      <th className="px-4 lg:px-6 py-3 text-left">Email</th>
-                      <th className="px-4 lg:px-6 py-3 text-left hidden sm:table-cell">
-                        Date
-                      </th>
-                      <th className="px-4 lg:px-6 py-3 text-left">Status</th>
-                      <th className="px-4 lg:px-6 py-3 text-left">Actions</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Name</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Email</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300 hidden sm:table-cell">Date</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Status</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {[...Array(ITEMS_PER_PAGE)].map((_, index) => (
-                      <tr key={index} className="border-b border-gray-700">
-                        <td className="px-4 lg:px-6 py-4">
-                          <Skeleton className="h-6 w-full bg-gray-500" />
+                      <tr key={index} className="border-b border-gray-700/50">
+                        <td className="px-6 py-4">
+                          <Skeleton className="h-6 w-32 bg-gray-700" />
                         </td>
-                        <td className="px-4 lg:px-6 py-4">
-                          <Skeleton className="h-6 w-full bg-gray-500" />
+                        <td className="px-6 py-4">
+                          <Skeleton className="h-6 w-48 bg-gray-700" />
                         </td>
-                        <td className="px-4 lg:px-6 py-4 hidden sm:table-cell">
-                          <Skeleton className="h-6 w-full bg-gray-500" />
+                        <td className="px-6 py-4 hidden sm:table-cell">
+                          <Skeleton className="h-6 w-24 bg-gray-700" />
                         </td>
-                        <td className="px-4 lg:px-6 py-4">
-                          <Skeleton className="h-6 w-32 bg-gray-500" />
+                        <td className="px-6 py-4">
+                          <Skeleton className="h-6 w-24 bg-gray-700" />
+                        </td>
+                        <td className="px-6 py-4">
+                          <Skeleton className="h-6 w-8 bg-gray-700" />
                         </td>
                       </tr>
                     ))}
@@ -257,92 +263,78 @@ function AdminPage() {
                 </table>
               ) : (
                 <table className="w-full">
-                  <thead className="bg-gray-700">
+                  <thead className="bg-gray-700/50">
                     <tr>
-                      <th className="px-4 lg:px-6 py-3 text-left">Name</th>
-                      <th className="px-4 lg:px-6 py-3 text-left">Email</th>
-                      <th className="px-4 lg:px-6 py-3 text-left hidden sm:table-cell">
-                        Date
-                      </th>
-                      <th className="px-4 lg:px-6 py-3 text-left">Status</th>
-                      <th className="px-4 lg:px-6 py-3 text-left">Actions</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Name</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Email</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300 hidden sm:table-cell">Date</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Status</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {currentTableData.map((user) => (
                       <tr
                         key={user.id}
-                        className="border-b border-gray-700 hover:bg-gray-750"
+                        className="border-b border-gray-700/50 hover:bg-gray-700/25 transition-colors"
                       >
-                        <td className="px-4 lg:px-6 py-4">{user.name}</td>
-                        <td className="px-4 lg:px-6 py-4">{user.email}</td>
-                        <td className="px-4 lg:px-6 py-4 hidden sm:table-cell">
+                        <td className="px-6 py-4 text-gray-200">{user.name}</td>
+                        <td className="px-6 py-4 text-gray-200">{user.email}</td>
+                        <td className="px-6 py-4 hidden sm:table-cell text-gray-200">
                           {user.dateTaken.split("T")[0]}
                         </td>
-                        <td className="px-4 lg:px-6 py-4">
+                        <td className="px-6 py-4">
                           <select
                             value={user.status}
                             onChange={(e) =>
                               handleStatusChange(user.id, e.target.value)
                             }
-                            className={`px-2 py-1 rounded text-sm bg-transparent border ${
+                            className={`px-3 py-1.5 rounded-full text-sm bg-opacity-20 backdrop-blur-sm transition-all cursor-pointer outline-none ${
                               user.status === "Active"
-                                ? "border-green-500 text-green-500"
+                                ? "bg-green-500 text-green-400 border-green-500"
                                 : user.status === "Inactive"
-                                ? "border-red-500 text-red-500"
-                                : user.status === "Pending"
-                                ? "border-yellow-500 text-yellow-500"
-                                : "border-gray-500 text-gray-500"
-                            }`}
+                                ? "bg-red-500 text-red-400 border-red-500"
+                                : "bg-yellow-500 text-yellow-400 border-yellow-500"
+                            } border hover:bg-opacity-30`}
                           >
-                            <option value="Active" className="bg-gray-800">
-                              Active
-                            </option>
-                            <option value="Inactive" className="bg-gray-800">
-                              Inactive
-                            </option>
-                            <option value="Pending" className="bg-gray-800">
-                              Pending
-                            </option>
+                            <option value="Active" className="bg-gray-800">Active</option>
+                            <option value="Inactive" className="bg-gray-800">Inactive</option>
+                            <option value="Pending" className="bg-gray-800">Pending</option>
                           </select>
                         </td>
-
-                        <td className="px-4 lg:px-6 py-4">
+                        <td className="px-6 py-4">
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
                               <button
                                 onClick={() => setDeleteUserId(user.id)}
-                                className="text-red-500 hover:text-red-700"
+                                className="text-red-400 hover:text-red-300 transition-colors p-2 hover:bg-red-500/10 rounded-lg"
                               >
-                                <Trash size={20} />
+                                <Trash size={18} />
                               </button>
                             </AlertDialogTrigger>
-                            <AlertDialogContent>
+                            <AlertDialogContent className="bg-gray-800 border border-gray-700">
                               <AlertDialogHeader>
-                                <h3 className="text-lg font-semibold">
+                                <h3 className="text-lg font-semibold text-gray-200">
                                   Confirm Deletion
                                 </h3>
-                                <AlertDialogDescription>
+                                <AlertDialogDescription className="text-gray-400">
                                   Are you sure you want to delete this user?
                                   This action is irreversible.
                                 </AlertDialogDescription>
                               </AlertDialogHeader>
-                              <div className="flex justify-between mt-4">
+                              <div className="flex justify-end gap-4 mt-6">
                                 <AlertDialogCancel asChild>
                                   <Button
                                     variant="outline"
-                                    className="text-gray-700 hover:bg-gray-200"
+                                    className="border-gray-600 text-gray-900"
                                   >
                                     Cancel
                                   </Button>
                                 </AlertDialogCancel>
-                                <AlertDialogAction
-                                  asChild
-                                  onClick={handleDelete}
-                                >
+                                <AlertDialogAction asChild onClick={handleDelete}>
                                   <Button
                                     variant="destructive"
-                                    className="bg-red-600 hover:bg-red-700"
+                                    className="bg-red-500/80 hover:bg-red-500"
                                   >
                                     Delete
                                   </Button>
@@ -360,15 +352,16 @@ function AdminPage() {
           </div>
 
           {/* Pagination */}
-          <div className="mt-6 flex justify-between items-center">
+          <div className="mt-8 flex justify-between items-center">
             <Button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="bg-white text-black hover:bg-violet-500 hover:text-white"
+              className="bg-violet-600 hover:bg-violet-700 text-white transition-colors flex items-center gap-2"
             >
+              <ChevronLeft size={18} />
               Previous
             </Button>
-            <span className="text-sm  bg-zinc-300 text-black p-2 rounded-md">
+            <span className="px-4 py-2 rounded-lg bg-gray-800/50 border border-gray-700/50 text-gray-300">
               Page {currentPage} of {totalPages}
             </span>
             <Button
@@ -376,9 +369,10 @@ function AdminPage() {
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))
               }
               disabled={currentPage === totalPages}
-              className="bg-white text-black hover:bg-violet-500 hover:text-white"
+              className="bg-violet-600 hover:bg-violet-700 text-white transition-colors flex items-center gap-2"
             >
               Next
+              <ChevronRight size={18} />
             </Button>
           </div>
         </main>
