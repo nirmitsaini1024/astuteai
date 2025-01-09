@@ -1,11 +1,11 @@
 {
     "headers": [
       {
-        "source": "/api/:path*",
+        "source": "/api/:path*", 
         "headers": [
           {
-            "key": "Cache-Control",
-            "value": "s-maxage=30, stale-while-revalidate=0"
+            "key": "Cache-Control", 
+            "value": "no-store, max-age=0"
           }
         ]
       }
