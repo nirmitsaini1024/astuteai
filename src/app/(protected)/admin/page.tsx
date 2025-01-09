@@ -131,7 +131,9 @@ function AdminPage() {
                   alt="Stute.ai Logo"
                 />
               </div>
-              <span className="text-white font-semibold text-lg tracking-wide">stute.ai</span>
+              <span className="text-white font-semibold text-lg tracking-wide">
+                stute.ai
+              </span>
             </div>
           </Link>
           <button
@@ -148,7 +150,10 @@ function AdminPage() {
                 href="#"
                 className="flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-gray-700/50 hover:scale-105 group"
               >
-                <LayoutDashboard size={20} className="group-hover:text-violet-400" />
+                <LayoutDashboard
+                  size={20}
+                  className="group-hover:text-violet-400"
+                />
                 <span className="group-hover:text-violet-400">Dashboard</span>
               </a>
             </li>
@@ -177,7 +182,10 @@ function AdminPage() {
             href="#"
             className="flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-red-500/10 group"
           >
-            <LogOut size={20} className="text-red-400 group-hover:text-red-500" />
+            <LogOut
+              size={20}
+              className="text-red-400 group-hover:text-red-500"
+            />
             <span className="text-red-400 group-hover:text-red-500">
               <SignOutButton />
             </span>
@@ -204,7 +212,9 @@ function AdminPage() {
         <main className="flex-1 p-6 overflow-y-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-700/50 hover:border-violet-500/50 transition-colors">
-              <h3 className="text-lg font-semibold mb-3 text-gray-300">Total Users</h3>
+              <h3 className="text-lg font-semibold mb-3 text-gray-300">
+                Total Users
+              </h3>
               {isLoading ? (
                 <Skeleton className="h-12 bg-gray-700 w-32" />
               ) : (
@@ -214,7 +224,9 @@ function AdminPage() {
               )}
             </div>
             <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-700/50 hover:border-violet-500/50 transition-colors">
-              <h3 className="text-lg font-semibold mb-3 text-gray-300">CSV Data</h3>
+              <h3 className="text-lg font-semibold mb-3 text-gray-300">
+                CSV Data
+              </h3>
               <Button className="bg-violet-600 hover:bg-violet-700 text-white transition-colors flex items-center gap-2">
                 <Download size={18} />
                 Download CSV
@@ -225,18 +237,30 @@ function AdminPage() {
           {/* Table */}
           <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-gray-700/50">
             <div className="p-6 border-b border-gray-700/50">
-              <h2 className="text-xl font-semibold text-gray-200">Users List</h2>
+              <h2 className="text-xl font-semibold text-gray-200">
+                Users List
+              </h2>
             </div>
             <div className="overflow-x-auto">
               {isLoading || tableData.length === 0 ? (
                 <table className="w-full">
                   <thead className="bg-gray-700/50">
                     <tr>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Name</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Email</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300 hidden sm:table-cell">Date</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Status</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Actions</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                        Name
+                      </th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                        Email
+                      </th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300 hidden sm:table-cell">
+                        Date
+                      </th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                        Status
+                      </th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                        Actions
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -265,11 +289,21 @@ function AdminPage() {
                 <table className="w-full">
                   <thead className="bg-gray-700/50">
                     <tr>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Name</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Email</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300 hidden sm:table-cell">Date</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Status</th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">Actions</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                        Name
+                      </th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                        Email
+                      </th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300 hidden sm:table-cell">
+                        Date
+                      </th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                        Status
+                      </th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                        Actions
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -279,7 +313,9 @@ function AdminPage() {
                         className="border-b border-gray-700/50 hover:bg-gray-700/25 transition-colors"
                       >
                         <td className="px-6 py-4 text-gray-200">{user.name}</td>
-                        <td className="px-6 py-4 text-gray-200">{user.email}</td>
+                        <td className="px-6 py-4 text-gray-200">
+                          {user.email}
+                        </td>
                         <td className="px-6 py-4 hidden sm:table-cell text-gray-200">
                           {user.dateTaken.split("T")[0]}
                         </td>
@@ -297,9 +333,15 @@ function AdminPage() {
                                 : "bg-yellow-500 text-yellow-400 border-yellow-500"
                             } border hover:bg-opacity-30`}
                           >
-                            <option value="Active" className="bg-gray-800">Active</option>
-                            <option value="Inactive" className="bg-gray-800">Inactive</option>
-                            <option value="Pending" className="bg-gray-800">Pending</option>
+                            <option value="Active" className="bg-gray-800">
+                              Active
+                            </option>
+                            <option value="Inactive" className="bg-gray-800">
+                              Inactive
+                            </option>
+                            <option value="Pending" className="bg-gray-800">
+                              Pending
+                            </option>
                           </select>
                         </td>
                         <td className="px-6 py-4">
@@ -322,19 +364,22 @@ function AdminPage() {
                                   This action is irreversible.
                                 </AlertDialogDescription>
                               </AlertDialogHeader>
-                              <div className="flex justify-end gap-4 mt-6">
+                              <div className="flex flex-col sm:flex-row justify-end sm:gap-4 gap-2 mt-6">
                                 <AlertDialogCancel asChild>
                                   <Button
                                     variant="outline"
-                                    className="border-gray-600 text-gray-900"
+                                    className="border-gray-600 text-gray-900 w-full sm:w-auto"
                                   >
                                     Cancel
                                   </Button>
                                 </AlertDialogCancel>
-                                <AlertDialogAction asChild onClick={handleDelete}>
+                                <AlertDialogAction
+                                  asChild
+                                  onClick={handleDelete}
+                                >
                                   <Button
                                     variant="destructive"
-                                    className="bg-red-500/80 hover:bg-red-500"
+                                    className="bg-red-500/80 hover:bg-red-500 w-full sm:w-auto"
                                   >
                                     Delete
                                   </Button>
