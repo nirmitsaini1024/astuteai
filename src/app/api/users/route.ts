@@ -15,9 +15,13 @@ export async function GET(req: NextRequest) {
       },
     });
 
-    return NextResponse.json(users);
+    const response = NextResponse.json(users);
+    response.headers.set("Cache-Control", "no-store"); // Disable caching
+    return response;
   } catch (error) {
     console.error("Error fetching users:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    const response = NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+    response.headers.set("Cache-Control", "no-store"); // Ensure no caching on error as well
+    return response;
   }
 }

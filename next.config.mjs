@@ -32,6 +32,20 @@ const nextConfig = {
   images: {
     domains: ["assets.aceternity.com", "images.unsplash.com", "plus.unsplash.com"], // Add your custom domains
   },
+  async headers() {
+    return [
+      {
+        // Match API routes (e.g., /api/*)
+        source: "/api/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "s-maxage=60, stale-while-revalidate=30", // Cache at the edge for 60 seconds, allow stale responses for 30 seconds
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
