@@ -152,7 +152,7 @@ function App() {
           </button>
 
           {/* Right-aligned user button */}
-          <div className="ml-auto mr-4">
+          <div className="ml-auto mr-4 ">
             <UserButton />
           </div>
         </header>
