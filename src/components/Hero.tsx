@@ -27,8 +27,8 @@ export const Hero = () => {
         <div className="flex justify-center mt-8">
           <div className="inline-flex relative">
             <h1 className="text-7xl sm:text-9xl font-bold tracking-tighter text-center inline-flex">
-              Power your <br />
-              presence{" "}
+              Lead with  <br />your Brand
+              {" "}
             </h1>
             <motion.div
               className="absolute right-[620px] top-[108px] hidden sm:inline"
@@ -45,7 +45,7 @@ export const Hero = () => {
               />
             </motion.div>
             <motion.div
-              className="absolute left-[630px] top-[100px] hidden sm:inline"
+              className="absolute left-[650px] top-[100px] hidden sm:inline"
               drag
               dragSnapToOrigin
             >
