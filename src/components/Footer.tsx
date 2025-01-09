@@ -36,25 +36,25 @@ const Footer = () => {
               </h3>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="/product"
+                href="/product/shopfrontai"
               >
                 ShopFrontAI
               </Link>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="/contact"
+                href="/product/bloggerai"
               >
                 Blogger AI
               </Link>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="/blog"
+                href="/socialspark"
               >
                 Social Spark
               </Link>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="/blog"
+                href="/insightq"
               >
                 InsightQ
               </Link>

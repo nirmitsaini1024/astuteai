@@ -1,7 +1,7 @@
-import ProductAddresses from "@/components/sections/ProductAddresses";
-import Benefits from "@/components/sections/Benefits";
-import Resources from "@/components/sections/Resources";
-import Hero from "@/components/sections/Hero";
+import ProductAddresses from "@/components/shopfrontai/ProductAddresses";
+import Benefits from "@/components/shopfrontai/Benefits";
+import Resources from "@/components/shopfrontai/Resources";
+import Hero from "@/components/shopfrontai/Hero";
 
 export default function Home() {
   return (

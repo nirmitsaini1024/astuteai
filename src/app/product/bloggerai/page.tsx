@@ -1,7 +1,7 @@
-import ProductAddresses from "@/components/sections/ProductAddresses";
-import Benefits from "@/components/sections/Benefits";
-import Resources from "@/components/sections/Resources";
-import Hero from "@/components/sections/Hero";
+import ProductAddresses from "@/components/bloggerai/ProductAddresses";
+import Benefits from "@/components/bloggerai/Benefits";
+import Resources from "@/components/bloggerai/Resources";
+import Hero from "@/components/bloggerai/Hero";
 
 export default function Home() {
   return (

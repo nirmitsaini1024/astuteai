@@ -7,7 +7,6 @@ import Footer from "@/components/Footer";
 export default function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  // Check if the current route is /admin
   const isAdminRoute = pathname === "/admin";
 
   return (

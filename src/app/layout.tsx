@@ -3,7 +3,7 @@ import { DM_Sans } from "next/font/google";
 import clsx from "clsx";
 import "./globals.css";
 import ConditionalLayout from "@/components/ConditionalLayout";
-import { Analytics } from "@vercel/analytics/next";
+// import { Analytics } from "@vercel/analytics/next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
 
@@ -34,7 +34,7 @@ export default function RootLayout({
         <body className={clsx(dmSans.className, "antialiased")}>
           <ConditionalLayout>{children}</ConditionalLayout>
           <Toaster />
-          <Analytics mode="production" />
+          {/* <Analytics mode="production" /> */}
         </body>
       </html>
     </ClerkProvider>

@@ -1,7 +1,7 @@
-import ProductAddresses from "@/components/sections/ProductAddresses";
-import Benefits from "@/components/sections/Benefits";
-import Resources from "@/components/sections/Resources";
-import Hero from "@/components/sections/Hero";
+import ProductAddresses from "@/components/socialspark/ProductAddresses";
+import Benefits from "@/components/socialspark/Benefits";
+import Resources from "@/components/socialspark/Resources";
+import Hero from "@/components/socialspark/Hero";
 
 export default function Home() {
   return (
