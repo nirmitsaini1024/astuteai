@@ -1,5 +1,3 @@
-"use server"
-
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
@@ -17,15 +15,39 @@ export async function GET(req: NextRequest) {
       },
     });
 
-    const response = NextResponse.json(users);
-    // Set Cache-Control header to prevent caching at Vercel edge
-    response.headers.set("Cache-Control", "no-store, max-age=0, stale-while-revalidate=0");
-    return response;
+    return NextResponse.json(users);
   } catch (error) {
     console.error("Error fetching users:", error);
-    const response = NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
-    // Ensure no caching on error as well
-    response.headers.set("Cache-Control", "no-store, max-age=0, stale-while-revalidate=0");
-    return response;
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  }
+}
+
+export async function DELETE(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
+
+    if (!id) {
+      return NextResponse.json({ error: "User ID is required" }, { status: 400 });
+    }
+
+    // Check if the user exists before attempting to delete
+    const user = await prisma.user.findUnique({
+      where: { id: parseInt(id) },
+    });
+
+    if (!user) {
+      return NextResponse.json({ error: "User not found" }, { status: 404 });
+    }
+
+    // Delete the user
+    await prisma.user.delete({
+      where: { id: parseInt(id) },
+    });
+
+    return NextResponse.json({ message: "User deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

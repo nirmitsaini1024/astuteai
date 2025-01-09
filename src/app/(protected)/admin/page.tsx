@@ -9,24 +9,40 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
-} from "lucide-react";
+  Trash,
+} from "lucide-react"; // Add Trash icon for delete button
 import Image from "next/image";
 import Logooo from "@/assets/logooo.png";
 import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import { SignOutButton } from "@clerk/nextjs";
-import { Skeleton } from "@/components/ui/skeleton"; // Assuming the skeleton component is imported from 'ui/skeleton'
+import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { useToast } from "@/hooks/use-toast";
 
 // Fetch data from Prisma
 const ITEMS_PER_PAGE = 8;
 
-function App() {
+function AdminPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [tableData, setTableData] = useState<any[]>([]); // Ensure it's an empty array by default
+  const [tableData, setTableData] = useState<any[]>([]);
   const [totalUsers, setTotalUsers] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [deletingUserId, setDeletingUserId] = useState<number | null>(null);
+
+  const { toast } = useToast();
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -34,11 +50,11 @@ function App() {
         const response = await fetch("/api/users");
         const data = await response.json();
         setTableData(data);
-        setTotalUsers(data.length); // Assuming 'data' contains the list of users
+        setTotalUsers(data.length);
       } catch (error) {
         console.error("Error fetching users:", error);
       } finally {
-        setIsLoading(false); // Stop loading once the data is fetched
+        setIsLoading(false);
       }
     };
 
@@ -51,7 +67,7 @@ function App() {
         (currentPage - 1) * ITEMS_PER_PAGE,
         currentPage * ITEMS_PER_PAGE
       )
-    : []; // Safe slicing if tableData is empty
+    : [];
 
   const handleStatusChange = (id: number, newStatus: string) => {
     setTableData(
@@ -61,16 +77,49 @@ function App() {
     );
   };
 
+  // Handle Delete User
+  const handleDelete = async () => {
+    if (deletingUserId !== null) {
+      // Close the dialog first
+      setDeletingUserId(null);
+
+      // Run the deletion logic in the background
+      try {
+        const response = await fetch(`/api/users?id=${deletingUserId}`, {
+          method: "DELETE",
+        });
+
+        if (response.ok) {
+          // Update UI after deletion
+          setTableData((prevData) =>
+            prevData.filter((user) => user.id !== deletingUserId)
+          );
+          setTotalUsers((prevCount) => prevCount - 1);
+          toast({
+            title: "User deleted",
+            description: "The user is successfully deleted.",
+          });
+        } else {
+          console.error("Failed to delete user:", await response.text());
+          toast({
+            title: "Error deleting user",
+            description: "An error occurred while deleting the user.",
+            variant: "destructive",
+          });
+        }
+      } catch (error) {
+        console.error("Error deleting user:", error);
+        toast({
+          title: "Error",
+          description: "Something went wrong, please try again.",
+          variant: "destructive",
+        });
+      }
+    }
+  };
+
   return (
     <div className="h-screen bg-gray-900 text-gray-100 flex overflow-hidden">
-      {/* Overlay for mobile */}
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 lg:hidden z-40"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
-
       {/* Sidebar */}
       <div
         className={`fixed lg:sticky top-0 left-0 z-50 w-64 bg-gray-800 transform transition-transform duration-300 ease-in-out h-screen ${
@@ -143,15 +192,12 @@ function App() {
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
         {/* Header */}
         <header className="bg-gray-800 p-4 flex items-center justify-between">
-          {/* Sidebar toggle button for mobile */}
           <button
             onClick={() => setSidebarOpen(true)}
             className="lg:hidden text-gray-400 hover:text-white"
           >
             <Menu size={24} />
           </button>
-
-          {/* Right-aligned user button */}
           <div className="ml-auto mr-4 ">
             <UserButton />
           </div>
@@ -160,7 +206,6 @@ function App() {
         {/* Dashboard Content */}
         <main className="flex-1 p-6 overflow-y-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            {/* Stats Cards */}
             <div className="bg-gray-800 p-6 rounded-lg">
               <h3 className="text-lg font-semibold mb-2">Total Users</h3>
               {isLoading ? (
@@ -184,7 +229,6 @@ function App() {
             </div>
             <div className="overflow-x-auto">
               {isLoading || tableData.length === 0 ? (
-                // Skeleton loading for table rows
                 <table className="w-full">
                   <thead className="bg-gray-700">
                     <tr>
@@ -194,6 +238,7 @@ function App() {
                         Date
                       </th>
                       <th className="px-4 lg:px-6 py-3 text-left">Status</th>
+                      <th className="px-4 lg:px-6 py-3 text-left">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -225,6 +270,7 @@ function App() {
                         Date
                       </th>
                       <th className="px-4 lg:px-6 py-3 text-left">Status</th>
+                      <th className="px-4 lg:px-6 py-3 text-left">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -236,58 +282,48 @@ function App() {
                         <td className="px-4 lg:px-6 py-4">{user.name}</td>
                         <td className="px-4 lg:px-6 py-4">{user.email}</td>
                         <td className="px-4 lg:px-6 py-4 hidden sm:table-cell">
-                          {user.dateTaken.split("T")[0]}
+                          {user.createdAt}
                         </td>
+                        <td className="px-4 lg:px-6 py-4">{user.status}</td>
                         <td className="px-4 lg:px-6 py-4">
-                          <select
-                            value={user.status}
-                            onChange={(e) =>
-                              handleStatusChange(user.id, e.target.value)
-                            }
-                            className={`px-2 py-1 rounded text-sm bg-transparent border ${
-                              user.status === "Active"
-                                ? "border-green-500 text-green-500"
-                                : user.status === "Inactive"
-                                ? "border-red-500 text-red-500"
-                                : "border-yellow-500 text-yellow-500"
-                            }`}
-                          >
-                            <option value="Active" className="bg-gray-800">
-                              Active
-                            </option>
-                            <option value="Inactive" className="bg-gray-800">
-                              Inactive
-                            </option>
-                            <option value="Pending" className="bg-gray-800">
-                              Pending
-                            </option>
-                          </select>
+                          <AlertDialog open={deletingUserId === user.id}>
+                            <AlertDialogTrigger asChild>
+                              <button
+                                onClick={() => setDeletingUserId(user.id)}
+                                className="text-red-500 hover:text-red-700"
+                              >
+                                <Trash size={20} />
+                              </button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>
+                                  Are you sure?
+                                </AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  This action cannot be undone. This will permanently delete this user and their data.
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel
+                                  onClick={() => setDeletingUserId(null)} // Close the dialog
+                                >
+                                  Cancel
+                                </AlertDialogCancel>
+                                <AlertDialogAction
+                                  onClick={handleDelete} // Delete user after closing dialog
+                                >
+                                  Confirm
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               )}
-            </div>
-            {/* Pagination */}
-            <div className="p-4 border-t border-gray-700 flex justify-between items-center">
-              <button
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                className="px-4 py-2 bg-gray-700 text-white rounded-lg"
-              >
-                <ChevronLeft />
-              </button>
-              <span className="text-white">
-                Page {currentPage} of {totalPages}
-              </span>
-              <button
-                onClick={() =>
-                  setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                }
-                className="px-4 py-2 bg-gray-700 text-white rounded-lg"
-              >
-                <ChevronRight />
-              </button>
             </div>
           </div>
         </main>
@@ -296,4 +332,4 @@ function App() {
   );
 }
 
-export default App;
+export default AdminPage;
