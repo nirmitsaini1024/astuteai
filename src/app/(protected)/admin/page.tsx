@@ -10,7 +10,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Trash,
-} from "lucide-react"; // Add Trash icon for delete button
+} from "lucide-react";
 import Image from "next/image";
 import Logooo from "@/assets/logooo.png";
 import Link from "next/link";
@@ -20,16 +20,14 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import {
   AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogDescription,
   AlertDialogAction,
   AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast"; // Updated import for custom useToast hook
 
 // Fetch data from Prisma
 const ITEMS_PER_PAGE = 8;
@@ -40,9 +38,10 @@ function AdminPage() {
   const [tableData, setTableData] = useState<any[]>([]);
   const [totalUsers, setTotalUsers] = useState<number>(0);
   const [isLoading, setIsLoading] = useState(true);
-  const [deletingUserId, setDeletingUserId] = useState<number | null>(null);
+  const [deleteUserId, setDeleteUserId] = useState<number | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
-  const { toast } = useToast();
+  const { toast } = useToast(); // Destructure toast from the custom hook
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -79,43 +78,39 @@ function AdminPage() {
 
   // Handle Delete User
   const handleDelete = async () => {
-    if (deletingUserId !== null) {
-      // Close the dialog first
-      setDeletingUserId(null);
-
-      // Run the deletion logic in the background
+    if (deleteUserId !== null) {
       try {
-        const response = await fetch(`/api/users?id=${deletingUserId}`, {
+        const response = await fetch(`/api/users?id=${deleteUserId}`, {
           method: "DELETE",
         });
 
         if (response.ok) {
-          // Update UI after deletion
           setTableData((prevData) =>
-            prevData.filter((user) => user.id !== deletingUserId)
+            prevData.filter((user) => user.id !== deleteUserId)
           );
           setTotalUsers((prevCount) => prevCount - 1);
           toast({
-            title: "User deleted",
-            description: "The user is successfully deleted.",
+            title: "User deleted successfully.",
+            description: "The user has been removed from the list.",
           });
         } else {
           console.error("Failed to delete user:", await response.text());
           toast({
-            title: "Error deleting user",
-            description: "An error occurred while deleting the user.",
+            title: "Failed to delete user.",
+            description: "There was an error deleting the user.",
             variant: "destructive",
           });
         }
       } catch (error) {
         console.error("Error deleting user:", error);
         toast({
-          title: "Error",
-          description: "Something went wrong, please try again.",
+          title: "Error deleting user.",
+          description: "An unexpected error occurred.",
           variant: "destructive",
         });
       }
     }
+    setIsDialogOpen(false);
   };
 
   return (
@@ -282,14 +277,35 @@ function AdminPage() {
                         <td className="px-4 lg:px-6 py-4">{user.name}</td>
                         <td className="px-4 lg:px-6 py-4">{user.email}</td>
                         <td className="px-4 lg:px-6 py-4 hidden sm:table-cell">
-                          {user.createdAt}
+                          {user.dateTaken.split("T")[0]}
                         </td>
-                        <td className="px-4 lg:px-6 py-4">{user.status}</td>
                         <td className="px-4 lg:px-6 py-4">
-                          <AlertDialog open={deletingUserId === user.id}>
+                          <select
+                            value={user.status}
+                            onChange={(e) =>
+                              handleStatusChange(user.id, e.target.value)
+                            }
+                            className={`px-2 py-1 rounded text-sm bg-transparent border ${
+                              user.status === "Active"
+                                ? "border-green-500 text-green-500"
+                                : user.status === "Inactive"
+                                ? "border-red-500 text-red-500"
+                                : "border-yellow-500 text-yellow-500"
+                            }`}
+                          >
+                            <option value="Active" className="bg-gray-800">
+                              Active
+                            </option>
+                            <option value="Inactive" className="bg-gray-800">
+                              Inactive
+                            </option>
+                          </select>
+                        </td>
+                        <td className="px-4 lg:px-6 py-4">
+                          <AlertDialog>
                             <AlertDialogTrigger asChild>
                               <button
-                                onClick={() => setDeletingUserId(user.id)}
+                                onClick={() => setDeleteUserId(user.id)}
                                 className="text-red-500 hover:text-red-700"
                               >
                                 <Trash size={20} />
@@ -297,25 +313,35 @@ function AdminPage() {
                             </AlertDialogTrigger>
                             <AlertDialogContent>
                               <AlertDialogHeader>
-                                <AlertDialogTitle>
-                                  Are you sure?
-                                </AlertDialogTitle>
+                                <h3 className="text-lg font-semibold">
+                                  Confirm Deletion
+                                </h3>
                                 <AlertDialogDescription>
-                                  This action cannot be undone. This will permanently delete this user and their data.
+                                  Are you sure you want to delete this user?
+                                  This action is irreversible.
                                 </AlertDialogDescription>
                               </AlertDialogHeader>
-                              <AlertDialogFooter>
-                                <AlertDialogCancel
-                                  onClick={() => setDeletingUserId(null)} // Close the dialog
-                                >
-                                  Cancel
+                              <div className="flex justify-between mt-4">
+                                <AlertDialogCancel asChild>
+                                  <Button
+                                    variant="outline"
+                                    className="text-gray-700 hover:bg-gray-200"
+                                  >
+                                    Cancel
+                                  </Button>
                                 </AlertDialogCancel>
                                 <AlertDialogAction
-                                  onClick={handleDelete} // Delete user after closing dialog
+                                  asChild
+                                  onClick={handleDelete}
                                 >
-                                  Confirm
+                                  <Button
+                                    variant="destructive"
+                                    className="bg-red-600 hover:bg-red-700"
+                                  >
+                                    Delete
+                                  </Button>
                                 </AlertDialogAction>
-                              </AlertDialogFooter>
+                              </div>
                             </AlertDialogContent>
                           </AlertDialog>
                         </td>
@@ -325,6 +351,27 @@ function AdminPage() {
                 </table>
               )}
             </div>
+          </div>
+
+          {/* Pagination */}
+          <div className="mt-6 flex justify-between items-center">
+            <Button
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+              disabled={currentPage === 1}
+            >
+              Previous
+            </Button>
+            <span className="text-sm text-gray-400">
+              Page {currentPage} of {totalPages}
+            </span>
+            <Button
+              onClick={() =>
+                setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+              }
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </Button>
           </div>
         </main>
       </div>
