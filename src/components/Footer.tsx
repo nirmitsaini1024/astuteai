@@ -48,13 +48,13 @@ const Footer = () => {
               </Link>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="/socialspark"
+                href="/product/socialspark"
               >
                 Social Spark
               </Link>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="/insightq"
+                href="/product/insightq"
               >
                 InsightQ
               </Link>
