@@ -364,10 +364,11 @@ function AdminPage() {
             <Button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
+              className="bg-white text-black hover:bg-violet-500 hover:text-white"
             >
               Previous
             </Button>
-            <span className="text-sm text-gray-400">
+            <span className="text-sm  bg-zinc-300 text-black p-2 rounded-md">
               Page {currentPage} of {totalPages}
             </span>
             <Button
@@ -375,6 +376,7 @@ function AdminPage() {
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))
               }
               disabled={currentPage === totalPages}
+              className="bg-white text-black hover:bg-violet-500 hover:text-white"
             >
               Next
             </Button>
