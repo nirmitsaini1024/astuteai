@@ -290,7 +290,9 @@ function AdminPage() {
                                 ? "border-green-500 text-green-500"
                                 : user.status === "Inactive"
                                 ? "border-red-500 text-red-500"
-                                : "border-yellow-500 text-yellow-500"
+                                : user.status === "Pending"
+                                ? "border-yellow-500 text-yellow-500"
+                                : "border-gray-500 text-gray-500"
                             }`}
                           >
                             <option value="Active" className="bg-gray-800">
@@ -299,8 +301,12 @@ function AdminPage() {
                             <option value="Inactive" className="bg-gray-800">
                               Inactive
                             </option>
+                            <option value="Pending" className="bg-gray-800">
+                              Pending
+                            </option>
                           </select>
                         </td>
+
                         <td className="px-4 lg:px-6 py-4">
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
