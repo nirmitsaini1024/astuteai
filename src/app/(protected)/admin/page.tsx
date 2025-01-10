@@ -478,7 +478,7 @@ function AdminPage() {
                                 <AlertDialogCancel asChild>
                                   <Button
                                     variant="outline"
-                                    className="border-gray-600 text-gray-300 hover:text-gray-100 hover:bg-gray-700/50 w-full sm:w-auto"
+                                    className="border-gray-60 text-gray-600 hover:text-gray-900 w-full sm:w-auto"
                                   >
                                     Cancel
                                   </Button>
