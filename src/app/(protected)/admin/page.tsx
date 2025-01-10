@@ -45,10 +45,10 @@ function AdminPage() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [sortConfig, setSortConfig] = useState<{
     key: string;
-    direction: 'asc' | 'desc' | null;
+    direction: "asc" | "desc" | null;
   }>({
-    key: '',
-    direction: null
+    key: "",
+    direction: null,
   });
 
   const { toast } = useToast();
@@ -71,12 +71,12 @@ function AdminPage() {
   }, []);
 
   const handleSort = (key: string) => {
-    let direction: 'asc' | 'desc' | null = 'asc';
-    
+    let direction: "asc" | "desc" | null = "asc";
+
     if (sortConfig.key === key) {
-      if (sortConfig.direction === 'asc') {
-        direction = 'desc';
-      } else if (sortConfig.direction === 'desc') {
+      if (sortConfig.direction === "asc") {
+        direction = "desc";
+      } else if (sortConfig.direction === "desc") {
         direction = null;
       }
     }
@@ -88,26 +88,31 @@ function AdminPage() {
     if (!sortConfig.key || !sortConfig.direction) return data;
 
     return [...data].sort((a, b) => {
-      if (sortConfig.key === 'dateTaken') {
+      if (sortConfig.key === "dateTaken") {
         const dateA = new Date(a[sortConfig.key]).getTime();
         const dateB = new Date(b[sortConfig.key]).getTime();
-        return sortConfig.direction === 'asc' ? dateA - dateB : dateB - dateA;
+        return sortConfig.direction === "asc" ? dateA - dateB : dateB - dateA;
       }
-      
+
       if (a[sortConfig.key] < b[sortConfig.key]) {
-        return sortConfig.direction === 'asc' ? -1 : 1;
+        return sortConfig.direction === "asc" ? -1 : 1;
       }
       if (a[sortConfig.key] > b[sortConfig.key]) {
-        return sortConfig.direction === 'asc' ? 1 : -1;
+        return sortConfig.direction === "asc" ? 1 : -1;
       }
       return 0;
     });
   };
 
   const getSortIcon = (key: string) => {
-    if (sortConfig.key !== key) return <ArrowUpDown size={16} className="ml-2 opacity-50" />;
-    if (sortConfig.direction === 'asc') return <ArrowUpDown size={16} className="ml-2 text-violet-400" />;
-    if (sortConfig.direction === 'desc') return <ArrowUpDown size={16} className="ml-2 text-violet-400 rotate-180" />;
+    if (sortConfig.key !== key)
+      return <ArrowUpDown size={16} className="ml-2 opacity-50" />;
+    if (sortConfig.direction === "asc")
+      return <ArrowUpDown size={16} className="ml-2 text-violet-400" />;
+    if (sortConfig.direction === "desc")
+      return (
+        <ArrowUpDown size={16} className="ml-2 text-violet-400 rotate-180" />
+      );
     return <ArrowUpDown size={16} className="ml-2 opacity-50" />;
   };
 
@@ -217,8 +222,8 @@ function AdminPage() {
                   href="#"
                   className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 bg-gray-700/30 text-violet-400 hover:bg-gray-700/50 group"
                 >
-                  <LayoutDashboard size={20} />
-                  <span>Overview</span>
+                  <Users size={20} />
+                  <span>Users</span>
                 </a>
               </li>
               <li>
@@ -226,8 +231,8 @@ function AdminPage() {
                   href="#"
                   className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-700/30 group"
                 >
-                  <Users size={20} />
-                  <span>Users</span>
+                  <LayoutDashboard size={20} />
+                  <span>Overview</span>
                 </a>
               </li>
               <li>
@@ -256,7 +261,10 @@ function AdminPage() {
             href="#"
             className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-red-500/10 group"
           >
-            <LogOut size={20} className="text-red-400 group-hover:text-red-500" />
+            <LogOut
+              size={20}
+              className="text-red-400 group-hover:text-red-500"
+            />
             <span className="text-red-400 group-hover:text-red-500">
               <SignOutButton />
             </span>
@@ -278,10 +286,6 @@ function AdminPage() {
             <h1 className="text-2xl font-semibold text-gray-100">Dashboard</h1>
           </div>
           <div className="flex items-center gap-4">
-            <Button className="bg-violet-600 hover:bg-violet-700 text-white gap-2">
-              <UserPlus size={18} />
-              Add User
-            </Button>
             <div className="w-px h-8 bg-gray-700/30" />
             <UserButton />
           </div>
@@ -292,7 +296,9 @@ function AdminPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
             <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 group">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-lg font-medium text-gray-300">Total Users</h3>
+                <h3 className="text-lg font-medium text-gray-300">
+                  Total Users
+                </h3>
                 <span className="p-2 rounded-lg bg-violet-500/10 text-violet-400 group-hover:bg-violet-500/20 transition-colors">
                   <Users size={20} />
                 </span>
@@ -307,7 +313,9 @@ function AdminPage() {
             </div>
             <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 group">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-lg font-medium text-gray-300">Export Data</h3>
+                <h3 className="text-lg font-medium text-gray-300">
+                  Export Data
+                </h3>
                 <span className="p-2 rounded-lg bg-violet-500/10 text-violet-400 group-hover:bg-violet-500/20 transition-colors">
                   <Download size={20} />
                 </span>
@@ -322,7 +330,9 @@ function AdminPage() {
           {/* Table */}
           <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-gray-700/30">
             <div className="px-8 py-6 border-b border-gray-700/30">
-              <h2 className="text-xl font-semibold text-gray-200">Users List</h2>
+              <h2 className="text-xl font-semibold text-gray-200">
+                Users List
+              </h2>
             </div>
             <div className="overflow-x-auto">
               {isLoading || tableData.length === 0 ? (
@@ -378,22 +388,22 @@ function AdminPage() {
                       <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
                         Email
                       </th>
-                      <th 
+                      <th
                         className="px-8 py-4 text-left text-sm font-semibold text-gray-400 hidden sm:table-cell cursor-pointer group"
-                        onClick={() => handleSort('dateTaken')}
+                        onClick={() => handleSort("dateTaken")}
                       >
                         <div className="flex items-center">
                           Date
-                          {getSortIcon('dateTaken')}
+                          {getSortIcon("dateTaken")}
                         </div>
                       </th>
-                      <th 
+                      <th
                         className="px-8 py-4 text-left text-sm font-semibold text-gray-400 cursor-pointer group"
-                        onClick={() => handleSort('status')}
+                        onClick={() => handleSort("status")}
                       >
                         <div className="flex items-center">
                           Status
-                          {getSortIcon('status')}
+                          {getSortIcon("status")}
                         </div>
                       </th>
                       <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
@@ -417,7 +427,9 @@ function AdminPage() {
                             </span>
                           </div>
                         </td>
-                        <td className="px-8 py-4 text-gray-300">{user.email}</td>
+                        <td className="px-8 py-4 text-gray-300">
+                          {user.email}
+                        </td>
                         <td className="px-8 py-4 hidden sm:table-cell text-gray-400">
                           {new Date(user.dateTaken).toLocaleDateString()}
                         </td>
@@ -458,8 +470,8 @@ function AdminPage() {
                                   Confirm Deletion
                                 </h3>
                                 <AlertDialogDescription className="text-gray-400">
-                                  Are you sure you want to delete this user? This
-                                  action cannot be undone.
+                                  Are you sure you want to delete this user?
+                                  This action cannot be undone.
                                 </AlertDialogDescription>
                               </AlertDialogHeader>
                               <div className="flex flex-col sm:flex-row justify-end sm:gap-4 gap-2 mt-6">
@@ -471,7 +483,10 @@ function AdminPage() {
                                     Cancel
                                   </Button>
                                 </AlertDialogCancel>
-                                <AlertDialogAction asChild onClick={handleDelete}>
+                                <AlertDialogAction
+                                  asChild
+                                  onClick={handleDelete}
+                                >
                                   <Button
                                     variant="destructive"
                                     className="bg-red-500/80 hover:bg-red-500 w-full sm:w-auto"
