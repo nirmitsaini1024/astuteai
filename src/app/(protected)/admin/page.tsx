@@ -188,7 +188,7 @@ function AdminPage() {
       >
         <div className="flex items-center justify-between p-6 border-b border-gray-700/30">
           <Link href={"/"}>
-            <div className="flex items-center space-x-3 pl-2">
+            <div className="flex items-center space-x-1 pl-6">
               <div className="relative">
                 <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur opacity-20"></div>
                 <Image
