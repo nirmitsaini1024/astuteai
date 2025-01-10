@@ -13,6 +13,7 @@ import {
   Download,
   Activity,
   UserPlus,
+  ArrowUpDown,
 } from "lucide-react";
 import Image from "next/image";
 import Logooo from "@/assets/logooo.png";
@@ -42,6 +43,13 @@ function AdminPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [deleteUserId, setDeleteUserId] = useState<number | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [sortConfig, setSortConfig] = useState<{
+    key: string;
+    direction: 'asc' | 'desc' | null;
+  }>({
+    key: '',
+    direction: null
+  });
 
   const { toast } = useToast();
 
@@ -62,9 +70,51 @@ function AdminPage() {
     fetchUsers();
   }, []);
 
+  const handleSort = (key: string) => {
+    let direction: 'asc' | 'desc' | null = 'asc';
+    
+    if (sortConfig.key === key) {
+      if (sortConfig.direction === 'asc') {
+        direction = 'desc';
+      } else if (sortConfig.direction === 'desc') {
+        direction = null;
+      }
+    }
+
+    setSortConfig({ key, direction });
+  };
+
+  const getSortedData = (data: any[]) => {
+    if (!sortConfig.key || !sortConfig.direction) return data;
+
+    return [...data].sort((a, b) => {
+      if (sortConfig.key === 'dateTaken') {
+        const dateA = new Date(a[sortConfig.key]).getTime();
+        const dateB = new Date(b[sortConfig.key]).getTime();
+        return sortConfig.direction === 'asc' ? dateA - dateB : dateB - dateA;
+      }
+      
+      if (a[sortConfig.key] < b[sortConfig.key]) {
+        return sortConfig.direction === 'asc' ? -1 : 1;
+      }
+      if (a[sortConfig.key] > b[sortConfig.key]) {
+        return sortConfig.direction === 'asc' ? 1 : -1;
+      }
+      return 0;
+    });
+  };
+
+  const getSortIcon = (key: string) => {
+    if (sortConfig.key !== key) return <ArrowUpDown size={16} className="ml-2 opacity-50" />;
+    if (sortConfig.direction === 'asc') return <ArrowUpDown size={16} className="ml-2 text-violet-400" />;
+    if (sortConfig.direction === 'desc') return <ArrowUpDown size={16} className="ml-2 text-violet-400 rotate-180" />;
+    return <ArrowUpDown size={16} className="ml-2 opacity-50" />;
+  };
+
   const totalPages = Math.ceil(totalUsers / ITEMS_PER_PAGE);
+  const sortedData = getSortedData(tableData);
   const currentTableData = totalUsers
-    ? tableData.slice(
+    ? sortedData.slice(
         (currentPage - 1) * ITEMS_PER_PAGE,
         currentPage * ITEMS_PER_PAGE
       )
@@ -133,9 +183,9 @@ function AdminPage() {
       >
         <div className="flex items-center justify-between p-6 border-b border-gray-700/30">
           <Link href={"/"}>
-            <div className="flex items-center space-x-1 pl-6">
+            <div className="flex items-center space-x-3 pl-2">
               <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur opacity-15"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur opacity-20"></div>
                 <Image
                   src={Logooo}
                   height={42}
@@ -228,7 +278,10 @@ function AdminPage() {
             <h1 className="text-2xl font-semibold text-gray-100">Dashboard</h1>
           </div>
           <div className="flex items-center gap-4">
-            
+            <Button className="bg-violet-600 hover:bg-violet-700 text-white gap-2">
+              <UserPlus size={18} />
+              Add User
+            </Button>
             <div className="w-px h-8 bg-gray-700/30" />
             <UserButton />
           </div>
@@ -325,11 +378,23 @@ function AdminPage() {
                       <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
                         Email
                       </th>
-                      <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400 hidden sm:table-cell">
-                        Date
+                      <th 
+                        className="px-8 py-4 text-left text-sm font-semibold text-gray-400 hidden sm:table-cell cursor-pointer group"
+                        onClick={() => handleSort('dateTaken')}
+                      >
+                        <div className="flex items-center">
+                          Date
+                          {getSortIcon('dateTaken')}
+                        </div>
                       </th>
-                      <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
-                        Status
+                      <th 
+                        className="px-8 py-4 text-left text-sm font-semibold text-gray-400 cursor-pointer group"
+                        onClick={() => handleSort('status')}
+                      >
+                        <div className="flex items-center">
+                          Status
+                          {getSortIcon('status')}
+                        </div>
                       </th>
                       <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
                         Actions
@@ -401,8 +466,8 @@ function AdminPage() {
                                 <AlertDialogCancel asChild>
                                   <Button
                                     variant="outline"
-                                    className="border-gray-600 text-gray-900 w-full sm:w-auto"
-                                    >
+                                    className="border-gray-600 text-gray-300 hover:text-gray-100 hover:bg-gray-700/50 w-full sm:w-auto"
+                                  >
                                     Cancel
                                   </Button>
                                 </AlertDialogCancel>
