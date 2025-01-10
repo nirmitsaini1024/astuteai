@@ -11,6 +11,8 @@ import {
   ChevronRight,
   Trash,
   Download,
+  Activity,
+  UserPlus,
 } from "lucide-react";
 import Image from "next/image";
 import Logooo from "@/assets/logooo.png";
@@ -110,28 +112,39 @@ function AdminPage() {
     setIsDialogOpen(false);
   };
 
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "Active":
+        return "bg-emerald-500/20 text-emerald-400 border-emerald-500/50";
+      case "Inactive":
+        return "bg-red-500/20 text-red-400 border-red-500/50";
+      default:
+        return "bg-amber-500/20 text-amber-400 border-amber-500/50";
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-gray-100 flex overflow-hidden">
+    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-gray-900 via-gray-800 to-gray-900 text-gray-100 flex overflow-hidden">
       {/* Sidebar */}
-      <div
-        className={`fixed lg:sticky top-0 left-0 z-50 w-64 bg-gray-800/95 backdrop-blur-sm transform transition-transform duration-300 ease-in-out h-screen ${
+      <aside
+        className={`fixed lg:sticky top-0 left-0 z-50 w-72 bg-gray-800/95 backdrop-blur-sm transform transition-transform duration-300 ease-in-out h-screen ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0 flex flex-col shadow-2xl`}
+        } lg:translate-x-0 flex flex-col shadow-2xl border-r border-gray-700/30`}
       >
-        <div className="flex items-center justify-between p-6 border-b border-gray-700/50">
+        <div className="flex items-center justify-between p-6 border-b border-gray-700/30">
           <Link href={"/"}>
-            <div className="flex items-center space-x-1 pl-2">
+            <div className="flex items-center space-x-1 pl-6">
               <div className="relative">
-                <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur opacity-10"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur opacity-15"></div>
                 <Image
                   src={Logooo}
-                  height={40}
-                  width={40}
+                  height={42}
+                  width={42}
                   className="relative object-contain"
                   alt="Stute.ai Logo"
                 />
               </div>
-              <span className="text-white font-semibold text-lg tracking-wide">
+              <span className="text-white font-semibold text-xl tracking-wide">
                 stute.ai
               </span>
             </div>
@@ -143,91 +156,110 @@ function AdminPage() {
             <X size={24} />
           </button>
         </div>
-        <nav className="flex-1 p-6">
-          <ul className="space-y-4">
-            <li>
-              <a
-                href="#"
-                className="flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-gray-700/50 hover:scale-105 group"
-              >
-                <LayoutDashboard
-                  size={20}
-                  className="group-hover:text-violet-400"
-                />
-                <span className="group-hover:text-violet-400">Dashboard</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-gray-700/50 hover:scale-105 group"
-              >
-                <Users size={20} className="group-hover:text-violet-400" />
-                <span className="group-hover:text-violet-400">Users</span>
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-gray-700/50 hover:scale-105 group"
-              >
-                <Settings size={20} className="group-hover:text-violet-400" />
-                <span className="group-hover:text-violet-400">Settings</span>
-              </a>
-            </li>
-          </ul>
+        <nav className="flex-1 py-8 px-6">
+          <div className="space-y-1">
+            <h2 className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
+              Dashboard
+            </h2>
+            <ul className="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 bg-gray-700/30 text-violet-400 hover:bg-gray-700/50 group"
+                >
+                  <LayoutDashboard size={20} />
+                  <span>Overview</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-700/30 group"
+                >
+                  <Users size={20} />
+                  <span>Users</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-700/30 group"
+                >
+                  <Activity size={20} />
+                  <span>Analytics</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-700/30 group"
+                >
+                  <Settings size={20} />
+                  <span>Settings</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </nav>
-        <div className="p-6 border-t border-gray-700/50">
+        <div className="p-6 border-t border-gray-700/30">
           <a
             href="#"
-            className="flex items-center gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-red-500/10 group"
+            className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 hover:bg-red-500/10 group"
           >
-            <LogOut
-              size={20}
-              className="text-red-400 group-hover:text-red-500"
-            />
+            <LogOut size={20} className="text-red-400 group-hover:text-red-500" />
             <span className="text-red-400 group-hover:text-red-500">
               <SignOutButton />
             </span>
           </a>
         </div>
-      </div>
+      </aside>
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
         {/* Header */}
-        <header className="bg-gray-800/50 backdrop-blur-sm p-6 flex items-center justify-between border-b border-gray-700/50">
-          <button
-            onClick={() => setSidebarOpen(true)}
-            className="lg:hidden text-gray-400 hover:text-white transition-colors"
-          >
-            <Menu size={24} />
-          </button>
-          <div className="ml-auto">
+        <header className="bg-gray-800/50 backdrop-blur-sm px-8 py-6 flex items-center justify-between border-b border-gray-700/30">
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="lg:hidden text-gray-400 hover:text-white transition-colors"
+            >
+              <Menu size={24} />
+            </button>
+            <h1 className="text-2xl font-semibold text-gray-100">Dashboard</h1>
+          </div>
+          <div className="flex items-center gap-4">
+            
+            <div className="w-px h-8 bg-gray-700/30" />
             <UserButton />
           </div>
         </header>
 
         {/* Dashboard Content */}
-        <main className="flex-1 p-6 overflow-y-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-700/50 hover:border-violet-500/50 transition-colors">
-              <h3 className="text-lg font-semibold mb-3 text-gray-300">
-                Total Users
-              </h3>
+        <main className="flex-1 p-8 overflow-y-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
+            <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 group">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-lg font-medium text-gray-300">Total Users</h3>
+                <span className="p-2 rounded-lg bg-violet-500/10 text-violet-400 group-hover:bg-violet-500/20 transition-colors">
+                  <Users size={20} />
+                </span>
+              </div>
               {isLoading ? (
-                <Skeleton className="h-12 bg-gray-700 w-32" />
+                <Skeleton className="h-12 bg-gray-700/50 w-32" />
               ) : (
                 <p className="text-4xl font-bold bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">
-                  {totalUsers}
+                  {totalUsers.toLocaleString()}
                 </p>
               )}
             </div>
-            <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-700/50 hover:border-violet-500/50 transition-colors">
-              <h3 className="text-lg font-semibold mb-3 text-gray-300">
-                CSV Data
-              </h3>
-              <Button className="bg-violet-600 hover:bg-violet-700 text-white transition-colors flex items-center gap-2">
+            <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 group">
+              <div className="flex items-start justify-between mb-4">
+                <h3 className="text-lg font-medium text-gray-300">Export Data</h3>
+                <span className="p-2 rounded-lg bg-violet-500/10 text-violet-400 group-hover:bg-violet-500/20 transition-colors">
+                  <Download size={20} />
+                </span>
+              </div>
+              <Button className="bg-violet-600 hover:bg-violet-700 text-white transition-colors flex items-center gap-2 mt-2">
                 <Download size={18} />
                 Download CSV
               </Button>
@@ -235,51 +267,49 @@ function AdminPage() {
           </div>
 
           {/* Table */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-gray-700/50">
-            <div className="p-6 border-b border-gray-700/50">
-              <h2 className="text-xl font-semibold text-gray-200">
-                Users List
-              </h2>
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-gray-700/30">
+            <div className="px-8 py-6 border-b border-gray-700/30">
+              <h2 className="text-xl font-semibold text-gray-200">Users List</h2>
             </div>
             <div className="overflow-x-auto">
               {isLoading || tableData.length === 0 ? (
                 <table className="w-full">
-                  <thead className="bg-gray-700/50">
-                    <tr>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                  <thead>
+                    <tr className="border-b border-gray-700/30">
+                      <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
                         Name
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                      <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
                         Email
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300 hidden sm:table-cell">
+                      <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400 hidden sm:table-cell">
                         Date
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                      <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
                         Status
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                      <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
                         Actions
                       </th>
                     </tr>
                   </thead>
                   <tbody>
                     {[...Array(ITEMS_PER_PAGE)].map((_, index) => (
-                      <tr key={index} className="border-b border-gray-700/50">
-                        <td className="px-6 py-4">
-                          <Skeleton className="h-6 w-32 bg-gray-700" />
+                      <tr key={index} className="border-b border-gray-700/30">
+                        <td className="px-8 py-4">
+                          <Skeleton className="h-6 w-32 bg-gray-700/50" />
                         </td>
-                        <td className="px-6 py-4">
-                          <Skeleton className="h-6 w-48 bg-gray-700" />
+                        <td className="px-8 py-4">
+                          <Skeleton className="h-6 w-48 bg-gray-700/50" />
                         </td>
-                        <td className="px-6 py-4 hidden sm:table-cell">
-                          <Skeleton className="h-6 w-24 bg-gray-700" />
+                        <td className="px-8 py-4 hidden sm:table-cell">
+                          <Skeleton className="h-6 w-24 bg-gray-700/50" />
                         </td>
-                        <td className="px-6 py-4">
-                          <Skeleton className="h-6 w-24 bg-gray-700" />
+                        <td className="px-8 py-4">
+                          <Skeleton className="h-6 w-24 bg-gray-700/50" />
                         </td>
-                        <td className="px-6 py-4">
-                          <Skeleton className="h-6 w-8 bg-gray-700" />
+                        <td className="px-8 py-4">
+                          <Skeleton className="h-6 w-8 bg-gray-700/50" />
                         </td>
                       </tr>
                     ))}
@@ -287,21 +317,21 @@ function AdminPage() {
                 </table>
               ) : (
                 <table className="w-full">
-                  <thead className="bg-gray-700/50">
-                    <tr>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                  <thead>
+                    <tr className="border-b border-gray-700/30">
+                      <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
                         Name
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                      <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
                         Email
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300 hidden sm:table-cell">
+                      <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400 hidden sm:table-cell">
                         Date
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                      <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
                         Status
                       </th>
-                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-300">
+                      <th className="px-8 py-4 text-left text-sm font-semibold text-gray-400">
                         Actions
                       </th>
                     </tr>
@@ -310,28 +340,31 @@ function AdminPage() {
                     {currentTableData.map((user) => (
                       <tr
                         key={user.id}
-                        className="border-b border-gray-700/50 hover:bg-gray-700/25 transition-colors"
+                        className="border-b border-gray-700/30 hover:bg-gray-700/20 transition-colors"
                       >
-                        <td className="px-6 py-4 text-gray-200">{user.name}</td>
-                        <td className="px-6 py-4 text-gray-200">
-                          {user.email}
+                        <td className="px-8 py-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-full bg-violet-500/20 flex items-center justify-center text-violet-400">
+                              {user.name.charAt(0).toUpperCase()}
+                            </div>
+                            <span className="text-gray-200 font-medium">
+                              {user.name}
+                            </span>
+                          </div>
                         </td>
-                        <td className="px-6 py-4 hidden sm:table-cell text-gray-200">
-                          {user.dateTaken.split("T")[0]}
+                        <td className="px-8 py-4 text-gray-300">{user.email}</td>
+                        <td className="px-8 py-4 hidden sm:table-cell text-gray-400">
+                          {new Date(user.dateTaken).toLocaleDateString()}
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-8 py-4">
                           <select
                             value={user.status}
                             onChange={(e) =>
                               handleStatusChange(user.id, e.target.value)
                             }
-                            className={`px-3 py-1.5 rounded-full text-sm bg-opacity-20 backdrop-blur-sm transition-all cursor-pointer outline-none ${
-                              user.status === "Active"
-                                ? "bg-green-500 text-green-400 border-green-500"
-                                : user.status === "Inactive"
-                                ? "bg-red-500 text-red-400 border-red-500"
-                                : "bg-yellow-500 text-yellow-400 border-yellow-500"
-                            } border hover:bg-opacity-30`}
+                            className={`px-4 py-1.5 rounded-full text-sm border backdrop-blur-sm transition-all cursor-pointer outline-none ${getStatusColor(
+                              user.status
+                            )}`}
                           >
                             <option value="Active" className="bg-gray-800">
                               Active
@@ -344,7 +377,7 @@ function AdminPage() {
                             </option>
                           </select>
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-8 py-4">
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
                               <button
@@ -360,8 +393,8 @@ function AdminPage() {
                                   Confirm Deletion
                                 </h3>
                                 <AlertDialogDescription className="text-gray-400">
-                                  Are you sure you want to delete this user?
-                                  This action is irreversible.
+                                  Are you sure you want to delete this user? This
+                                  action cannot be undone.
                                 </AlertDialogDescription>
                               </AlertDialogHeader>
                               <div className="flex flex-col sm:flex-row justify-end sm:gap-4 gap-2 mt-6">
@@ -369,14 +402,11 @@ function AdminPage() {
                                   <Button
                                     variant="outline"
                                     className="border-gray-600 text-gray-900 w-full sm:w-auto"
-                                  >
+                                    >
                                     Cancel
                                   </Button>
                                 </AlertDialogCancel>
-                                <AlertDialogAction
-                                  asChild
-                                  onClick={handleDelete}
-                                >
+                                <AlertDialogAction asChild onClick={handleDelete}>
                                   <Button
                                     variant="destructive"
                                     className="bg-red-500/80 hover:bg-red-500 w-full sm:w-auto"
@@ -401,12 +431,12 @@ function AdminPage() {
             <Button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="bg-violet-600 hover:bg-violet-700 text-white transition-colors flex items-center gap-2"
+              className="bg-violet-600 hover:bg-violet-700 text-white transition-colors flex items-center gap-2 disabled:opacity-50"
             >
               <ChevronLeft size={18} />
               Previous
             </Button>
-            <span className="px-4 py-2 rounded-lg bg-gray-800/50 border border-gray-700/50 text-gray-300">
+            <span className="px-6 py-2 rounded-lg bg-gray-800/50 border border-gray-700/30 text-gray-300 font-medium">
               Page {currentPage} of {totalPages}
             </span>
             <Button
@@ -414,7 +444,7 @@ function AdminPage() {
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))
               }
               disabled={currentPage === totalPages}
-              className="bg-violet-600 hover:bg-violet-700 text-white transition-colors flex items-center gap-2"
+              className="bg-violet-600 hover:bg-violet-700 text-white transition-colors flex items-center gap-2 disabled:opacity-50"
             >
               Next
               <ChevronRight size={18} />
