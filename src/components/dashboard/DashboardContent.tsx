@@ -94,7 +94,6 @@ export function DashboardContent({ section }: DashboardContentProps) {
                     axisLine={true}
                     tickFormatter={(value) => `${value}%`}
                   />
-                  {/* <Tooltip /> */}
                   <Line
                     type="monotone"
                     dataKey="value"

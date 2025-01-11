@@ -55,11 +55,9 @@ const itemVariants = {
 export default function ResponsiveProductAddresses() {
   return (
     <section className="pt-4 bg-black/95 relative overflow-hidden">
-      {/* Gradient Backgrounds */}
       <div className="absolute inset-0  bg-gradient-to-b to-violet-900/20 from-black/50" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Title */}
         <motion.div
           className="text-center max-w-3xl mx-auto mb-16"
           initial={{ opacity: 0, y: 30 }}
@@ -75,9 +73,7 @@ export default function ResponsiveProductAddresses() {
           </p>
         </motion.div>
 
-        {/* Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start lg:min-h-[450px] xl:min-h-[550px]">
-          {/* Image Section */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -95,7 +91,6 @@ export default function ResponsiveProductAddresses() {
             <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-2xl" />
           </motion.div>
 
-          {/* Points Section */}
           <motion.div
             variants={containerVariants}
             initial="hidden"

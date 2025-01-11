@@ -17,12 +17,12 @@ type IconKey =
   | "waypoints";
 
 const iconMap: Record<IconKey, React.FC<SVGProps<SVGSVGElement>>> = {
-  zap: FaBusinessTime, // Example icon for "zap"
-  "chart-spline": FaUsersCog, // Example icon for "chart-spline"
-  "life-buoy": BiTask, // Example icon for "life-buoy"
-  palette: MdOutlineQueryStats, // Example icon for "palette"
-  "shield-check": LuBrainCircuit, // Example icon for "shield-check"
-  waypoints: GrLanguage, // Example icon for "waypoints"
+  zap: FaBusinessTime,  
+  "chart-spline": FaUsersCog, 
+  "life-buoy": BiTask,
+  palette: MdOutlineQueryStats, 
+  "shield-check": LuBrainCircuit, 
+  waypoints: GrLanguage, 
 };
 
 export const Discover = () => {
@@ -114,7 +114,7 @@ export const Discover = () => {
             <rect
               x="123.5"
               y="384.5"
-              width="24" // Ensure the icons are compatible with SVGProps<SVGSVGElement>
+              width="24" 
               height="24"
               rx="4.5"
               fill="#9d00ff"

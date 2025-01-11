@@ -12,20 +12,18 @@ type Step = {
 const TimelineItem = ({ step, index }: { step: Step; index: number }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: 0 }} // Set consistent initial state
+      initial={{ opacity: 0, x: 0 }} 
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
       className="relative flex items-center gap-8 group"
     >
-      {/* Timeline line */}
       <div className="absolute left-[27px] top-0 bottom-0 w-px bg-gradient-to-b from-purple-500/50 via-pink-500/50 to-purple-500/50" />
 
-      {/* Icon */}
       <div className="relative z-10">
         <motion.div
           whileHover={{ scale: 1.1 }}
-          initial={{ scale: 1 }} // Set consistent initial state
+          initial={{ scale: 1 }} 
           className="w-14 h-14 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 p-0.5"
         >
           <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
@@ -34,11 +32,10 @@ const TimelineItem = ({ step, index }: { step: Step; index: number }) => {
         </motion.div>
       </div>
 
-      {/* Content */}
       <div className="flex-1 relative group">
         <motion.div
           whileHover={{ scale: 1.02 }}
-          initial={{ scale: 1 }} // Set consistent initial state
+          initial={{ scale: 1 }}
           className="bg-zinc-900/80 border border-purple-500/20 rounded-xl p-6 backdrop-blur-sm"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -82,7 +79,7 @@ export default function ProcessCards2() {
     <div className="min-h-screen bg-black">
       <div className="max-w-4xl mx-auto px-4 pb-20 pt-8">
         <motion.div
-          initial={{ opacity: 0, y: 0 }} // Set consistent initial state
+          initial={{ opacity: 0, y: 0 }} 
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >

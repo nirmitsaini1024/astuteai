@@ -11,10 +11,8 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
 
   return (
     <>
-      {/* Show SiteHeader only if not on /admin */}
       {!isAdminRoute && <SiteHeader />}
       {children}
-      {/* Show Footer only if not on /admin */}
       {!isAdminRoute && <Footer />}
     </>
   );

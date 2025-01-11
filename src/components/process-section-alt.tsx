@@ -57,10 +57,8 @@ function ProcessItem({
         index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
       )}
     >
-      {/* Timeline line */}
       <div className="absolute left-8 top-0 bottom-0 w-px bg-zinc-600 md:left-1/2" />
 
-      {/* Content */}
       <div
         className={cn(
           "flex-1 flex gap-8 items-start",

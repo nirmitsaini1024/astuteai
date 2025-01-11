@@ -39,7 +39,6 @@ export function ProcessStep({ step, title, description, icon: Icon, isActive, on
         "relative group cursor-pointer",
         "transition-all duration-500 ease-out"
       )}>
-        {/* Glow Effect */}
         <div className={cn(
           "absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100",
           "bg-gradient-to-r from-violet-600/50 to-blue-600/50",

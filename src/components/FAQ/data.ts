@@ -20,14 +20,5 @@ export const faqs = [
     answer:
       "Simply sign up, choose a plan, and get started on building your dream website in minutes!",
   },
-  // {
-  //   question: "Is my data safe on Astute?",
-  //   answer:
-  //     "Yes! We use encryption and industry-standard security measures to ensure that your data is safe and protected.",
-  // },
-  // {
-  //   question: "Is there a free trial available?",
-  //   answer:
-  //     "Yes! We offer a free trial to let you explore all the features of Astute before committing to a paid plan.",
-  // },
+ 
 ];

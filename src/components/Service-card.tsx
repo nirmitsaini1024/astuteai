@@ -26,7 +26,6 @@ export function ServiceCard({
       viewport={{ once: true }}
       className="h-full relative "
     >
-      {/* Card */}
       <Card
         className={cn(
           "relative h-full bg-zinc-900/90 backdrop-blur-sm border-zinc-800 rounded-xl",

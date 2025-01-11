@@ -180,7 +180,6 @@ function AdminPage() {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-gray-900 via-gray-800 to-gray-900 text-gray-100 flex overflow-hidden">
-      {/* Sidebar */}
       <aside
         className={`fixed lg:sticky top-0 left-0 z-50 w-72 bg-gray-800/95 backdrop-blur-sm transform transition-transform duration-300 ease-in-out h-screen ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
@@ -272,9 +271,7 @@ function AdminPage() {
         </div>
       </aside>
 
-      {/* Main Content */}
       <div className="flex-1 flex flex-col h-screen overflow-hidden">
-        {/* Header */}
         <header className="bg-gray-800/50 backdrop-blur-sm px-8 py-6 flex items-center justify-between border-b border-gray-700/30">
           <div className="flex items-center gap-4">
             <button
@@ -291,7 +288,6 @@ function AdminPage() {
           </div>
         </header>
 
-        {/* Dashboard Content */}
         <main className="flex-1 p-8 overflow-y-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
             <div className="bg-gray-800/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-gray-700/30 hover:border-violet-500/30 transition-all duration-300 group">
@@ -327,7 +323,6 @@ function AdminPage() {
             </div>
           </div>
 
-          {/* Table */}
           <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-gray-700/30">
             <div className="px-8 py-6 border-b border-gray-700/30">
               <h2 className="text-xl font-semibold text-gray-200">
@@ -506,7 +501,6 @@ function AdminPage() {
             </div>
           </div>
 
-          {/* Pagination */}
           <div className="mt-8 flex justify-between items-center">
             <Button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}

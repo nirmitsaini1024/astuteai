@@ -34,7 +34,6 @@ export default function Works() {
       </div>
 
       <div className="px-6 md:px-0 max-w-[1000px] mx-auto mt-28 space-y-16  ">
-        {/* Project 01 */}
         <motion.div
           {...animationProps}
           className="mt-8 flex flex-col md:flex-row"
@@ -60,7 +59,6 @@ export default function Works() {
           </div>
         </motion.div>
 
-        {/* Project 02 */}
         <motion.div
           {...animationProps}
           className="mt-8 flex flex-col md:flex-row-reverse gap-12"
@@ -76,7 +74,6 @@ export default function Works() {
           </div>
           <div className="flex justify-center items-center -mt-8">
             {" "}
-            {/* Added -mt-4 here */}
             <Image
               loading="lazy"
               alt="Interactive E-Learning Platform"
@@ -88,7 +85,6 @@ export default function Works() {
           </div>
         </motion.div>
 
-        {/* Project 03 */}
         <motion.div
           {...animationProps}
           className="mt-8 flex flex-col md:flex-row"

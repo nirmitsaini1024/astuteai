@@ -69,12 +69,12 @@ export function ServicesSection() {
     <section
       ref={sectionRef}
       className={cn(
-        "py-16", // Adjust padding for top and bottom
+        "py-16",
         "bg-black/95 backdrop-blur-3xl",
         "relative overflow-hidden"
       )}
     >
-      {/* Background gradient effects */}
+   
       <div className="absolute inset-0 bg-black">
         <div className="absolute inset-0 bg-black"></div>
         <div className="absolute bg-black"></div>

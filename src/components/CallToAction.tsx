@@ -24,7 +24,6 @@ export const CallToAction = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Show "Submitting" toast
     toast({
       title: "Submitting",
       description: "Your request is being processed...",
@@ -41,13 +40,11 @@ export const CallToAction = () => {
     const data = await response.json();
 
     if (response.ok) {
-      // Show "Submitted successfully" toast
       toast({
         title: "Submitted Successfully",
         description: "You have joined the waitlist!",
       });
     } else {
-      // Show error toast
       toast({
         variant: "destructive",
         title: "Submission Failed",
