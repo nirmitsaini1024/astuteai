@@ -34,7 +34,7 @@ const Footer = () => {
               <h3 className="text-white font-bold text-sm sm:text-base">
                 Products
               </h3>
-              <Link
+              {/* <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
                 href="/product/shopfrontai"
               >
@@ -57,7 +57,7 @@ const Footer = () => {
                 href="/product/insightq"
               >
                 InsightQ
-              </Link>
+              </Link> */}
             </div>
             <div className="flex justify-center space-y-4 flex-col mt-4 relative z-10">
               <h3 className="text-white font-bold text-sm sm:text-base">
@@ -82,7 +82,7 @@ const Footer = () => {
               </h3>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="https://x.com/Astute_AI"
+                href=""
               >
                 About us
               </Link>
