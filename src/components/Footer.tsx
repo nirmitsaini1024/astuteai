@@ -82,7 +82,7 @@ const Footer = () => {
               </h3>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href=""
+                href="about-us"
               >
                 About us
               </Link>
