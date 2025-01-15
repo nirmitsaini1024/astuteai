@@ -88,7 +88,7 @@ const Footer = () => {
               </Link>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="#"
+                href="/careers"
               >
                 Careers{" "}
               </Link>
