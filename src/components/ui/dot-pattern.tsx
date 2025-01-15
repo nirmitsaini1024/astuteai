@@ -3,24 +3,24 @@ import { useId } from "react";
 import { cn } from "@/lib/utils";
 
 interface DotPatternProps {
-  width?: number;
-  height?: number;
-  x?: number;
-  y?: number;
-  cx?: number;
-  cy?: number;
-  cr?: number;
+  width?: any;
+  height?: any;
+  x?: any;
+  y?: any;
+  cx?: any;
+  cy?: any;
+  cr?: any;
   className?: string;
-  [key: string]: unknown;
+  [key: string]: any;
 }
 export function DotPattern({
-  width = 16,
-  height = 16,
+  width = 24,
+  height = 24,
   x = 0,
   y = 0,
   cx = 1,
-  cy = 1,
-  cr = 1,
+  cy = 0.5,
+  cr = 0.5,
   className,
   ...props
 }: DotPatternProps) {
@@ -30,7 +30,7 @@ export function DotPattern({
     <svg
       aria-hidden="true"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full fill-neutral-400/80",
+        "pointer-events-none absolute inset-0 h-full w-full fill-slate-500/50 md:fill-slate-500/70",
         className,
       )}
       {...props}
@@ -53,4 +53,4 @@ export function DotPattern({
   );
 }
 
-export default DotPattern;
+ 
