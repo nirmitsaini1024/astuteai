@@ -48,7 +48,7 @@ export default function Home() {
               We're constantly pushing boundaries and exploring new technologies.
             </p>
           </Card>
-          <Card className="p-6 bg-card hover:bg-accent/50 transition-colors bg-black text-white">
+          <Card className="p-6 bg-card hover:bg-accent/10 transition-colors bg-black text-white">
             <Heart className="h-8 w-8 text-primary mb-4 text-white" />
             <h3 className="text-xl font-semibold mb-2">Work-Life Balance</h3>
             <p className="text-muted-foreground">
