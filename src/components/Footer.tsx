@@ -65,16 +65,16 @@ const Footer = () => {
               </h3>
               <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
-                href="/privacy"
+                href="/blog"
               >
                 Blog{" "}
               </Link>
-              {/* <Link
+              <Link
                 className="transition-colors text-muted-dark hover:text-neutral-400 text-xs sm:text-sm"
                 href="/auth/admin"
               >
                 Admin{" "}
-              </Link> */}
+              </Link>
             </div>
             <div className="flex justify-center space-y-4 flex-col mt-4 relative z-10">
               <h3 className="text-white font-bold text-sm sm:text-base">

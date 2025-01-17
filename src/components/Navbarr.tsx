@@ -119,8 +119,8 @@ export default function SiteHeader() {
                               />
                               <ProductItem
                                 title="Social Spark"
-                                href="product/socialspark"
-                                
+                                href="/product/socialspark"
+
                                 src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
                                 description="Never write from scratch again. Go from idea to blog in minutes."
                               />
