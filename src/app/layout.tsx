@@ -6,6 +6,7 @@ import ConditionalLayout from "@/components/ConditionalLayout";
 // import { Analytics } from "@vercel/analytics/next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
@@ -32,7 +33,17 @@ export default function RootLayout({
           <meta name="description" content={metadata.description as string} />
         </head>
         <body className={clsx(dmSans.className, "antialiased")}>
-          <ConditionalLayout>{children}</ConditionalLayout>
+          <ConditionalLayout>
+            {" "}
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="dark"
+              enableSystem
+              disableTransitionOnChange
+            >
+              {children}{" "}
+            </ThemeProvider>
+          </ConditionalLayout>
           <Toaster />
           {/* <Analytics mode="production" /> */}
         </body>
