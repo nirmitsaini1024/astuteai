@@ -104,31 +104,30 @@ export default function SiteHeader() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.2, duration: 0.2 }}
                           >
-                            <div className="  text-sm grid grid-cols-2 gap-10 p-4">
+                            <div className="text-sm grid grid-cols-2 gap-10 p-4">
                               <ProductItem
                                 title="ShopFrontAI"
                                 href="/product/shopfrontai"
                                 src="https://assets.aceternity.com/demos/algochurn.webp"
-                                description="Prepare for tech interviews like never before."
+                                description="Stunning SEO-friendly websites for maximum engagement and seamless performance."
                               />
                               <ProductItem
                                 title="Blogger AI"
                                 href="/product/bloggerai"
                                 src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
-                                description="Production ready Tailwind css components for your next project"
+                                description="Automate blog creation with optimized SEO for boosted website traffic."
                               />
                               <ProductItem
                                 title="Social Spark"
                                 href="/product/socialspark"
-
                                 src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
-                                description="Never write from scratch again. Go from idea to blog in minutes."
+                                description="Effortlessly design and post social media ads, posters, and videos."
                               />
                               <ProductItem
                                 title="InsightQ"
                                 href="/product/insightq"
                                 src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
-                                description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
+                                description="Visualize data with multilingual, omnichannel analytics for smarter decision-making."
                               />
                             </div>
                           </motion.div>

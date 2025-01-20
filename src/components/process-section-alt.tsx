@@ -49,7 +49,6 @@ function ProcessItem({
 
   return (
     <motion.div
-      id="divein"
       ref={ref}
       style={{ y, opacity, scale }}
       className={cn(

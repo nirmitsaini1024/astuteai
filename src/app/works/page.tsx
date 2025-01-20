@@ -11,8 +11,9 @@ export default function Works() {
   };
 
   return (
-    <section className="text-white bg-gradient-to-b from-black via-[#381a5f] via-70% via-[#190c2b] to-black pb-8 pt-8">
-      <div className="text-center">
+    <section  id="divein" className="text-white bg-gradient-to-b from-black via-[#381a5f] via-70% via-[#190c2b] to-black pb-8 pt-8">
+      <div className="text-center"  
+      >
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

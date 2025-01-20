@@ -189,14 +189,22 @@ export function SeoSection() {
             />
           ))}
         </div>
-        <motion.div className="border border-zinc-800 rounded-xl p-2.5 mt-3 relative">
-          <BorderBeam />
-
-          <div className=" bg-cover bg-black border border-muted border-zinc-600 rounded-lg flex items-center justify-center">
-            <div className="w-full h-full">
-              <Dashboard />
-            </div>
-          </div>
+        <motion.div
+          className={
+            "border border-zinc-800 border-muted rounded-xl p-2.5 mt-3 relative"
+          }
+        >
+          {/* <BorderBeam /> */}
+          <div
+            className={
+              "aspect-video bg-cover border border-muted border-zinc-600 rounded-lg"
+            }
+            style={{
+              backgroundPosition: backgroundPosition.get(),
+              backgroundSize: backgroundSize.get(),
+              backgroundImage: `url(${ProductImage.src})`,
+            }}
+          ></div>
         </motion.div>
       </div>
     </section>
