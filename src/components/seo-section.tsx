@@ -2,7 +2,6 @@
 import { PiCursorClickBold } from "react-icons/pi";
 import { VscDashboard } from "react-icons/vsc";
 import { CgSmartphoneChip } from "react-icons/cg";
-import { BorderBeam } from "@/components/ui/border-beam";
 
 import ProductImage from "@/assets/images/product-image.png";
 import {
@@ -13,7 +12,6 @@ import {
   ValueAnimationTransition,
 } from "framer-motion";
 import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react";
-import { Dashboard } from "./dashboard/Dashboard";
 
 const tabs = [
   {
@@ -194,7 +192,6 @@ export function SeoSection() {
             "border border-zinc-800 border-muted rounded-xl p-2.5 mt-3 relative"
           }
         >
-          {/* <BorderBeam /> */}
           <div
             className={
               "aspect-video bg-cover border border-muted border-zinc-600 rounded-lg"

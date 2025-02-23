@@ -2,51 +2,62 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
-import blogs from "./blogs.json";
 import { LampContainer } from "@/components/ui/lamp";
+import Link from "next/link";
+
+interface Blog {
+  id: string;
+  title: string;
+  author: string;
+  date_created: string;
+  thumbnail: string;
+}
 
 export default function BlogPage() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [sortBy, setSortBy] = useState("recent");
-  const [filteredBlogs, setFilteredBlogs] = useState(blogs);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prev) => !prev);
-  };
-
-  const handleOptionClick = (option: string) => {
-    setSortBy(option);
-    setIsDropdownOpen(false);
-  };
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [sortBy, setSortBy] = useState<"recent" | "oldest" | "a-z" | "z-a">("recent");
+  const [filteredBlogs, setFilteredBlogs] = useState<Blog[]>([]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    let filtered = blogs.filter((blog) =>
-      blog.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch("/api/blog/view");
+        const blogs: Blog[] = await response.json();
 
-    if (sortBy === "recent") {
-      filtered = filtered.sort(
-        (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-      );
-    } else if (sortBy === "oldest") {
-      filtered = filtered.sort(
-        (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
-      );
-    } else if (sortBy === "a-z") {
-      filtered = filtered.sort((a, b) => a.title.localeCompare(b.title));
-    } else if (sortBy === "z-a") {
-      filtered = filtered.sort((a, b) => b.title.localeCompare(a.title));
-    }
+        let filtered = blogs.filter((blog) =>
+          blog.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
 
-    setFilteredBlogs(filtered);
+        if (sortBy === "recent") {
+          filtered = filtered.sort(
+            (a, b) =>
+              new Date(b.date_created).getTime() - new Date(a.date_created).getTime()
+          );
+        } else if (sortBy === "oldest") {
+          filtered = filtered.sort(
+            (a, b) =>
+              new Date(a.date_created).getTime() - new Date(b.date_created).getTime()
+          );
+        } else if (sortBy === "a-z") {
+          filtered = filtered.sort((a, b) => a.title.localeCompare(b.title));
+        } else if (sortBy === "z-a") {
+          filtered = filtered.sort((a, b) => b.title.localeCompare(a.title));
+        }
+
+        setFilteredBlogs(filtered);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+    };
+
+    fetchBlogs();
   }, [searchTerm, sortBy]);
 
   return (
     <div className="relative bg-black text-white px-4 py-8 md:px-8 lg:px-16 -mt-[7rem]">
       <div className="relative z-5 max-w-7xl mx-auto">
         <LampContainer>
-          {/* Header */}
           <motion.div
             className="text-center blog-header text-white"
             initial={{ opacity: 0, y: 20 }}
@@ -95,7 +106,7 @@ export default function BlogPage() {
           <div className="relative w-full md:w-44">
             <button
               className="flex items-center justify-between w-full h-10 px-4 bg-gray-800 border border-gray-700 rounded-md text-white"
-              onClick={toggleDropdown}
+              onClick={() => setIsDropdownOpen((prev) => !prev)}
             >
               {sortBy === "recent"
                 ? "Most Recent"
@@ -108,28 +119,16 @@ export default function BlogPage() {
             </button>
             {isDropdownOpen && (
               <ul className="absolute z-10 mt-2 w-full bg-gray-800 border border-gray-700 rounded-md shadow-lg">
-                <li
-                  className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white"
-                  onClick={() => handleOptionClick("recent")}
-                >
+                <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white" onClick={() => setSortBy("recent")}>
                   Most Recent
                 </li>
-                <li
-                  className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white"
-                  onClick={() => handleOptionClick("oldest")}
-                >
+                <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white" onClick={() => setSortBy("oldest")}>
                   Oldest First
                 </li>
-                <li
-                  className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white"
-                  onClick={() => handleOptionClick("a-z")}
-                >
+                <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white" onClick={() => setSortBy("a-z")}>
                   A-Z
                 </li>
-                <li
-                  className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white"
-                  onClick={() => handleOptionClick("z-a")}
-                >
+                <li className="px-4 py-2 hover:bg-gray-700 cursor-pointer text-white" onClick={() => setSortBy("z-a")}>
                   Z-A
                 </li>
               </ul>
@@ -138,25 +137,32 @@ export default function BlogPage() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredBlogs.map((blog) => (
-            <motion.div
-              key={blog.id}
-              className="bg-gray-800 rounded-lg overflow-hidden shadow-md"
-              whileHover={{
-                scale: 1.03,
-                transition: { duration: 0.3 },
-              }}
-            >
-              <img
-                src={blog.image}
-                alt={blog.title}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-4">
-                <h3 className="text-xl font-bold mb-2">{blog.title}</h3>
-                <p className="text-gray-400 text-sm mb-2">{blog.category}</p>
-                <p className="text-gray-500 text-xs">{blog.date}</p>
-              </div>
-            </motion.div>
+            <Link key={blog.id} href={`/blog/${blog.id}`}>
+              <motion.div
+                className="bg-gray-800 rounded-lg overflow-hidden shadow-md cursor-pointer"
+                whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
+              >
+                <img
+                  src={blog.thumbnail}
+                  alt={blog.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-bold mb-2">{blog.title}</h3>
+                  <p className="text-gray-400 text-sm mb-2">By {blog.author}</p>
+                  <p className="text-gray-500 text-xs">
+                    {new Date(blog.date_created).toLocaleString("en-IN", {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: true,
+                    })}
+                  </p>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
