@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import "./markdown.css";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export default function BlogPostPage() {
   const { id } = useParams();
@@ -29,7 +30,20 @@ export default function BlogPostPage() {
     fetchBlog();
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return (
+      <div className="max-w-2xl mx-auto p-4">
+        <Skeleton className="w-full h-48 rounded-lg mb-4" /> {/* Thumbnail */}
+        <Skeleton className="h-8 w-3/4 mx-auto mb-2" /> {/* Title */}
+        <Skeleton className="h-4 w-1/2 mx-auto mb-4" /> {/* Author */}
+        <Skeleton className="h-4 w-1/3 mx-auto mb-4" /> {/* Date */}
+        <Skeleton className="h-6 w-full mb-2" />
+        <Skeleton className="h-6 w-5/6 mb-2" />
+        <Skeleton className="h-6 w-4/5 mb-2" />
+      </div>
+    );
+  }
+
   if (!blog) return <p>Blog not found</p>;
 
   return (
@@ -47,10 +61,10 @@ export default function BlogPostPage() {
 
       {/* Author & Date */}
       <div className="text-gray-500 text-sm mb-4">
-        <p>
+        <p >
           Author: <span className="font-semibold"> {blog.author}</span>
         </p>
-        <p>Date: {new Date(blog.date_created).toLocaleDateString()}</p>
+        <p className="font-semibold">Updated on: {new Date(blog.date_created).toLocaleDateString()}</p>
       </div>
 
       {/* Markdown Content */}

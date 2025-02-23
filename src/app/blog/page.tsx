@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { LampContainer } from "@/components/ui/lamp";
+import { Skeleton } from "@/components/ui/skeleton";
 import Link from "next/link";
 
 interface Blog {
@@ -18,10 +19,12 @@ export default function BlogPage() {
   const [sortBy, setSortBy] = useState<"recent" | "oldest" | "a-z" | "z-a">("recent");
   const [filteredBlogs, setFilteredBlogs] = useState<Blog[]>([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true); // Added loading state
 
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
+        setLoading(true); // Start loading
         const response = await fetch("/api/blog/view");
         const blogs: Blog[] = await response.json();
 
@@ -48,6 +51,8 @@ export default function BlogPage() {
         setFilteredBlogs(filtered);
       } catch (error) {
         console.error("Error fetching blogs:", error);
+      } finally {
+        setLoading(false); // Stop loading after fetch
       }
     };
 
@@ -135,35 +140,42 @@ export default function BlogPage() {
             )}
           </div>
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredBlogs.map((blog) => (
-            <Link key={blog.id} href={`/blog/${blog.id}`}>
-              <motion.div
-                className="bg-gray-800 rounded-lg overflow-hidden shadow-md cursor-pointer"
-                whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
-              >
-                <img
-                  src={blog.thumbnail}
-                  alt={blog.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-xl font-bold mb-2">{blog.title}</h3>
-                  <p className="text-gray-400 text-sm mb-2">By {blog.author}</p>
-                  <p className="text-gray-500 text-xs">
-                    {new Date(blog.date_created).toLocaleString("en-IN", {
-                      day: "2-digit",
-                      month: "short",
-                      year: "numeric",
-                      hour: "2-digit",
-                      minute: "2-digit",
-                      hour12: true,
-                    })}
-                  </p>
-                </div>
-              </motion.div>
-            </Link>
-          ))}
+          {loading
+            ? // Show Skeletons while loading
+              [...Array(6)].map((_, index) => (
+                <Skeleton key={index} className="w-full h-64 bg-gray-700 rounded-lg" />
+              ))
+            : // Show actual blogs after loading
+              filteredBlogs.map((blog) => (
+                <Link key={blog.id} href={`/blog/${blog.id}`}>
+                  <motion.div
+                    className="bg-gray-800 rounded-lg overflow-hidden shadow-md cursor-pointer"
+                    whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
+                  >
+                    <img
+                      src={blog.thumbnail}
+                      alt={blog.title}
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="p-4">
+                      <h3 className="text-xl font-bold mb-2">{blog.title}</h3>
+                      <p className="text-gray-400 text-sm mb-2">By {blog.author}</p>
+                      <p className="text-gray-500 text-xs">
+                        {new Date(blog.date_created).toLocaleString("en-IN", {
+                          day: "2-digit",
+                          month: "short",
+                          year: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          hour12: true,
+                        })}
+                      </p>
+                    </div>
+                  </motion.div>
+                </Link>
+              ))}
         </div>
       </div>
     </div>
