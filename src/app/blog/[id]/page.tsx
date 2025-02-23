@@ -2,9 +2,12 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+import "./markdown.css";
 
 export default function BlogPostPage() {
-  const { id } = useParams(); // ✅ Get ID from URL
+  const { id } = useParams();
   const [blog, setBlog] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -38,6 +41,7 @@ export default function BlogPostPage() {
           className="w-full rounded-lg shadow-md mb-4"
         />
       )}
+
       {/* Blog Title */}
       <h1 className="text-3xl font-bold mb-2 text-center">{blog.title}</h1>
 
@@ -49,10 +53,11 @@ export default function BlogPostPage() {
         <p>Date: {new Date(blog.date_created).toLocaleDateString()}</p>
       </div>
 
-      {/* Thumbnail Image */}
-
-      <div className="prose max-w-none text-left">
-        <ReactMarkdown>{blog.content_md}</ReactMarkdown>
+      {/* Markdown Content */}
+      <div className="markdown-content prose prose-lg max-w-none text-left">
+        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+          {blog.content_md}
+        </ReactMarkdown>
       </div>
     </div>
   );

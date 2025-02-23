@@ -1,0 +1,120 @@
+/* markdown.css */
+
+/* Ensure Markdown text is readable */
+.markdown-content {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.8;
+    color: #ffffff;
+  }
+  
+  /* Headings */
+  .markdown-content h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ffffff;
+    padding-bottom: 0.5rem;
+  }
+  
+  .markdown-content h2 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    color: #ffffff;
+  }
+  
+  .markdown-content h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Paragraphs */
+  .markdown-content p {
+    margin-bottom: 1rem;
+  }
+  
+  /* Lists */
+  .markdown-content ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+  }
+  
+  .markdown-content ol {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+  }
+  
+  .markdown-content li {
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Code Blocks */
+  .markdown-content pre {
+    background-color: #333333;
+    color: #ececec;
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+  
+  .markdown-content code {
+    font-family: 'Fira Code', monospace;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+  }
+  
+  /* Blockquotes */
+  .markdown-content blockquote {
+    border-left: 4px solid #52809e;
+    padding-left: 1rem;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+  
+  /* Images */
+  .markdown-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 1rem 0;
+  }
+  
+  /* Tables */
+  .markdown-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+  
+  .markdown-content th,
+  .markdown-content td {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+  }
+  
+  .markdown-content th {
+    background-color: #007acc;
+    color: white;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  /* Horizontal Rule */
+  .markdown-content hr {
+    border: 0;
+    border-top: 2px solid #ddd;
+    margin: 1.5rem 0;
+  }
+  
+  /* Inline Bold & Italic */
+  .markdown-content strong {
+    font-weight: bold;
+  }
+  
+  .markdown-content em {
+    font-style: italic;
+  }
+  
