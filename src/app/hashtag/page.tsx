@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Sparkles, Hash, Clipboard, ClipboardCheck } from "lucide-react";
+import { Sparkles, Clipboard, ClipboardCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,8 +13,8 @@ export default function GenerateHashtags() {
   const [postContent, setPostContent] = useState("");
   const [specification, setSpecification] = useState("");
   const [platform, setPlatform] = useState("");
-  const [numTags, setNumTags] = useState("");
-  const [format, setFormat] = useState("oneLine");
+  const [numTags, setNumTags] = useState("10"); // Default to 10 tags
+  const [format, setFormat] = useState("oneLine"); // oneLine | numbered
   const [results, setResults] = useState("");
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -45,7 +45,7 @@ export default function GenerateHashtags() {
           content: postContent,
           specification: specification,
           platforms: platform.split(",").map((p) => p.trim().toLowerCase()),
-          number: Number(numTags) || 10,
+          number: Number(numTags),
           format: format,
         }),
       });
@@ -60,21 +60,15 @@ export default function GenerateHashtags() {
 
       const hashtags = data.hashtags[platformKey] || [];
 
-      if (format === "numbered") {
-        setResults(
-          hashtags.length > 0
+      setResults(
+        hashtags.length > 0
+          ? format === "numbered"
             ? hashtags
                 .map((tag: string, i: number) => `${i + 1}. ${tag}`)
                 .join("\n")
-            : "No hashtags generated. Try different content."
-        );
-      } else {
-        setResults(
-          hashtags.length > 0
-            ? hashtags.join(" ")
-            : "No hashtags generated. Try different content."
-        );
-      }
+            : hashtags.join(" ")
+          : "No hashtags generated. Try different content."
+      );
 
       toast({
         title: "Hashtags generated!",
@@ -98,17 +92,13 @@ export default function GenerateHashtags() {
     setCopied(true);
     toast({ title: "Copied!", description: "Hashtags copied to clipboard." });
 
-    setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
     <main className="min-h-screen bg-black flex flex-col items-center justify-center p-4">
       <div className="max-w-4xl w-full">
         <div className="relative mb-8 text-center">
-          <div className="absolute -top-8 left-0 w-full flex justify-between">
-            <div className="text-purple-500 text-3xl">✧</div>
-            <div className="text-purple-500 text-3xl">✧</div>
-          </div>
           <h1 className="text-4xl font-bold text-white mb-1">
             Smart Hashtag Generator
           </h1>
@@ -117,119 +107,92 @@ export default function GenerateHashtags() {
           </p>
         </div>
 
-        <div className="bg-[#0a0a14] border border-purple-900/50 rounded-lg overflow-hidden shadow-lg shadow-purple-900/20">
+        <div className="bg-[#0a0a14] border border-purple-900/50 rounded-lg shadow-lg">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
             <div className="md:col-span-2 p-6">
               <div className="space-y-5">
                 <div>
-                  <Label htmlFor="postTitle" className="text-white mb-2 block">
-                    Post Title:
-                  </Label>
+                  <Label className="text-white">Post Title:</Label>
                   <Input
-                    id="postTitle"
                     value={postTitle}
                     onChange={(e) => setPostTitle(e.target.value)}
                     className="bg-[#0e0e18] border-purple-800/50 text-white"
                   />
                 </div>
                 <div>
-                  <Label
-                    htmlFor="postContent"
-                    className="text-white mb-2 block"
-                  >
-                    Post Content:
-                  </Label>
+                  <Label className="text-white">Post Content:</Label>
                   <Textarea
-                    id="postContent"
                     value={postContent}
                     onChange={(e) => setPostContent(e.target.value)}
                     className="bg-[#0e0e18] border-purple-800/50 text-white min-h-[120px]"
                   />
                 </div>
                 <div>
-                  <Label
-                    htmlFor="specification"
-                    className="text-white mb-2 block"
-                  >
-                    Any Specification (Optional)
-                  </Label>
-                  <Input
-                    id="specification"
+                  <Label className="text-white">Additional Details:</Label>
+                  <Textarea
                     value={specification}
                     onChange={(e) => setSpecification(e.target.value)}
                     className="bg-[#0e0e18] border-purple-800/50 text-white"
                   />
-                </div>
-                <div className="flex justify-center mt-6">
-                  <Button
-                    onClick={generateTags}
-                    className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-2 rounded-full flex items-center gap-2"
-                    disabled={loading}
-                  >
-                    <Sparkles className="h-4 w-4" /> Generate Tags
-                  </Button>
                 </div>
               </div>
             </div>
             <div className="p-6 bg-[#0e0e18] border-l border-purple-800/30">
               <div className="space-y-5">
                 <div>
-                  <Label htmlFor="platform" className="text-white mb-2 block">
-                    Social Media Platform
-                  </Label>
+                  <Label className="text-white">Social Media Platform</Label>
                   <Input
-                    id="platform"
                     value={platform}
                     onChange={(e) => setPlatform(e.target.value)}
                     className="bg-[#0e0e18] border-purple-800/50 text-white"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="numTags" className="text-white mb-2 block">
-                    Number of Tags
-                  </Label>
+                  <Label className="text-white">Number of Tags</Label>
+                  <RadioGroup
+                    value={numTags}
+                    onValueChange={setNumTags}
+                    className="flex pt-4 space-x-4"
+                  >
+                    <RadioGroupItem value="5" />
+                    <Label className="text-white">5</Label>
+                    <RadioGroupItem value="10" />
+                    <Label className="text-white">10</Label>
+                    <RadioGroupItem value="15" />
+                    <Label className="text-white">15</Label>
+                  </RadioGroup>
                   <Input
-                    id="numTags"
                     type="number"
                     value={numTags}
                     onChange={(e) => setNumTags(e.target.value)}
-                    className="bg-[#0e0e18] border-purple-800/50 text-white"
+                    className="bg-[#0e0e18] border-purple-800/50 text-white mt-2"
                   />
                 </div>
-                <div className="mt-4">
-                  <Label className="text-white mb-3 block">Format as</Label>
+                <div>
+                  <Label className="text-white">Format</Label>
                   <RadioGroup
                     value={format}
                     onValueChange={setFormat}
-                    className="flex flex-col space-y-2"
+                    className="flex space-x-4 pt-2"
                   >
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem
-                        value="oneLine"
-                        id="oneLine"
-                        className="text-purple-600"
-                      />
-                      <Label htmlFor="oneLine" className="text-white">
-                        One Line
-                      </Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem
-                        value="numbered"
-                        id="numbered"
-                        className="text-purple-600"
-                      />
-                      <Label htmlFor="numbered" className="text-white">
-                        Numbered List
-                      </Label>
-                    </div>
+                    <RadioGroupItem value="oneLine" />
+                    <Label className="text-white">One Line</Label>
+                    <RadioGroupItem value="numbered" />
+                    <Label className="text-white">Numbered</Label>
                   </RadioGroup>
                 </div>
+                <Button onClick={generateTags} className="w-full">
+                  {loading ? "Generating..." : "Generate Hashtags"}
+                  <Sparkles className="ml-2" />
+                </Button>
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="p-6 border-t border-purple-800/30">
+        {/* Results Section */}
+        
+        <div className="pt-4 pb-4 border-t border-purple-800/30">
             <div className="flex justify-between items-center mb-2">
               <Label className="text-white">Results</Label>
               {results && (
@@ -252,7 +215,6 @@ export default function GenerateHashtags() {
             </div>
           </div>
         </div>
-      </div>
     </main>
   );
 }
