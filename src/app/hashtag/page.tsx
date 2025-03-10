@@ -1,5 +1,4 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import { Sparkles, Hash, Clipboard, ClipboardCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
