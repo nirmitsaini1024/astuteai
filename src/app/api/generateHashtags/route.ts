@@ -3,7 +3,7 @@ import { spawn } from "child_process";
 import path from "path";
 import fs from "fs";
 
-export async function POST(req: NextRequest) {  
+export async function POST(req: NextRequest): Promise<NextResponse> {  
   try {
     const { content, platforms, number } = await req.json();
 
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
           resolve(NextResponse.json({ error: "Python script execution failed" }, { status: 500 }));
         }
       });
-    });
+    }) as Promise<NextResponse>; // Ensure the return type is correct
   } catch (error) {
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
